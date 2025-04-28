@@ -1,0 +1,1 @@
+# ffbad-ranking-simulator
