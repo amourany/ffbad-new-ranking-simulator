@@ -1,8 +1,8 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
-import {TanStackRouterVite} from '@tanstack/router-plugin/vite';
-import {resolve} from 'path';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
+import { resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -23,6 +23,7 @@ export default defineConfig({
 			'@components': resolve(__dirname, './src/components'),
 			'@config': resolve(__dirname, './src/config'),
 			'@effects': resolve(__dirname, './src/effects'),
+			'@engine': resolve(__dirname, './src/engine'),
 			'@hooks': resolve(__dirname, './src/hooks'),
 			'@jestConfig': resolve(__dirname, './jest'),
 			'@pages': resolve(__dirname, './src/pages'),

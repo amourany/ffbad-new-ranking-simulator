@@ -1,3 +1,16 @@
 {
-
+  "TITLE": "Simulateur nouveau classement FFBad",
+  "HOME_PAGE": {
+    "PLACEHOLDER": "N° de licence",
+    "SUBMIT": "Convertir",
+    "ERROR": {
+      "NO_LICENCE": "Veuillez saisir votre numéro de licence"
+    }
+  },
+  "DISPLAY_NEW_RANKINGS": {
+    "RANKING_DATE": "Date d'actualisation des classements",
+    "CURRENT_RANKINGS": "Classements actuels",
+    "NEW_RANKINGS": "Classements après transition"
+  },
+  "intlDate": "{{val, datetime}}"
 }

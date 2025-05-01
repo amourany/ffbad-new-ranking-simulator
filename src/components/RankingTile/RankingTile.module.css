@@ -1,0 +1,46 @@
+.tile {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    height: 8rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.subLevelContainer {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.N1, .N2, .N3 {
+    background-color: #f80220;
+}
+
+.R4, .R5, .R6 {
+    background-color: #4a90e2;
+}
+
+.D7, .R8, .D9 {
+    background-color: #7ed321;
+}
+
+.P10, .P11, .P12 {
+    background-color: #f8e71c;
+}
+
+.subLevel {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.ranking {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
