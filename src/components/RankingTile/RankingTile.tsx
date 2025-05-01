@@ -1,12 +1,14 @@
 import styles from './RankingTile.module.css';
 
 export type RankingTileProps = {
+	discipline: string;
 	rankingSubLevel: string;
 	rankingRate: number;
 };
 
-export const RankingTile = ({ rankingSubLevel, rankingRate }: RankingTileProps) => (
+export const RankingTile = ({ discipline, rankingSubLevel, rankingRate }: RankingTileProps) => (
 	<div className={styles.tile}>
+		<label className={styles.discipline}>{discipline}</label>
 		<div className={[
 			styles.subLevelContainer,
 			styles[rankingSubLevel],

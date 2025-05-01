@@ -13,13 +13,16 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex: 1 0 auto;
     justify-content: center;
 }
 
 .logo {
-    width: rem(44px);
-    height: rem(44px);
+    display: none;
+    @media(min-width: $mantine-breakpoint-sm) {
+        display: block;
+        width: rem(44px);
+        height: rem(44px);
+    }
 }
 
 .icons {

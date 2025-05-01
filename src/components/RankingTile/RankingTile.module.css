@@ -19,6 +19,10 @@
     align-items: center;
 }
 
+.discipline {
+    margin-bottom: 0.5rem;
+}
+
 .N1, .N2, .N3 {
     background-color: #f80220;
 }

@@ -1,4 +1,4 @@
-import { Button, Container, Divider, Stack, TextInput } from '@mantine/core';
+import { Button, Divider, NumberInput, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useForm } from '@mantine/form';
 import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
@@ -21,7 +21,7 @@ export const HomePage = () => {
 		},
 		mode: 'uncontrolled',
 		validate: {
-			licence: (value: string|undefined) => !!value && value?.trim()?.length > 0 ? undefined : t('ERROR.NO_LICENCE'),
+			licence: (value: number|undefined) => !!value ? undefined : t('ERROR.NO_LICENCE'),
 		},
 	});
 
@@ -31,7 +31,7 @@ export const HomePage = () => {
 	};
 
 	return (
-		<Container fluid>
+		<div>
 			<Stack
 				classNames={{
 					root: styles.stack,
@@ -39,13 +39,19 @@ export const HomePage = () => {
 			>
 				<form onSubmit={form.onSubmit(handleOnSubmit)}>
 					<div className={styles.inputLine}>
-						<TextInput
+						<NumberInput
+							allowDecimal={false}
+							allowNegative={false}
+							hideControls
 							key={form.key('licence')}
-							type="number"
+							pattern="[0-9]*"
+							step={0}
+							thousandSeparator={false}
 							{...form.getInputProps('licence')}
 							placeholder={t('PLACEHOLDER')}
 						/>
 						<Button
+							className={styles.button}
 							loading={isLoading}
 							type="submit"
 						>
@@ -56,6 +62,6 @@ export const HomePage = () => {
 				<Divider />
 				{data ? <DisplayNewRankings playerInfo={data}/> : null}
 			</Stack>
-		</Container>
+		</div>
 	);
 };
