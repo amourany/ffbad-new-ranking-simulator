@@ -6,7 +6,7 @@ import { resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-	base: '/badminton-ranking-simulator',
+	base: '/ffbad-new-ranking-simulator',
 	plugins: [
 		TanStackRouterVite({
 			generatedRouteTree: './src/routeTree.gen.ts',
