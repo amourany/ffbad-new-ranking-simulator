@@ -3,6 +3,10 @@
     margin: 0 auto;
 }
 
+.button {
+    flex: 0 0 auto;
+}
+
 .inputLine {
     display: flex;
     flex-direction: row;

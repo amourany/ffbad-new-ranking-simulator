@@ -10,25 +10,36 @@
 
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
     column-gap: 1rem;
     justify-content: center;
     align-items: center;
+
+    @media(min-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+    }
 }
 
 .icon {
-    width: 3rem;
-    height: 3rem;
-    margin-top: 5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    display: none;
+
+    @media(min-width: $mantine-breakpoint-lg) {
+        display: block;
+        width: 3rem;
+        height: 3rem;
+        margin-top: 5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .tileContainer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    width: auto;
+    width: 100%;
 }
 
 .title {

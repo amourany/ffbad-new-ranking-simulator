@@ -1,16 +1,21 @@
 {
-  "TITLE": "Simulateur nouveau classement FFBad",
+  "TITLE": "FFBad - Simulateur nouveau classement",
   "HOME_PAGE": {
-    "PLACEHOLDER": "N° de licence",
+    "PLACEHOLDER": "N° de licence FFBad",
     "SUBMIT": "Convertir",
     "ERROR": {
-      "NO_LICENCE": "Veuillez saisir votre numéro de licence"
+      "NO_LICENCE": "Veuillez saisir votre numéro de licence FFBad"
     }
   },
   "DISPLAY_NEW_RANKINGS": {
     "RANKING_DATE": "Date d'actualisation des classements",
     "CURRENT_RANKINGS": "Classements actuels",
     "NEW_RANKINGS": "Classements après transition"
+  },
+  "RANKING_SET": {
+    "SINGLE": "Simple",
+    "DOUBLES": "Double",
+    "MIXED": "Mixte"
   },
   "intlDate": "{{val, datetime}}"
 }

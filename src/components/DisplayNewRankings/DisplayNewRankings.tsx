@@ -58,7 +58,7 @@ export const DisplayNewRankings = ({ playerInfo }: DisplayNewRankingsProps) => {
 						singleSubLevel={playerInfo.rankings.singleSubLevel}
 					/>
 				</div>
-				<IconArrowRight className={styles.icon}/>
+				<IconArrowRight className={styles.icon} />
 				<div className={styles.tileContainer}>
 					<p className={styles.title}>{t('NEW_RANKINGS')}</p>
 					<RankingSet
