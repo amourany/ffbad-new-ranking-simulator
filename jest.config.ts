@@ -1,4 +1,4 @@
-import type {Config,} from 'jest';
+import type { Config } from 'jest';
 
 const config: Config = {
 	collectCoverage: false,
@@ -24,6 +24,7 @@ const config: Config = {
 		'^@components/(.*)$': '<rootDir>/src/components/$1',
 		'^@config/(.*)$': '<rootDir>/src/config/$1',
 		'^@effects/(.*)$': '<rootDir>/src/effects/$1',
+		'^@engine/(.*)$': '<rootDir>/src/engine/$1',
 		'^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
 		'^@jestConfig/(.*)$': '<rootDir>/jest/$1',
 		'^@pages/(.*)$': '<rootDir>/src/pages/$1',

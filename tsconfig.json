@@ -29,6 +29,7 @@
       "@components/*": ["components/*"],
       "@config/*": ["config/*"],
       "@effects/*": ["effects/*"],
+      "@engine/*": ["engine/*"],
       "@hooks/*": ["hooks/*"],
       "@jestConfig/*": ["../jest/*"],
       "@pages/*": ["pages/*"],

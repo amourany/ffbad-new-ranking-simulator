@@ -1,1 +1,1 @@
-# ffbad-ranking-simulator
+# FFBad new ranking simulator
