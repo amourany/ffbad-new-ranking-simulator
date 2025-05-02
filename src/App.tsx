@@ -1,11 +1,13 @@
 import './App.css';
 import './i18n';
-import { RouterProvider, createRouter } from '@tanstack/react-router';
+import {RouterProvider, createRouter, createHashHistory} from '@tanstack/react-router';
 import { routeTree } from './routeTree.gen';
 
-const basePath = import.meta.env['BASE_URL'];
-const router = createRouter({ basepath:basePath,
-	routeTree });
+const hashHistory = createHashHistory()
+const router = createRouter({ basepath:'/',
+	routeTree,
+	history: hashHistory
+});
 
 window.addEventListener('vite:preloadError', () => {
 	window.location.reload();
