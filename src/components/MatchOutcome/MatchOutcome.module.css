@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    width: 100%;
+}
+
+.calculationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    @media(min-width: $mantine-breakpoint-sm) {
+        flex-direction: row;
+    }
+}
+
+.calculationDetails {
+    font-size: 0.8rem;
+    padding: -0.5rem;
+    font-weight: bold;
+}
+
+.win {
+    color: #0BAE4A;
+}
+
+.loss {
+    color: #f21616;
+}

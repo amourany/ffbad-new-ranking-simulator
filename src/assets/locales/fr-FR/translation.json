@@ -12,6 +12,27 @@
     "CURRENT_RANKINGS": "Classements actuels",
     "NEW_RANKINGS": "Classements après transition"
   },
+  "DISPLAY_MATCH_RESULTS": {
+    "LABEL": "Si {{value}} gagne le match"
+  },
+  "LAYOUT": {
+    "CONVERT": "Convertir",
+    "SIMULATE": "Simuler un match"
+  },
+  "LICENCE_INPUT": {
+    "ERROR": {
+      "NO_LICENCE": "Veuillez saisir un numéro de licence FFBad"
+    }
+  },
+  "MATCH_SIMULATOR_PAGE": {
+    "PLAYER_A": "Joueur A",
+    "PLAYER_B": "Joueur B",
+    "VS": "Contre"
+  },
+  "PLAYER_IN_MATCH": {
+    "PLACEHOLDER": "N° de licence FFBad",
+    "LOADING": "Chargement..."
+  },
   "RANKING_SET": {
     "SINGLE": "Simple",
     "DOUBLES": "Double",

@@ -1,0 +1,9 @@
+.button {
+    flex: 0 0 auto;
+}
+
+.inputLine {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1rem;
+}

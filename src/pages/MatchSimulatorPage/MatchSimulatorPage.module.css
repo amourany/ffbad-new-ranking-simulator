@@ -1,0 +1,36 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.playerInputsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex: 1 0 auto;
+    width: 100%;
+
+    @media(min-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+
+    }
+}
+
+.versus {
+    flex: 1 0 auto;
+    text-align: center;
+    height: 100%;
+}
+
+.playerRankingsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}

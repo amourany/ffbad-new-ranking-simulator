@@ -1,19 +1,21 @@
 import { Button, Divider, NumberInput, Stack } from '@mantine/core';
 import { useState } from 'react';
 import { useForm } from '@mantine/form';
-import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
+import { PlayerInfo, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
 import { DisplayNewRankings } from '@components/DisplayNewRankings/DisplayNewRankings';
 import { useTranslation } from '@hooks/useTranslation';
-import styles from './HomePage.module.css';
+import styles from './ConverterPage.module.css';
+import { UseQueryResult } from '@tanstack/react-query';
 
-export const HomePage = () => {
+export const ConverterPage = () => {
 
 	const { t } = useTranslation({ keyPrefix: 'HOME_PAGE' });
 	const [
 		licence,
 		setLicence,
-	] = useState<string|undefined>(undefined);
-	const { data, isLoading } = useFetchPlayerRankings(licence);
+	] = useState<number|undefined>(undefined);
+	const players = useFetchPlayersRankings({ me: licence });
+	const { data, isLoading } = players.find(item => item[0] === 'me')?.[1] as UseQueryResult<PlayerInfo>;
 
 	const form = useForm({
 		initialValues: {

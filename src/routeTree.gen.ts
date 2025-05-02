@@ -13,12 +13,26 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as SimulateImport } from './routes/simulate'
+import { Route as ConvertImport } from './routes/convert'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
+
+const SimulateRoute = SimulateImport.update({
+  id: '/simulate',
+  path: '/simulate',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const ConvertRoute = ConvertImport.update({
+  id: '/convert',
+  path: '/convert',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexLazyRoute = IndexLazyImport.update({
   id: '/',
@@ -37,6 +51,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/convert': {
+      id: '/convert'
+      path: '/convert'
+      fullPath: '/convert'
+      preLoaderRoute: typeof ConvertImport
+      parentRoute: typeof rootRoute
+    }
+    '/simulate': {
+      id: '/simulate'
+      path: '/simulate'
+      fullPath: '/simulate'
+      preLoaderRoute: typeof SimulateImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -44,32 +72,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/convert': typeof ConvertRoute
+  '/simulate': typeof SimulateRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/convert': typeof ConvertRoute
+  '/simulate': typeof SimulateRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
+  '/convert': typeof ConvertRoute
+  '/simulate': typeof SimulateRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/convert' | '/simulate'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/convert' | '/simulate'
+  id: '__root__' | '/' | '/convert' | '/simulate'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  ConvertRoute: typeof ConvertRoute
+  SimulateRoute: typeof SimulateRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  ConvertRoute: ConvertRoute,
+  SimulateRoute: SimulateRoute,
 }
 
 export const routeTree = rootRoute
@@ -82,11 +120,19 @@ export const routeTree = rootRoute
     "__root__": {
       "filePath": "__root.tsx",
       "children": [
-        "/"
+        "/",
+        "/convert",
+        "/simulate"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/convert": {
+      "filePath": "convert.tsx"
+    },
+    "/simulate": {
+      "filePath": "simulate.tsx"
     }
   }
 }
