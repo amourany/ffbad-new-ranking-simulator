@@ -1,28 +1,26 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 import { calculateNewRanking } from '../engine/migrate-ranking';
 import { conversionTable, rankLabelsOrder } from '../engine/conversion-table';
-import { Gender, MALE } from '../api/player-ranking/useFetchPlayerRankings';
+import { PlayerRankings } from '@api/player-ranking/useFetchPlayersRankings';
 
 export type ConvertRankingFunctions = {
-	convertSingle: (playerInfo: PlayerInfo) => number,
-	convertDouble: (playerInfo: PlayerInfo) => number,
-	convertMixed: (playerInfo: PlayerInfo) => number,
+	convertSingle: (rankings: PlayerRankings) => number,
+	convertDouble: (rankings: PlayerRankings) => number,
+	convertMixed: (rankings: PlayerRankings) => number,
 };
 
-export const useConvertRankings = (gender: Gender):ConvertRankingFunctions => {
-	const convertSingle = gender === MALE ? convertSingleMen : convertSingleWomen;
-	const convertDouble = gender === MALE ? convertDoubleMen : convertDoubleWomen;
-	const convertMixed = gender === MALE ? convertMixedMen : convertMixedWomen;
+export const convertMalePlayers = () : ConvertRankingFunctions => ({
+	convertDouble: convertDoubleMen,
+	convertMixed: convertMixedMen,
+	convertSingle: convertSingleMen,
+});
 
-	return {
-		convertDouble,
-		convertMixed,
-		convertSingle,
-	};
-};
+export const convertFemalePlayers = () : ConvertRankingFunctions => ({
+	convertDouble: convertDoubleWomen,
+	convertMixed: convertMixedWomen,
+	convertSingle: convertSingleWomen,
+});
 
-const convertSingleMen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertSingleMen = (rankings: PlayerRankings): number => {
 	const { singleSubLevel, singleRate,singleDownRate, singleUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(singleSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].singlesMen;
@@ -32,8 +30,7 @@ const convertSingleMen = (playerInfo: PlayerInfo): number => {
 		upperBound });
 };
 
-const convertDoubleMen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertDoubleMen = (rankings: PlayerRankings): number => {
 	const { doubleSubLevel, doubleRate,doubleDownRate, doubleUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(doubleSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].doublesMen;
@@ -43,8 +40,7 @@ const convertDoubleMen = (playerInfo: PlayerInfo): number => {
 		upperBound });
 };
 
-const convertMixedMen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertMixedMen = (rankings: PlayerRankings): number => {
 	const { mixedSubLevel, mixedRate,mixedDownRate, mixedUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(mixedSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].mixedDoublesMen;
@@ -54,8 +50,7 @@ const convertMixedMen = (playerInfo: PlayerInfo): number => {
 		upperBound });
 };
 
-const convertSingleWomen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertSingleWomen = (rankings: PlayerRankings): number => {
 	const { singleSubLevel, singleRate,singleDownRate, singleUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(singleSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].singlesWomen;
@@ -65,8 +60,7 @@ const convertSingleWomen = (playerInfo: PlayerInfo): number => {
 		upperBound });
 };
 
-const convertDoubleWomen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertDoubleWomen = (rankings: PlayerRankings): number => {
 	const { doubleSubLevel, doubleRate,doubleDownRate, doubleUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(doubleSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].doublesWomen;
@@ -76,8 +70,7 @@ const convertDoubleWomen = (playerInfo: PlayerInfo): number => {
 		upperBound });
 };
 
-const convertMixedWomen = (playerInfo: PlayerInfo): number => {
-	const { rankings } = playerInfo;
+const convertMixedWomen = (rankings: PlayerRankings): number => {
 	const { mixedSubLevel, mixedRate,mixedDownRate, mixedUpRate } = rankings;
 	const upperSubLevel = rankLabelsOrder[rankLabelsOrder.indexOf(mixedSubLevel)-1];
 	const upperBound = conversionTable[upperSubLevel].mixedDoublesWomen;

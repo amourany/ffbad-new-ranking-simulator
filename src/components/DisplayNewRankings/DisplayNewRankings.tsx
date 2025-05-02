@@ -1,6 +1,4 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
-import { useConvertRankings } from '@hooks/useConvertRankings';
-import { useMemo } from 'react';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
 import { useTranslation } from '@hooks/useTranslation';
 import { useDateFormat } from '@hooks/useFormatDate';
 import { RankingSet } from '@components/RankingSet/RankingSet';
@@ -16,21 +14,6 @@ export const DisplayNewRankings = ({ playerInfo }: DisplayNewRankingsProps) => {
 	const { t } = useTranslation({ keyPrefix: 'DISPLAY_NEW_RANKINGS' });
 	const { formatDate } = useDateFormat();
 
-	const conversionFunctions = useConvertRankings(playerInfo.gender);
-
-	const singleRanking = useMemo(() => conversionFunctions.convertSingle(playerInfo), [
-		conversionFunctions,
-		playerInfo,
-	]);
-	const doubleRanking = useMemo(() => conversionFunctions.convertDouble(playerInfo), [
-		conversionFunctions,
-		playerInfo,
-	]);
-	const mixedRanking = useMemo(() => conversionFunctions.convertMixed(playerInfo), [
-		conversionFunctions,
-		playerInfo,
-	]);
-
 	return (
 		<div>
 			<p className={styles.rankingDate}>
@@ -41,9 +24,7 @@ export const DisplayNewRankings = ({ playerInfo }: DisplayNewRankingsProps) => {
 				{formatDate(playerInfo.rankingDate)}
 			</p>
 			<p className={styles.player}>
-				{playerInfo.firstName}
-				{' '}
-				{playerInfo.lastName}
+				{playerInfo.name}
 			</p>
 			<div className={styles.container}>
 
@@ -62,11 +43,11 @@ export const DisplayNewRankings = ({ playerInfo }: DisplayNewRankingsProps) => {
 				<div className={styles.tileContainer}>
 					<p className={styles.title}>{t('NEW_RANKINGS')}</p>
 					<RankingSet
-						doubleRate={doubleRanking}
+						doubleRate={playerInfo.convertedRankings.doubleRate}
 						doubleSubLevel={playerInfo.rankings.doubleSubLevel}
-						mixedRate={mixedRanking}
+						mixedRate={playerInfo.convertedRankings.mixedRate}
 						mixedSubLevel={playerInfo.rankings.mixedSubLevel}
-						singleRate={singleRanking}
+						singleRate={playerInfo.convertedRankings.singleRate}
 						singleSubLevel={playerInfo.rankings.singleSubLevel}
 					/>
 				</div>

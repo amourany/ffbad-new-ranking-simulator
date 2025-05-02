@@ -62,6 +62,7 @@
   },
   "include": [
     "**/*",
+    "**/*.lazy.*",
     "**/*translation.json",
   ],
   "exclude": [

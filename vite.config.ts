@@ -9,6 +9,7 @@ export default defineConfig({
 	base: '/ffbad-new-ranking-simulator',
 	plugins: [
 		TanStackRouterVite({
+			autoCodeSplitting: true,
 			generatedRouteTree: './src/routeTree.gen.ts',
 			routesDirectory: './src/routes',
 		}),
