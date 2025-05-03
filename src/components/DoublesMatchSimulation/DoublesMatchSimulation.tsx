@@ -10,23 +10,24 @@ export type DoublesMatchSimulationProps = {
 	playerA: PlayerInfo,
 	playerB: PlayerInfo,
 	playerC: PlayerInfo,
-	playerD: PlayerInfo
+	playerD: PlayerInfo,
+	rankingExtractor: (player: PlayerInfo) => number,
 };
-export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD }:DoublesMatchSimulationProps) => {
+export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor }:DoublesMatchSimulationProps) => {
 	const { t } = useTranslation({ keyPrefix: 'DOUBLES_MATCH_SIMULATION' });
 
-	const playerADoublesRanking = playerA.convertedRankings.doubleRate;
-	const playerBDoublesRanking = playerB.convertedRankings.doubleRate;
-	const playerCDoublesRanking = playerC.convertedRankings.doubleRate;
-	const playerDDoublesRanking = playerD.convertedRankings.doubleRate;
+	const playerADoublesRanking = rankingExtractor(playerA);
+	const playerBDoublesRanking = rankingExtractor(playerB);
+	const playerCDoublesRanking = rankingExtractor(playerC);
+	const playerDDoublesRanking = rankingExtractor(playerD);
 
 	const matchResult = simulateDoublesMatch(playerADoublesRanking + playerCDoublesRanking, playerBDoublesRanking + playerDDoublesRanking);
 
 	const convertToOutcome = (player: PlayerInfo, teammate: PlayerInfo, pointsToShare: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,
 		outcome,
-		points: simulatePointsDistribution(player.convertedRankings.doubleRate, teammate.convertedRankings.doubleRate, pointsToShare, outcome),
-		ranking: player.convertedRankings.doubleRate,
+		points: simulatePointsDistribution(rankingExtractor(player), rankingExtractor(teammate), pointsToShare, outcome),
+		ranking: rankingExtractor(player),
 	});
 
 	return (

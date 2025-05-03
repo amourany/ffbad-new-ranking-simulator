@@ -10,6 +10,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
 import { DoublesMatchSimulation } from '@components/DoublesMatchSimulation/DoublesMatchSimulation';
 import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
+import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 
 export const MatchSimulatorPage = () => {
 
@@ -76,26 +77,30 @@ export const MatchSimulatorPage = () => {
 		await addUrlSearchParam({ playerD: undefined });
 	};
 
-	const playerA = fetchedPlayers.find(item => item[0] === 'playerA')?.[1] as UseQueryResult<PlayerInfo>;
-	const playerB = fetchedPlayers.find(item => item[0] === 'playerB')?.[1] as UseQueryResult<PlayerInfo>;
-	const playerC = fetchedPlayers.find(item => item[0] === 'playerC')?.[1] as UseQueryResult<PlayerInfo>;
-	const playerD = fetchedPlayers.find(item => item[0] === 'playerD')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data:playerA, isLoading: playerALoading } = fetchedPlayers.find(item => item[0] === 'playerA')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data:playerB, isLoading: playerBLoading } = fetchedPlayers.find(item => item[0] === 'playerB')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data:playerC, isLoading: playerCLoading } = fetchedPlayers.find(item => item[0] === 'playerC')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data:playerD, isLoading: playerDLoading } = fetchedPlayers.find(item => item[0] === 'playerD')?.[1] as UseQueryResult<PlayerInfo>;
 
 	const renderMatchResults = () => {
 		if (isDoublesMatch) {
-			if (playerA?.data && playerB?.data && playerC?.data && playerD?.data) {
+			if (!!playerA && !!playerB && !!playerC && !!playerD) {
+				const isMixedDoubles = isMixedDoublesTeam(playerA.gender, playerC.gender) && isMixedDoublesTeam(playerB.gender, playerD.gender);
+				const rankingExtractor = isMixedDoubles ? (player: PlayerInfo) => player.convertedRankings.mixedRate : (player: PlayerInfo) => player.convertedRankings.doubleRate;
+
 				return <DoublesMatchSimulation
-					playerA={playerA.data}
-					playerB={playerB.data}
-					playerC={playerC.data}
-					playerD={playerD.data}
+					playerA={playerA}
+					playerB={playerB}
+					playerC={playerC}
+					playerD={playerD}
+					rankingExtractor={rankingExtractor}
 				/>;
 			}
 		} else {
-			if (playerA?.data && playerB?.data) {
+			if (!!playerA && !!playerB) {
 				return <SinglesMatchSimulation
-					playerA={playerA.data}
-					playerB={playerB.data}
+					playerA={playerA}
+					playerB={playerB}
 				/>;
 			}
 		}
@@ -128,35 +133,35 @@ export const MatchSimulatorPage = () => {
 			<div className={styles.team} >
 
 				<PlayerInMatch
-					isLoading={playerA?.isLoading ?? false}
+					isLoading={playerALoading ?? false}
 					label={t('PLAYER_A')}
 					onChange={addPlayerA}
 					onClear={clearPlayerA}
-					playerInfo={playerA?.data}
+					playerInfo={playerA}
 				/>
 				{isDoublesMatch ? <PlayerInMatch
-					isLoading={playerC?.isLoading ?? false}
+					isLoading={playerCLoading ?? false}
 					label={t('PLAYER_C')}
 					onChange={addPlayerC}
 					onClear={clearPlayerC}
-					playerInfo={playerC?.data}
+					playerInfo={playerC}
 				/> : null}
 			</div>
 			<div className={styles.versus}>{t('VS')}</div>
 			<div className={styles.team} >
 				<PlayerInMatch
-					isLoading={playerB?.isLoading ?? false}
+					isLoading={playerBLoading ?? false}
 					label={t('PLAYER_B')}
 					onChange={addPlayerB}
 					onClear={clearPlayerB}
-					playerInfo={playerB?.data}
+					playerInfo={playerB}
 				/>
 				{isDoublesMatch ? <PlayerInMatch
-					isLoading={playerD?.isLoading ?? false}
+					isLoading={playerDLoading ?? false}
 					label={t('PLAYER_D')}
 					onChange={addPlayerD}
 					onClear={clearPlayerD}
-					playerInfo={playerD?.data}
+					playerInfo={playerD}
 				/> : null}
 			</div>
 		</div>

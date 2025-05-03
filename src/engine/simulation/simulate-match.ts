@@ -3,6 +3,7 @@ import {
 	matchSimulationTableForDoubles,
 	matchSimulationTableForSingles,
 } from './match-simulation-table';
+import { Gender } from '@api/player-ranking/useFetchPlayersRankings';
 
 export const WINS = 'wins';
 export const LOSES = 'loses';
@@ -45,3 +46,5 @@ const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: 
 
 export const simulateSinglesMatch = simulateMatch(matchSimulationTableForSingles);
 export const simulateDoublesMatch = simulateMatch(matchSimulationTableForDoubles);
+
+export const isMixedDoublesTeam = (playerAGender: Gender, playerBGender: Gender): boolean => playerAGender !== playerBGender;
