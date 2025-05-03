@@ -22,7 +22,9 @@
     "CONVERT": "Convert",
     "SIMULATE": "Simulate a match"
   },
-  "LICENCE_INPUT": {
+  "SEARCH_PLAYER_INPUT": {
+    "PLACEHOLDER": "Search player by first or last name",
+    "LOADING": "Loading...",
     "ERROR": {
       "NO_LICENCE": "Please enter a FFBad licence number"
     }
@@ -37,7 +39,6 @@
     "VS": "VS"
   },
   "PLAYER_IN_MATCH": {
-    "PLACEHOLDER": "FFBad licence number",
     "LOADING": "Loading..."
   },
   "RANKING_SET": {

@@ -1,8 +1,8 @@
-import {ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers} from '@engine/conversion/convert-rankings';
+import { ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers } from '@engine/conversion/convert-rankings';
 import { useQueries } from '@tanstack/react-query';
 import dayjs from 'dayjs';
+import { TTL_24_HOURS } from '@api/api-constants';
 
-export const TTL_24_HOURS = 24 * 60 * 60 * 1000;
 const FETCH_PLAYER_INFO_KEY = 'player-info';
 
 export const useFetchPlayersRankings = (licences: PlayerLicences) => {
@@ -31,12 +31,13 @@ export const useFetchPlayersRankings = (licences: PlayerLicences) => {
 };
 
 const fetchPlayerRanking = async (_licence: number): Promise<PlayerInfo> => {
-
     const playerId = {} as PlayerFFBad;
     const response = {} as PlayerRankingsFFBad
 
-	const gender = playerId.sex === MALE ? MALE : FEMALE;
-	const rankings = convertToRankings(response);
+    const isCompetitivePlayer = response as unknown !== '';
+
+    const gender = playerId.sex === MALE ? MALE : FEMALE;
+    const rankings = convertToRankings(isCompetitivePlayer ? response : nonCompetitivePlayer);
 	const convertedRankings = gender === MALE ? convertMalePlayers(rankings) : convertFemalePlayers(rankings);
 
 	return {
@@ -117,3 +118,19 @@ export type PlayerRankings = {
 export const MALE = 'HOMME';
 export const FEMALE = 'FEMME';
 export type Gender = typeof MALE | typeof FEMALE;
+
+const nonCompetitivePlayer: PlayerRankingsFFBad = {
+	doubleDownRate: 0,
+	doubleRate: 0,
+	doubleSubLevel: 'NC',
+	doubleUpRate: 0.1,
+	mixteDownRate: 0,
+	mixteRate: 0,
+	rankingDate: '',
+	mixteSubLevel: 'NC',
+	simpleDownRate: 0,
+	mixteUpRate: 0.1,
+	simpleRate: 0,
+	simpleSubLevel: 'NC',
+	simpleUpRate: 0.1,
+};

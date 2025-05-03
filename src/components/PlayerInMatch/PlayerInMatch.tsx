@@ -1,4 +1,4 @@
-import { LicenceInput } from '@components/LicenceInput/LicenceInput';
+import { SearchPlayerInput } from '@components/SearchPlayerInput/SearchPlayerInput';
 import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
 import { DisplayPlayerRankings } from '@components/DisplayPlayerRankings/DisplayPlayerRankings';
 import { useTranslation } from '@hooks/useTranslation';
@@ -22,9 +22,8 @@ export const PlayerInMatch = ({ label, isLoading, playerInfo, onChange, onClear 
 
 	const renderLicenceInput = () => <>
 		<div>{label}</div>
-		<LicenceInput
+		<SearchPlayerInput
 			onChange={onChange}
-			placeholder={t('PLACEHOLDER')}
 		/>
 	</>;
 
