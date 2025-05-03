@@ -1,4 +1,4 @@
-import { convertFemalePlayers, convertMalePlayers } from '@engine/conversion/convert-rankings';
+import {ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers} from '@engine/conversion/convert-rankings';
 import { useQueries } from '@tanstack/react-query';
 import axios, { RawAxiosRequestHeaders } from 'axios';
 import dayjs from 'dayjs';
@@ -45,15 +45,11 @@ const fetchPlayerRanking = async (licence: number): Promise<PlayerInfo> => {
 	});
 
 	const gender = playerId.data.sex === MALE ? MALE : FEMALE;
-	const { convertDouble, convertMixed, convertSingle } = gender === MALE ? convertMalePlayers() : convertFemalePlayers();
 	const rankings = convertToRankings(response.data);
+	const convertedRankings = gender === MALE ? convertMalePlayers(rankings) : convertFemalePlayers(rankings);
 
 	return {
-		convertedRankings: {
-			doubleRate: convertDouble(rankings),
-			mixedRate: convertMixed(rankings),
-			singleRate: convertSingle(rankings),
-		},
+		convertedRankings,
 		gender,
 		name: `${playerId.data.firstName} ${playerId.data.lastName}`,
 		rankingDate: dayjs(response.data.rankingDate).toDate(),
@@ -125,12 +121,6 @@ export type PlayerRankings = {
 	mixedSubLevel: string;
 	mixedDownRate: number;
 	mixedUpRate: number;
-};
-
-export type ConvertedPlayerRankings = {
-	singleRate: number;
-	doubleRate: number;
-	mixedRate: number;
 };
 
 export const MALE = 'HOMME';
