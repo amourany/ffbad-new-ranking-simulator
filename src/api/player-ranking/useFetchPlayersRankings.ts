@@ -1,14 +1,9 @@
-import {ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers} from '@engine/conversion/convert-rankings';
+import { ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers } from '@engine/conversion/convert-rankings';
 import { useQueries } from '@tanstack/react-query';
-import axios, { RawAxiosRequestHeaders } from 'axios';
+import axios from 'axios';
 import dayjs from 'dayjs';
+import { API_URL, TTL_24_HOURS, headers } from '@api/api-constants';
 
-const headers: RawAxiosRequestHeaders = {
-	'Caller-URL': '/api/person/',
-	'Verify-Token': '695c4c35850a31b9734f2b334a99f4bf8f351f5e2af4f8c9a09e47d20af762f3.1745914561762',
-};
-
-export const TTL_24_HOURS = 24 * 60 * 60 * 1000;
 const FETCH_PLAYER_INFO_KEY = 'player-info';
 
 export const useFetchPlayersRankings = (licences: PlayerLicences) => {
@@ -37,15 +32,17 @@ export const useFetchPlayersRankings = (licences: PlayerLicences) => {
 };
 
 const fetchPlayerRanking = async (licence: number): Promise<PlayerInfo> => {
-	const playerId = await axios.get<PlayerFFBad>(`https://myffbad.fr/api/person/${licence}/informationsLicence/undefined`, {
+	const playerId = await axios.get<PlayerFFBad>(`${API_URL}/person/${licence}/informationsLicence/undefined`, {
 		headers,
 	});
-	const response = await axios.get<PlayerRankingsFFBad>(`https://myffbad.fr/api/person/${playerId.data.personId}/rankings`,{
+	const response = await axios.get<PlayerRankingsFFBad>(`${API_URL}/person/${playerId.data.personId}/rankings`,{
 		headers,
 	});
 
+	const isCompetitivePlayer = response.data as unknown !== '';
+
 	const gender = playerId.data.sex === MALE ? MALE : FEMALE;
-	const rankings = convertToRankings(response.data);
+	const rankings = convertToRankings(isCompetitivePlayer ? response.data : nonCompetitivePlayer);
 	const convertedRankings = gender === MALE ? convertMalePlayers(rankings) : convertFemalePlayers(rankings);
 
 	return {
@@ -126,3 +123,19 @@ export type PlayerRankings = {
 export const MALE = 'HOMME';
 export const FEMALE = 'FEMME';
 export type Gender = typeof MALE | typeof FEMALE;
+
+const nonCompetitivePlayer: PlayerRankingsFFBad = {
+	doubleDownRate: 0,
+	doubleRate: 0,
+	doubleSubLevel: 'NC',
+	doubleUpRate: 0.1,
+	mixteDownRate: 0,
+	mixteRate: 0,
+	rankingDate: '',
+	mixteSubLevel: 'NC',
+	simpleDownRate: 0,
+	mixteUpRate: 0.1,
+	simpleRate: 0,
+	simpleSubLevel: 'NC',
+	simpleUpRate: 0.1,
+};

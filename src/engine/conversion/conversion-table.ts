@@ -1,3 +1,4 @@
+/* eslint-disable */
 export type ConversionTable = {
 	[key: string]: Rank;
 };
@@ -25,6 +26,7 @@ export const rankLabelsOrder: string[] = [
 	'P10',
 	'P11',
 	'P12',
+	'NC'
 ];
 
 export const MAX_RANKING = 2400;
@@ -34,30 +36,6 @@ export const MIN_RANKING = 400;
 export const MIN_RANKING_DELTA = 500;
 
 export const conversionTable: ConversionTable = {
-	'D7': {
-		doublesMen: 1400,
-		doublesWomen: 1050,
-		mixedDoublesMen: 1400,
-		mixedDoublesWomen: 1400,
-		singlesMen: 1400,
-		singlesWomen: 1050,
-	},
-	'D8': {
-		doublesMen: 1200,
-		doublesWomen: 900,
-		mixedDoublesMen: 1200,
-		mixedDoublesWomen: 1200,
-		singlesMen: 1200,
-		singlesWomen: 900,
-	},
-	'D9': {
-		doublesMen: 1000,
-		doublesWomen: 750,
-		mixedDoublesMen: 1000,
-		mixedDoublesWomen: 1000,
-		singlesMen: 1000,
-		singlesWomen: 750,
-	},
 	'Max': {
 		doublesMen: 2800,
 		doublesWomen: 2400,
@@ -90,30 +68,6 @@ export const conversionTable: ConversionTable = {
 		singlesMen: 2200,
 		singlesWomen: 1800,
 	},
-	'P10': {
-		doublesMen: 800,
-		doublesWomen: 600,
-		mixedDoublesMen: 800,
-		mixedDoublesWomen: 800,
-		singlesMen: 800,
-		singlesWomen: 600,
-	},
-	'P11': {
-		doublesMen: 600,
-		doublesWomen: 500,
-		mixedDoublesMen: 600,
-		mixedDoublesWomen: 600,
-		singlesMen: 600,
-		singlesWomen: 500,
-	},
-	'P12': {
-		doublesMen: 400,
-		doublesWomen: 400,
-		mixedDoublesMen: 500,
-		mixedDoublesWomen: 500,
-		singlesMen: 400,
-		singlesWomen: 400,
-	},
 	'R4': {
 		doublesMen: 2000,
 		doublesWomen: 1600,
@@ -138,4 +92,61 @@ export const conversionTable: ConversionTable = {
 		singlesMen: 1600,
 		singlesWomen: 1200,
 	},
+	'D7': {
+		doublesMen: 1400,
+		doublesWomen: 1050,
+		mixedDoublesMen: 1400,
+		mixedDoublesWomen: 1400,
+		singlesMen: 1400,
+		singlesWomen: 1050,
+	},
+	'D8': {
+		doublesMen: 1200,
+		doublesWomen: 900,
+		mixedDoublesMen: 1200,
+		mixedDoublesWomen: 1200,
+		singlesMen: 1200,
+		singlesWomen: 900,
+	},
+	'D9': {
+		doublesMen: 1000,
+		doublesWomen: 750,
+		mixedDoublesMen: 1000,
+		mixedDoublesWomen: 1000,
+		singlesMen: 1000,
+		singlesWomen: 750,
+	},
+	'P10': {
+		doublesMen: 800,
+		doublesWomen: 600,
+		mixedDoublesMen: 800,
+		mixedDoublesWomen: 800,
+		singlesMen: 800,
+		singlesWomen: 600,
+	},
+	'P11': {
+		doublesMen: 600,
+		doublesWomen: 500,
+		mixedDoublesMen: 600,
+		mixedDoublesWomen: 600,
+		singlesMen: 600,
+		singlesWomen: 500,
+	},
+	'P12': {
+		doublesMen: 400,
+		doublesWomen: 400,
+		mixedDoublesMen: 500,
+		mixedDoublesWomen: 500,
+		singlesMen: 400,
+		singlesWomen: 400,
+	},
+	'NC': {
+		doublesMen: 400,
+		doublesWomen: 400,
+		mixedDoublesMen: 500,
+		mixedDoublesWomen: 500,
+		singlesMen: 400,
+		singlesWomen: 400,
+	},
 };
+/* eslint-enable */
