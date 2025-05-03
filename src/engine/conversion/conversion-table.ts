@@ -27,6 +27,12 @@ export const rankLabelsOrder: string[] = [
 	'P12',
 ];
 
+export const MAX_RANKING = 2400;
+export const WOMEN_MIXED_MAX_RANKING = 2800;
+export const MEN_MIXED_MAX_RANKING = 2400;
+export const MIN_RANKING = 400;
+export const MIN_RANKING_DELTA = 500;
+
 export const conversionTable: ConversionTable = {
 	'D7': {
 		doublesMen: 1400,
