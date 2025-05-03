@@ -1,8 +1,8 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
-import { ConverterPage } from '@pages/ConverterPage/ConverterPage';
+import { MatchSimulatorPage } from '@pages/MatchSimulatorPage/MatchSimulatorPage';
 
 const Index = () => (
-	<ConverterPage />
+	<MatchSimulatorPage />
 );
 
 export const Route = createLazyFileRoute('/')({

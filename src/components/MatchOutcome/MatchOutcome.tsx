@@ -1,72 +1,30 @@
+import { PlayerOutcome, PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './MatchOutcome.module.css';
 
 export type MatchOutcomeProps = {
 	label: string;
-	playerAOutcome: number;
-	playerBOutcome: number;
-	playerAName: string;
-	playerBName: string;
-	rankingPlayerA: number;
-	rankingPlayerB: number;
+	playerA: PlayerOutcomeProps;
+	playerB: PlayerOutcomeProps;
+	playerC?: PlayerOutcomeProps;
+	playerD?: PlayerOutcomeProps;
 };
 
 export const MatchOutcome = ({
 	label,
-	playerAOutcome,
-	playerBOutcome,
-	playerAName,
-	playerBName,
-	rankingPlayerA,
-	rankingPlayerB,
-}: MatchOutcomeProps) => {
-	const calculationPlayerALabel = playerAOutcome > 0 ? `+ ${playerAOutcome}` : `- ${Math.abs(playerAOutcome)}`;
-	const calculationPlayerBLabel = playerBOutcome > 0 ? `+ ${playerBOutcome}` : `- ${Math.abs(playerBOutcome)}`;
-
-	return <div className={styles.container}>
-		<span>{label}</span>
-		<div className={styles.calculationContainer}>
-			<div className={styles[playerAOutcome > 0 ? 'win' : 'loss']}>
-				<div>
-					{playerAName}
-					:
-					{' '}
-					<strong>
-						{calculationPlayerALabel}
-						{' '}
-						points
-					</strong>
-				</div>
-				<div className={styles.calculationDetails}>
-					{rankingPlayerA}
-					{' '}
-					{calculationPlayerALabel}
-					{' '}
-					=
-					{' '}
-					{rankingPlayerA + playerAOutcome}
-				</div>
-			</div>
-			<div className={styles[playerBOutcome > 0 ? 'win' : 'loss']}>
-				<div>
-					{playerBName}
-					:
-					{' '}
-					<strong>
-						{calculationPlayerBLabel}
-						{' '}
-						points
-					</strong>
-				</div>
-				<div className={styles.calculationDetails}>
-					{rankingPlayerB}
-					{' '}
-					{calculationPlayerBLabel}
-					{' '}
-					=
-					{' '}
-					{rankingPlayerB + playerBOutcome}
-				</div>
-			</div>
+	playerA,
+	playerB,
+	playerC,
+	playerD,
+}: MatchOutcomeProps) => <div className={styles.container}>
+	<span>{label}</span>
+	<div className={styles.calculationContainer}>
+		<div className={styles.team}>
+			<PlayerOutcome {...playerA} />
+			{playerC ? <PlayerOutcome {...playerC} /> : null}
 		</div>
-	</div>;
-};
+		<div className={styles.team}>
+			<PlayerOutcome {...playerB} />
+			{playerD ? <PlayerOutcome {...playerD} /> : null}
+		</div>
+	</div>
+</div>;

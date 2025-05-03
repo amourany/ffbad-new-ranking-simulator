@@ -61,9 +61,16 @@
     ]
   },
   "include": [
-    "**/*",
+    "src/**/*",
+    "jest",
+    "vite.config.ts",
+    "tsconfig*.json",
+    "eslint.config.js",
+    "*.cjs",
+    "*.d.ts",
+    "jest/setupTests.ts",
     "**/*.lazy.*",
-    "**/*translation.json",
+    "**/*translation.json"
   ],
   "exclude": [
     "dist",

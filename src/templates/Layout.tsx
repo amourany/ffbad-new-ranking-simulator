@@ -10,12 +10,12 @@ import { IconTransform, IconVs } from '@tabler/icons-react';
 
 export const Layout = ({ children }: PropsWithChildren) => {
 	const matchRoute = useMatchRoute();
-	const isSimulateRoute = matchRoute({ to :simulateRoute.to });
+	const isConvertRoute = matchRoute({ to :convertRoute.to });
 	const { t } = useTranslation({ keyPrefix: 'LAYOUT' });
 	const [
 		activeTab,
 		setActiveTab,
-	] = useState<string|null>(isSimulateRoute ? 'simulate' : 'convert');
+	] = useState<string|null>(isConvertRoute ? 'convert' : 'simulate');
 
 	return (
 		<AppShell

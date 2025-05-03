@@ -1,6 +1,13 @@
 .container {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
     justify-content: center;
+
+    &.large {
+        gap: 1rem;
+    }
+
+    &.small {
+        gap: 0.5rem;
+    }
 }

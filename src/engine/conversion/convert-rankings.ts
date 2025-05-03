@@ -1,6 +1,6 @@
-import { calculateNewRanking } from '../engine/migrate-ranking';
-import { conversionTable, rankLabelsOrder } from '../engine/conversion-table';
 import { PlayerRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { conversionTable, rankLabelsOrder } from '@engine/conversion/conversion-table';
+import { calculateNewRanking } from '@engine/conversion/migrate-ranking';
 
 export type ConvertRankingFunctions = {
 	convertSingle: (rankings: PlayerRankings) => number,

@@ -12,7 +12,10 @@
     "CURRENT_RANKINGS": "Current rankings",
     "NEW_RANKINGS": "New rankings"
   },
-  "DISPLAY_MATCH_RESULTS": {
+  "DOUBLES_MATCH_SIMULATION": {
+    "LABEL": "If {{playerA}} and {{playerB}} wins"
+  },
+  "SINGLES_MATCH_SIMULATION": {
     "LABEL": "If {{value}} wins"
   },
   "LAYOUT": {
@@ -27,6 +30,10 @@
   "MATCH_SIMULATOR_PAGE": {
     "PLAYER_A": "Player A",
     "PLAYER_B": "Player B",
+    "PLAYER_C": "Player C",
+    "PLAYER_D": "Player D",
+    "SIMULATE_SINGLES_MATCH": "Simulate a singles match",
+    "SIMULATE_DOUBLES_MATCH": "Simulate a doubles match",
     "VS": "VS"
   },
   "PLAYER_IN_MATCH": {

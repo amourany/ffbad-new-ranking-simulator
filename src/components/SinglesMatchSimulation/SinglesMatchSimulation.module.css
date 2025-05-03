@@ -1,13 +1,8 @@
-.playerInMatch {
+.outcomes {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
     flex: 1 0 auto;
-}
-
-.playerName {
-}
-
-.playerRankings {
+    width: 100%;
 }
