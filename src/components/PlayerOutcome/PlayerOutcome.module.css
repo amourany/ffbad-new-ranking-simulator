@@ -1,0 +1,13 @@
+.calculationDetails {
+    font-size: 0.8rem;
+    padding: -0.5rem;
+    font-weight: bold;
+}
+
+.win {
+    color: #0BAE4A;
+}
+
+.loss {
+    color: #f21616;
+}

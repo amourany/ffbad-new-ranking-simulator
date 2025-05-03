@@ -1,13 +1,19 @@
 .tile {
     display: flex;
     flex-direction: column;
-    width: 10rem;
-    height: 8rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
     border-radius: 0.5rem;
-    padding: 0.5rem;
     align-items: center;
     justify-content: space-around;
+
+    &.large {
+        width: 10rem;
+        height: 8rem;
+        padding: 0.5rem;
+    }
+
+    &.small {
+    }
 }
 
 .subLevelContainer {
@@ -17,10 +23,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.small {
+        flex-direction: column;
+    }
 }
 
 .discipline {
     margin-bottom: 0.5rem;
+}
+
+.subLevel {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.ranking {
+    font-weight: bold;
+    &.large {
+        font-size: 1.5rem;
+    }
+
+    &.small {
+        font-size: 0.8rem;
+    }
 }
 
 .N1, .N2, .N3 {
@@ -37,14 +63,4 @@
 
 .P10, .P11, .P12 {
     background-color: #f8e71c;
-}
-
-.subLevel {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.ranking {
-    font-size: 1.5rem;
-    font-weight: bold;
 }

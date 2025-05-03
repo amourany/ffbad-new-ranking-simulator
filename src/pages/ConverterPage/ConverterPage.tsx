@@ -14,8 +14,8 @@ export const ConverterPage = () => {
 		licence,
 		setLicence,
 	] = useState<number|undefined>(undefined);
-	const players = useFetchPlayersRankings({ me: licence });
-	const { data, isLoading } = players.find(item => item[0] === 'me')?.[1] as UseQueryResult<PlayerInfo>;
+	const players = useFetchPlayersRankings({ playerA: licence });
+	const { data, isLoading } = players.find(item => item[0] === 'playerA')?.[1] as UseQueryResult<PlayerInfo>;
 
 	const form = useForm({
 		initialValues: {
@@ -26,7 +26,6 @@ export const ConverterPage = () => {
 			licence: (value: number|undefined) => !!value ? undefined : t('ERROR.NO_LICENCE'),
 		},
 	});
-
 
 	const handleOnSubmit = (values: typeof form.values) => {
 		setLicence(values.licence);

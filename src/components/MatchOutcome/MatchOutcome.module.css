@@ -19,16 +19,9 @@
     }
 }
 
-.calculationDetails {
-    font-size: 0.8rem;
-    padding: -0.5rem;
-    font-weight: bold;
-}
-
-.win {
-    color: #0BAE4A;
-}
-
-.loss {
-    color: #f21616;
+.team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
 }

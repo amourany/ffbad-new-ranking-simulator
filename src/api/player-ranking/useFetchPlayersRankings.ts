@@ -1,4 +1,4 @@
-import { convertFemalePlayers, convertMalePlayers } from '@hooks/useConvertRankings';
+import { convertFemalePlayers, convertMalePlayers } from '@engine/conversion/convert-rankings';
 import { useQueries } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 
@@ -89,13 +89,10 @@ type PlayerRankingsFFBad = {
 };
 
 export type PlayerLicences = {
-	me?: number;
-	opponent?: number;
-};
-
-export type PlayersInfo = {
-	me?: PlayerInfo;
-	opponent?: PlayerInfo;
+	playerA?: number;
+	playerB?: number;
+	playerC?: number;
+	playerD?: number;
 };
 
 export type PlayerInfo = {

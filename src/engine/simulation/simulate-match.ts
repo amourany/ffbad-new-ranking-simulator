@@ -1,18 +1,20 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
-import { matchSimulationTable } from '@engine/match-simulation-table';
+import {
+	MatchSimulationTable,
+	matchSimulationTableForDoubles,
+	matchSimulationTableForSingles,
+} from './match-simulation-table';
 
-export type Match= {
-	me?: PlayerInfo;
-	opponent?: PlayerInfo;
-};
+export const WINS = 'wins';
+export const LOSES = 'loses';
+export type Outcome = typeof WINS | typeof LOSES;
 
 export type MatchResult = {
 	wins: number;
 	losses: number;
 };
 
-export const simulateMatch = (me: number, opponent: number): MatchResult[] => {
-	const rankingDelta = Math.abs(me - opponent);
+const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: number, playerB: number): MatchResult[] => {
+	const rankingDelta = Math.abs(playerA - playerB);
 	const matchSimulationTableEntry = Object.entries(matchSimulationTable)
 		.filter(([
 			key,
@@ -34,13 +36,12 @@ export const simulateMatch = (me: number, opponent: number): MatchResult[] => {
 		},
 	];
 
-	if(me! > opponent!) {
+	if(playerA! > playerB!) {
 		return matchResult;
 	} else {
 		return matchResult.reverse();
 	}
 };
 
-export const extractSingleRanking = (playerInfo: PlayerInfo) => playerInfo.rankings.singleRate;
-export const extractDoubleRanking = (playerInfo: PlayerInfo) => playerInfo.rankings.doubleRate;
-export const extractMixedRanking = (playerInfo: PlayerInfo) => playerInfo.rankings.mixedRate;
+export const simulateSinglesMatch = simulateMatch(matchSimulationTableForSingles);
+export const simulateDoublesMatch = simulateMatch(matchSimulationTableForDoubles);
