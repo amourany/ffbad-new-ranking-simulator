@@ -1,0 +1,36 @@
+.accordion {
+    width: 100%;
+}
+
+.control {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $mantine-breakpoint-sm) {
+        flex-direction: row;
+        gap: 0.2rem
+    }
+}
+
+.content > div{
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.subTitle {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: flex-start;
+    font-weight: bold;
+    text-align: justify;
+}
+
+.icon {
+    flex: 0 0 auto;
+    padding-top: 0.3rem;
+}
+
+.description {
+    margin-top: 0;
+    text-align: justify;
+}

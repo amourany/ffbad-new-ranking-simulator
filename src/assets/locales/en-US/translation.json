@@ -48,6 +48,26 @@
     "POINTS_LOSES": "-{{points}} points",
     "CALCULATION_DETAILS_LOSES": "{{ranking}} - {{points}} = {{newRanking}}"
   },
+  "RANKING_EXPLANATION": {
+    "TITLE_PART_1": "The new FFBaD ranking system",
+    "TITLE_PART_2": "(starting from September 4, 2025)",
+    "INTRODUCTION": "The ranking system implemented by the FFBaD for the 2025–2026 season is based on the following principles:",
+    "TITLE_1": "Victories earn points, defeats result in losses",
+    "DESCRIPTION_1": "The number of points awarded depends on the match result and the ranking gap between opponents. Defeating a higher-ranked player yields more points than beating a lower-ranked one, and vice versa.",
+    "TITLE_2": "Each match has an impact",
+    "DESCRIPTION_2": "All official matches are considered individually in the ranking calculation. A tournament involving several matches leads to as many ranking updates as matches played.",
+    "TITLE_3": "Individual point distribution in doubles and mixed",
+    "DESCRIPTION_3": "In a doubles match (men’s, women’s, or mixed), the points gained or lost by a pair are distributed based on the individual ranking of each player. A player with a higher ranking will receive a smaller share than their partner.",
+    "TITLE_4": "A ranking scale from 400 to 2400",
+    "DESCRIPTION_4": "Each player has a score in each discipline (singles, doubles, mixed). This score changes after every match according to the calculation rules defined by the FFBaD. This simulator provides a preview of the points gained or lost depending on the match outcome.",
+    "TITLE_5": "No expiration of performances",
+    "DESCRIPTION_5": "Results no longer expire after one year. The ranking therefore reflects the full history of recorded performances.",
+    "TITLE_6": "Weekly ranking updates",
+    "DESCRIPTION_6": "As before, the ranking is updated once a week, during the night between Wednesday and Thursday, taking into account the results recorded since the last update.",
+    "TITLE_7": "Support for cross-gender matches",
+    "DESCRIPTION_7": "The system allows matches between same-gender pairs of different sexes (e.g., a men's pair versus a women's pair), with an adapted point calculation."
+  },
+
   "RANKING_SET": {
     "SINGLE": "Single",
     "DOUBLES": "Doubles",
