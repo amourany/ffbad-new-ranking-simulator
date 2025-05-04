@@ -1,6 +1,7 @@
 {
   "TITLE": "FFBad - Simulateur nouveau classement",
-  "HOME_PAGE": {
+  "CONVERT_PAGE": {
+    "TITLE": "Convertir son classement dans le nouveau format",
     "LOADING": "Chargement...",
     "INPUT_LABEL": "Chercher un joueur ou joueuse"
   },
