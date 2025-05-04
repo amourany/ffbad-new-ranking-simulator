@@ -1,5 +1,5 @@
 import { ReactElement, useState } from 'react';
-import { Button, Divider } from '@mantine/core';
+import { Button, Popover } from '@mantine/core';
 import { PlayerInMatch } from '@components/PlayerInMatch/PlayerInMatch';
 import { PlayerInfo, PlayerLicences, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
 import { UseQueryResult } from '@tanstack/react-query';
@@ -9,7 +9,7 @@ import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
 import { DoublesMatchSimulation } from '@components/DoublesMatchSimulation/DoublesMatchSimulation';
-import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
+import { IconInfoCircleFilled, IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 
 export const MatchSimulatorPage = () => {
@@ -128,7 +128,47 @@ export const MatchSimulatorPage = () => {
 		</div>
 	);
 
+	const renderTitleWithTooltip = (title: string, tooltipContent: string[]) => (
+		<>
+			<span>{title}</span>
+			<Popover
+				position='bottom'
+				shadow='md'
+				width={300}
+				withArrow
+			>
+				<Popover.Target>
+					<IconInfoCircleFilled
+						className={styles.icon}
+						color="cornflowerblue"
+					/>
+				</Popover.Target>
+				<Popover.Dropdown>
+					{tooltipContent.map((content, index) => (
+						<div key={index}>{content}</div>
+					))}
+				</Popover.Dropdown>
+			</Popover>
+		</>
+	);
+
 	return <div className={styles.container}>
+		<div className={styles.titleRow}>
+			<h1 className={styles.title}>
+				{isDoublesMatch ? renderTitleWithTooltip(t('DOUBLES_TITLE'), [
+					t('DOUBLES_TOOLTIP_1'),
+					t('DOUBLES_TOOLTIP_2'),
+				]) : t('SINGLES_TITLE')}
+			</h1>
+			{isDoublesMatch ? renderMatchTypeSwitch(<>
+				<IconUsersMinus />
+				<div className={styles.buttonLabel}>{t('SIMULATE_SINGLES_MATCH')}</div>
+			</>) :
+				renderMatchTypeSwitch(<>
+					<IconUsersPlus />
+					<div className={styles.buttonLabel}>{t('SIMULATE_DOUBLES_MATCH')}</div>
+				</>)}
+		</div>
 		<div className={styles.playerInputsContainer}>
 			<div className={styles.team} >
 
@@ -165,15 +205,6 @@ export const MatchSimulatorPage = () => {
 				/> : null}
 			</div>
 		</div>
-		{isDoublesMatch ? renderMatchTypeSwitch(<>
-			<IconUsersMinus />
-			<div className={styles.buttonLabel}>{t('SIMULATE_SINGLES_MATCH')}</div>
-		</>) :
-			renderMatchTypeSwitch(<>
-				<IconUsersPlus />
-				<div className={styles.buttonLabel}>{t('SIMULATE_DOUBLES_MATCH')}</div>
-			</>)}
-		<Divider/>
 		{renderMatchResults()}
 	</div>;
 

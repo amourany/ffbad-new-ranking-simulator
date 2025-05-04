@@ -27,6 +27,10 @@
     }
   },
   "MATCH_SIMULATOR_PAGE": {
+    "SINGLES_TITLE": "Simuler un match de simple",
+    "DOUBLES_TITLE": "Simuler un match de double",
+    "DOUBLES_TOOLTIP_1": "Détecte automatiquement un double mixte si chaque paire est composée d'un homme et d'une femme.",
+    "DOUBLES_TOOLTIP_2": "Dans les autres cas (homme + homme, femme + femme, ou confrontations inter-genre), le match est considéré comme un double classique.",
     "PLAYER_A": "Joueur A",
     "PLAYER_B": "Joueur B",
     "PLAYER_C": "Joueur C",

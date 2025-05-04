@@ -8,6 +8,32 @@
     width: inherit
 }
 
+.titleRow {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.title {
+    text-align: left;
+    font-size: 1.5rem;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        flex: 1 0 auto;
+    }
+}
+
+.icon {
+    vertical-align: text-bottom;
+    margin-left: 0.5rem;
+}
+
 .playerInputsContainer {
     display: flex;
     flex-direction: column;
@@ -49,6 +75,13 @@
 
 .button {
     width: 100%;
+    &>button {
+        padding: 0;
+    }
+    @media (min-width: $mantine-breakpoint-md) {
+        width: unset;
+        flex: 0 0 auto;
+    }
 }
 
 .buttonLabel {
