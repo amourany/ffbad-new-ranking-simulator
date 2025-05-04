@@ -20,7 +20,7 @@ export const PlayerInMatch = ({ label, isLoading, playerInfo, onChange, onClear 
 		playerInfo={playerInfo}
 	/>;
 
-	const renderLicenceInput = () => <div className={styles.searchPlayer}>
+	const renderSearchInput = () => <div className={styles.searchPlayer}>
 		<SearchPlayerInput
 			label={label}
 			onChange={onChange}
@@ -29,7 +29,7 @@ export const PlayerInMatch = ({ label, isLoading, playerInfo, onChange, onClear 
 
 	return (
 		<>
-			{playerInfo ? renderPlayerInfo(playerInfo) : renderLicenceInput()}
+			{playerInfo ? renderPlayerInfo(playerInfo) : renderSearchInput()}
 			{isLoading ? <div>{t('LOADING')}</div> : null}
 		</>
 	);

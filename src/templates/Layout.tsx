@@ -37,17 +37,17 @@ export const Layout = ({ children }: PropsWithChildren) => {
 					variant="outline"
 				>
 					<Tabs.List>
+						<Tabs.Tab value="simulate">
+							<Link to={simulateRoute.to}>
+								<IconVs />
+								{t('SIMULATE')}
+							</Link>
+						</Tabs.Tab>
 						<Tabs.Tab value="convert">
 							<Link to={convertRoute.to}>
 								<IconTransform/>
 								{' '}
 								{t('CONVERT')}
-							</Link>
-						</Tabs.Tab>
-						<Tabs.Tab value="simulate">
-							<Link to={simulateRoute.to}>
-								<IconVs />
-								{t('SIMULATE')}
 							</Link>
 						</Tabs.Tab>
 					</Tabs.List>
