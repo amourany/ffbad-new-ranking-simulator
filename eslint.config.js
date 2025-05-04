@@ -20,6 +20,7 @@ const config = [
             '.vscode/*',
             '.yarn/*',
             '*.config.js',
+            '*.config.ts',
             '*.config.log',
             'dist/**',
             'node_modules/**',
@@ -108,7 +109,7 @@ const config = [
             'react/jsx-max-depth': [
                 'error',
                 {
-                    max: 5,
+                    max: 6,
                 },
             ],
             'react/jsx-no-leaked-render': [

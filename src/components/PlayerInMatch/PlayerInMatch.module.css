@@ -1,3 +1,16 @@
 .container {
+    width: inherit;
+}
+
+.searchPlayer {
     width: 100%;
+    display: flex;
+
+    @media(min-width: $mantine-breakpoint-sm) {
+        width: 65%;
+    }
+
+    @media(min-width: $mantine-breakpoint-md) {
+        width: 100%;
+    }
 }

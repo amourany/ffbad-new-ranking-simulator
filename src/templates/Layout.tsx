@@ -22,7 +22,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 			header={{
 				height: 60,
 			}}
-			padding="lg"
+			padding="md"
 		>
 			<AppShell.Header className={styles.header}>
 				<Header/>

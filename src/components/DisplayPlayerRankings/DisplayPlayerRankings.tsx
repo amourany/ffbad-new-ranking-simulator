@@ -12,7 +12,8 @@ export type DisplayPlayerRankingsProps = {
 export const DisplayPlayerRankings = ({ playerInfo, onClear }: DisplayPlayerRankingsProps) => (
 	<div className={styles.playerInMatch}>
 		<div className={styles.playerName}>{playerInfo.name}</div>
-		<div className={styles.playerRankings}>
+		<div className={styles.rankAndClear}>
+
 			<RankingSet
 				doubleRate={playerInfo.convertedRankings.doubleRate}
 				doubleSubLevel={playerInfo.rankings.doubleSubLevel}
@@ -22,17 +23,17 @@ export const DisplayPlayerRankings = ({ playerInfo, onClear }: DisplayPlayerRank
 				singleSubLevel={playerInfo.rankings.singleSubLevel}
 				variant='small'
 			/>
-		</div>
-		<div>
-			<ActionIcon
-				aria-label="Clear"
-				color="black"
-				onClick={onClear}
-				size="xs"
-				variant="transparent"
-			>
-				<IconX/>
-			</ActionIcon>
+			<div className={styles.clearButton}>
+				<ActionIcon
+					aria-label="Clear"
+					color="black"
+					onClick={onClear}
+					size="xs"
+					variant="transparent"
+				>
+					<IconX/>
+				</ActionIcon>
+			</div>
 		</div>
 	</div>
 );

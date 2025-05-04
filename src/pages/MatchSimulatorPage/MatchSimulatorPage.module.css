@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    width: inherit
 }
 
 .playerInputsContainer {
@@ -14,25 +15,29 @@
     align-items: center;
     gap: 1rem;
     flex: 1 0 auto;
-    width: 100%;
+    width: inherit;
 
-    @media(min-width: $mantine-breakpoint-lg) {
+    @media (min-width: $mantine-breakpoint-md) {
         flex-direction: row;
-
     }
 }
 
-.team{
+.team {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    width: inherit;
 }
 
 .versus {
     flex: 1 0 auto;
     text-align: center;
     height: 100%;
+
+    @media (min-width: $mantine-breakpoint-md) {
+        width: 20%
+    }
 }
 
 .playerRankingsContainer {
