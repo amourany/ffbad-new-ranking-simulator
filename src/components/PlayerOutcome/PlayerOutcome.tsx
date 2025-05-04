@@ -19,7 +19,7 @@ export const PlayerOutcome = ({ outcome, ranking, points, name }: PlayerOutcomeP
 	].join(' ')}
 	>
 		<div className={styles.name}>
-			{t('NAME_WINS', { name })}
+			{t('NAME', { name })}
 			<div className={styles.points}>{isWin ? t('POINTS_WINS', { points }) : t('POINTS_LOSES', { points: Math.abs(points) })}</div>
 		</div>
 		<div className={styles.calculationDetails}>
