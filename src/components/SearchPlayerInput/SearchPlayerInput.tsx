@@ -6,7 +6,7 @@ import { useSearchPlayer } from '@api/search-player/useSearchPlayer';
 import styles from './SearchPlayerInput.module.css';
 
 export type SearchPlayerInputProps = {
-	label: string;
+	label?: string;
 	onChange: (licence: number) => void
 };
 

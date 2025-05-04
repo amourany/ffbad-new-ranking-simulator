@@ -1,14 +1,11 @@
 {
   "TITLE": "FFBad new ranking simulator",
   "HOME_PAGE": {
-    "PLACEHOLDER": "FFBad licence number",
-    "SUBMIT": "Convert",
-    "ERROR": {
-      "NO_LICENCE": "Please enter your FFBad licence number"
-    }
+    "LOADING": "Loading...",
+    "INPUT_LABEL": "Search for a player"
   },
   "DISPLAY_NEW_RANKINGS": {
-    "RANKING_DATE": "Actualisation date",
+    "RANKING_DATE": "Actualisation date: ",
     "CURRENT_RANKINGS": "Current rankings",
     "NEW_RANKINGS": "New rankings"
   },
