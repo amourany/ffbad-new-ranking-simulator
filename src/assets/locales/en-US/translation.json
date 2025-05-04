@@ -27,6 +27,10 @@
     }
   },
   "MATCH_SIMULATOR_PAGE": {
+    "SINGLES_TITLE": "Simulate a singles match",
+    "DOUBLES_TITLE": "Simulate a doubles match",
+    "DOUBLES_TOOLTIP_1": "Automatically detects a mixed doubles match when each team includes one male and one female player.",
+    "DOUBLES_TOOLTIP_2": "In all other cases (male + male, female + female, or cross-gender pairings), the match is considered a regular doubles match.",
     "PLAYER_A": "Player A",
     "PLAYER_B": "Player B",
     "PLAYER_C": "Player C",
