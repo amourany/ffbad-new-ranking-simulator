@@ -9,7 +9,7 @@ import { useTranslation } from '@hooks/useTranslation';
 
 export const ConverterPage = () => {
 
-	const { t } = useTranslation({ keyPrefix: 'HOME_PAGE' });
+	const { t } = useTranslation({ keyPrefix: 'CONVERT_PAGE' });
 	const [
 		licence,
 		setLicence,
@@ -24,6 +24,7 @@ export const ConverterPage = () => {
 					root: styles.stack,
 				}}
 			>
+				<h1 className={styles.title}>{t('TITLE')}</h1>
 				{data ? <DisplayNewRankings
 					onClear={() => setLicence(undefined)}
 					playerInfo={data}
