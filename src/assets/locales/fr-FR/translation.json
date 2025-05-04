@@ -24,7 +24,7 @@
   },
   "SEARCH_PLAYER_INPUT": {
     "LOADING": "Chargement...",
-    "PLACEHOLDER": "Chercher par nom ou prénom",
+    "PLACEHOLDER": "Rechercher par nom, prénom, licence, ...",
     "ERROR": {
       "NO_LICENCE": "Veuillez saisir un numéro de licence FFBad"
     }
@@ -40,6 +40,13 @@
   },
   "PLAYER_IN_MATCH": {
     "LOADING": "Chargement..."
+  },
+  "PLAYER_OUTCOME": {
+    "NAME": "{{name}}: ",
+    "POINTS_WINS": "+{{points}} points",
+    "CALCULATION_DETAILS_WINS": "{{ranking}} + {{points}} = {{newRanking}}",
+    "POINTS_LOSES": "-{{points}} points",
+    "CALCULATION_DETAILS_LOSES": "{{ranking}} - {{points}} = {{newRanking}}"
   },
   "RANKING_SET": {
     "SINGLE": "Simple",

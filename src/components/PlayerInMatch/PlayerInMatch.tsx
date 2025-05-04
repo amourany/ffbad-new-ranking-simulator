@@ -20,17 +20,17 @@ export const PlayerInMatch = ({ label, isLoading, playerInfo, onChange, onClear 
 		playerInfo={playerInfo}
 	/>;
 
-	const renderLicenceInput = () => <>
-		<div>{label}</div>
+	const renderLicenceInput = () => <div className={styles.searchPlayer}>
 		<SearchPlayerInput
+			label={label}
 			onChange={onChange}
 		/>
-	</>;
+	</div>;
 
 	return (
-		<div className={styles.container}>
+		<>
 			{playerInfo ? renderPlayerInfo(playerInfo) : renderLicenceInput()}
 			{isLoading ? <div>{t('LOADING')}</div> : null}
-		</div>
+		</>
 	);
 };

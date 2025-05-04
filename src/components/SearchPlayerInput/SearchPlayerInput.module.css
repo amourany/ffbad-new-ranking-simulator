@@ -2,6 +2,10 @@
     flex: 0 0 auto;
 }
 
+.input {
+    flex: 1 1 auto;
+}
+
 .inputLine {
     display: flex;
     flex-direction: row;

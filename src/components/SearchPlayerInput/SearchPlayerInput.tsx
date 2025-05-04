@@ -6,10 +6,11 @@ import { useSearchPlayer } from '@api/search-player/useSearchPlayer';
 import styles from './SearchPlayerInput.module.css';
 
 export type SearchPlayerInputProps = {
+	label: string;
 	onChange: (licence: number) => void
 };
 
-export const SearchPlayerInput = ({ onChange }: SearchPlayerInputProps) => {
+export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) => {
 	const { t } = useTranslation({ keyPrefix: 'SEARCH_PLAYER_INPUT' });
 
 	const [
@@ -58,8 +59,7 @@ export const SearchPlayerInput = ({ onChange }: SearchPlayerInputProps) => {
 				value={item.licence}
 			>
 				{item.name}
-				{' '}
-				-
+				{' - '}
 				{item.club.acronym}
 			</Combobox.Option>
 		))}
@@ -78,9 +78,12 @@ export const SearchPlayerInput = ({ onChange }: SearchPlayerInputProps) => {
 		>
 			<Combobox.Target>
 				<TextInput
+					className={styles.input}
+					label={label}
 					onChange={(event) => handleOnChange(event.currentTarget.value)}
 					onClick={() => handleReopen()}
 					placeholder={t('PLACEHOLDER')}
+					size='md'
 				/>
 			</Combobox.Target>
 

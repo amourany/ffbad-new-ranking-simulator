@@ -12,8 +12,6 @@
         padding: 0.5rem;
     }
 
-    &.small {
-    }
 }
 
 .subLevelContainer {
@@ -25,6 +23,8 @@
     align-items: center;
 
     &.small {
+        width: 2.6rem;
+        height: 2.6rem;
         flex-direction: column;
     }
 }
@@ -34,12 +34,20 @@
 }
 
 .subLevel {
-    font-size: 1.2rem;
     font-weight: bold;
+
+    &.large {
+        font-size: 1rem;
+    }
+
+    &.small {
+        font-size: 0.7rem;
+    }
 }
 
 .ranking {
     font-weight: bold;
+
     &.large {
         font-size: 1.5rem;
     }
@@ -63,4 +71,9 @@
 
 .P10, .P11, .P12 {
     background-color: #f8e71c;
+}
+
+.NC {
+    background-color: #9b9b9b;
+    color: #fbfbfb;
 }

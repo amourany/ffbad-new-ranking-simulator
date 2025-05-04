@@ -4,6 +4,20 @@
     font-weight: bold;
 }
 
+.player {
+    width: 100%;
+}
+
+.name {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.points {
+    font-weight: bold;
+}
+
 .win {
     color: #0BAE4A;
 }

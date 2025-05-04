@@ -41,6 +41,13 @@
   "PLAYER_IN_MATCH": {
     "LOADING": "Loading..."
   },
+  "PLAYER_OUTCOME": {
+    "NAME": "{{name}}: ",
+    "POINTS_WINS": "+{{points}} points",
+    "CALCULATION_DETAILS_WINS": "{{ranking}} + {{points}} = {{newRanking}}",
+    "POINTS_LOSES": "-{{points}} points",
+    "CALCULATION_DETAILS_LOSES": "{{ranking}} - {{points}} = {{newRanking}}"
+  },
   "RANKING_SET": {
     "SINGLE": "Single",
     "DOUBLES": "Doubles",
