@@ -7,6 +7,7 @@ import { Route as convertRoute } from '@routes/convert';
 import { Route as simulateRoute } from '@routes/simulate';
 import { useTranslation } from '@hooks/useTranslation';
 import { IconTransform, IconVs } from '@tabler/icons-react';
+import { RankingExplanation } from '@components/RankingExplanation/RankingExplanation';
 
 export const Layout = ({ children }: PropsWithChildren) => {
 	const matchRoute = useMatchRoute();
@@ -52,11 +53,13 @@ export const Layout = ({ children }: PropsWithChildren) => {
 					</Tabs.List>
 					<Tabs.Panel value="convert">
 						<div className={styles.content}>
+							<RankingExplanation />
 							{children}
 						</div>
 					</Tabs.Panel>
 					<Tabs.Panel value="simulate">
 						<div className={styles.content}>
+							<RankingExplanation />
 							{children}
 						</div>
 					</Tabs.Panel>
