@@ -26,6 +26,7 @@ describe('DoublesMatchSimulation', () => {
 	it('should render', () => {
 		const { container } = render(
 			<DoublesMatchSimulation
+				matchFactor={1}
 				playerA={malePlayerInfo}
 				playerB={malePlayerInfo}
 				playerC={femalePlayerInfo}

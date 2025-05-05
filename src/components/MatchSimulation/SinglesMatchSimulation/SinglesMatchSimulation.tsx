@@ -8,15 +8,16 @@ import styles from './SinglesMatchSimulation.module.css';
 export type SinglesMatchSimulationProps = {
 	playerA: PlayerInfo;
 	playerB: PlayerInfo;
+	matchFactor: number;
 };
 
-export const SinglesMatchSimulation = ({ playerA, playerB }: SinglesMatchSimulationProps) => {
+export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor }: SinglesMatchSimulationProps) => {
 
 	const { t } = useTranslation({ keyPrefix: 'SINGLES_MATCH_SIMULATION' });
 
 	const singleRankingMe = playerA.convertedRankings.singleRate;
 	const singleRankingOpponent = playerB.convertedRankings.singleRate;
-	const matchResult = simulateSinglesMatch(singleRankingMe, singleRankingOpponent);
+	const matchResult = simulateSinglesMatch(singleRankingMe, singleRankingOpponent, matchFactor);
 
 	const convertToOutcome = (player: PlayerInfo, points: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,

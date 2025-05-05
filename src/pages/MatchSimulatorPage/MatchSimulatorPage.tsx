@@ -11,6 +11,7 @@ import { Route, SimulateRouteSearch } from '@routes/simulate';
 import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 import { IconInfoCircleFilled, IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
+import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
 
 export const MatchSimulatorPage = () => {
 
@@ -27,6 +28,10 @@ export const MatchSimulatorPage = () => {
 		isDoublesMatch,
 		setIsDoublesMatch,
 	] = useState<boolean>(!!playerCLicence || !!playerDLicence);
+	const [
+		matchMultiplyingFactor,
+		setMatchMultiplyingFactor,
+	] = useState<number>(1);
 	const fetchedPlayers = useFetchPlayersRankings(playerLicences);
 	const navigate = useNavigate({ from: Route.fullPath });
 
@@ -89,6 +94,7 @@ export const MatchSimulatorPage = () => {
 				const rankingExtractor = isMixedDoubles ? (player: PlayerInfo) => player.convertedRankings.mixedRate : (player: PlayerInfo) => player.convertedRankings.doubleRate;
 
 				return <DoublesMatchSimulation
+					matchFactor={matchMultiplyingFactor}
 					playerA={playerA}
 					playerB={playerB}
 					playerC={playerC}
@@ -99,6 +105,7 @@ export const MatchSimulatorPage = () => {
 		} else {
 			if (!!playerA && !!playerB) {
 				return <SinglesMatchSimulation
+					matchFactor={matchMultiplyingFactor}
 					playerA={playerA}
 					playerB={playerB}
 				/>;
@@ -204,6 +211,9 @@ export const MatchSimulatorPage = () => {
 					playerInfo={playerD}
 				/> : null}
 			</div>
+		</div>
+		<div className={styles.configuration}>
+			<MatchConfiguration onChange={setMatchMultiplyingFactor} />
 		</div>
 		{renderMatchResults()}
 	</div>;
