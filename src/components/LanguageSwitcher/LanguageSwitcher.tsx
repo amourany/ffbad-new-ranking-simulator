@@ -1,6 +1,6 @@
 import { ActionIcon, Combobox, useCombobox } from '@mantine/core';
-import { useTranslation } from 'react-i18next';
 import { IconLanguage } from '@tabler/icons-react';
+import { useTranslation } from '@hooks/useTranslation';
 
 export const LanguageSwitcher = () => {
 	const { i18n } = useTranslation();

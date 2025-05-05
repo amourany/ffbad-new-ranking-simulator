@@ -55,7 +55,9 @@ const fetchPlayerRanking = async (licence: number): Promise<PlayerInfo> => {
 };
 
 const convertToRankings = (data: PlayerRankingsFFBad): PlayerRankings => ({
-	...data,
+	doubleDownRate: data.doubleDownRate,
+	doubleRate: data.doubleRate,
+	doubleSubLevel: data.doubleSubLevel,
 	doubleUpRate: data.doubleUpRate ?? data.doubleRate,
 	mixedDownRate: data.mixteDownRate,
 	mixedRate: data.mixteRate,

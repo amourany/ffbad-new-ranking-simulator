@@ -22,7 +22,7 @@ export const DisplayNewRankings = ({ playerInfo, onClear }: DisplayNewRankingsPr
 				{t('RANKING_DATE')}
 				{formatDate(playerInfo.rankingDate)}
 			</p>
-			<p className={styles.player}>
+			<span className={styles.player}>
 				{playerInfo.name}
 				<div className={styles.clearButton}>
 					<ActionIcon
@@ -35,7 +35,7 @@ export const DisplayNewRankings = ({ playerInfo, onClear }: DisplayNewRankingsPr
 						<IconX/>
 					</ActionIcon>
 				</div>
-			</p>
+			</span>
 			<div className={styles.container}>
 
 				<div className={styles.tileContainer}>
