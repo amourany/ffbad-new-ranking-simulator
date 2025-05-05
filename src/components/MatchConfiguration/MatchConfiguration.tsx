@@ -40,6 +40,7 @@ export const MatchConfiguration = ({ onChange }: MatchConfigurationProps) => {
 			defaultValue="1"
 			label={t('LABEL')}
 			onChange={(value) => onChange(Number(value))}
+			allowDeselect={false}
 		/>
 	</div>
 	);
