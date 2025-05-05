@@ -332,7 +332,6 @@ export const mantineMock = {
 	Stepper: StepperMock,
 	StepperStep: StepperStepMock,
 	Switch: SwitchMock,
-	rem: remMock,
 	Tabs: TabsMock(),
 	Text: TextMock,
 	TextInput: TextInputMock,
@@ -340,6 +339,7 @@ export const mantineMock = {
 	Title: TitleMock,
 	Tooltip: TooltipMock,
 	UnstyledButton: ButtonMock,
+	rem: remMock,
 };
 
 jest.mock('@mantine/core', () => ({ ...mantineMock }));

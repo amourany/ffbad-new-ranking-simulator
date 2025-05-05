@@ -3,12 +3,12 @@ import { Button, Popover } from '@mantine/core';
 import { PlayerInMatch } from '@components/PlayerInMatch/PlayerInMatch';
 import { PlayerInfo, PlayerLicences, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
 import { UseQueryResult } from '@tanstack/react-query';
-import { SinglesMatchSimulation } from '@components/SinglesMatchSimulation/SinglesMatchSimulation';
+import { SinglesMatchSimulation } from '@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation';
 import styles from './MatchSimulatorPage.module.css';
 import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
-import { DoublesMatchSimulation } from '@components/DoublesMatchSimulation/DoublesMatchSimulation';
+import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 import { IconInfoCircleFilled, IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 

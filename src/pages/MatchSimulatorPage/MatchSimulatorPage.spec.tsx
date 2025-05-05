@@ -1,57 +1,70 @@
-import { render } from "@jestConfig/render";
-import { MatchSimulatorPage } from "@pages/MatchSimulatorPage/MatchSimulatorPage";
-import { useFetchPlayersRankings } from "@api/player-ranking/useFetchPlayersRankings";
-import { Route } from "@routes/simulate";
-import { PlayerInMatchProps } from "@components/PlayerInMatch/PlayerInMatch";
+import { render } from '@jestConfig/render';
+import { MatchSimulatorPage } from '@pages/MatchSimulatorPage/MatchSimulatorPage';
+import { useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { Route } from '@routes/simulate';
+import { PlayerInMatchProps } from '@components/PlayerInMatch/PlayerInMatch';
 import {
-  femalePlayerInfo,
-  malePlayerInfo,
-} from "@jestConfig/__mocks__/playerInfoMock";
-import { act } from "@testing-library/react";
+	femalePlayerInfo,
+	malePlayerInfo,
+} from '@jestConfig/__mocks__/playerInfoMock';
+import { act } from '@testing-library/react';
 
-jest.mock("@components/PlayerInMatch/PlayerInMatch", () => ({
-  PlayerInMatch: ({ label }: PlayerInMatchProps) => (
-    <div>
-      PlayerInMatch:
-      {label}
-    </div>
-  ),
+jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
+	PlayerInMatch: ({ label }: PlayerInMatchProps) => (
+		<div>
+			PlayerInMatch:
+			{label}
+		</div>
+	),
 }));
 
-jest.mock("@api/player-ranking/useFetchPlayersRankings", () => ({
-  useFetchPlayersRankings: jest.fn(),
+jest.mock('@api/player-ranking/useFetchPlayersRankings', () => ({
+	useFetchPlayersRankings: jest.fn(),
 }));
 
-jest.mock("@components/SinglesMatchSimulation/SinglesMatchSimulation", () => ({
-  SinglesMatchSimulation: () => <div>SinglesMatchSimulation</div>,
+jest.mock('@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation', () => ({
+	SinglesMatchSimulation: () => <div>SinglesMatchSimulation</div>,
 }));
 
-jest.mock("@components/DoublesMatchSimulation/DoublesMatchSimulation", () => ({
-  DoublesMatchSimulation: () => <div>DoublesMatchSimulation</div>,
+jest.mock('@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation', () => ({
+	DoublesMatchSimulation: () => <div>DoublesMatchSimulation</div>,
 }));
 
-jest.mock("@routes/simulate", () => ({
-  Route: { fullPath: "/simulate", useSearch: jest.fn() },
+jest.mock('@routes/simulate', () => ({
+	Route: { fullPath: '/simulate',
+		useSearch: jest.fn() },
 }));
 
-describe("MatchSimulatorPage", () => {
-  describe("Singles", () => {
-    it("should render untouched", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: undefined,
-        playerB: undefined,
-      });
+describe('MatchSimulatorPage', () => {
+	describe('Singles', () => {
+		it('should render untouched', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: undefined,
+				playerB: undefined,
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: undefined }],
-        ["playerB", { data: undefined }],
-        ["playerC", { data: undefined }],
-        ["playerD", { data: undefined }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: undefined },
+				],
+				[
+					'playerB',
+					{ data: undefined },
+				],
+				[
+					'playerC',
+					{ data: undefined },
+				],
+				[
+					'playerD',
+					{ data: undefined },
+				],
+			]);
 
-      const { container } = render(<MatchSimulatorPage />);
+			const { container } = render(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -109,24 +122,36 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
+		});
 
-    it("should render with both players set", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: undefined,
-        playerB: undefined,
-      });
+		it('should render with both players set', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: undefined,
+				playerB: undefined,
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: undefined }],
-        ["playerD", { data: undefined }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: undefined },
+				],
+				[
+					'playerD',
+					{ data: undefined },
+				],
+			]);
 
-      const { container } = render(<MatchSimulatorPage />);
+			const { container } = render(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -187,48 +212,72 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
+		});
 
-    it("should automatically fill players from search params", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: "licenceA",
-        playerB: "licenceB",
-      });
+		it('should automatically fill players from search params', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: undefined }],
-        ["playerD", { data: undefined }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: undefined },
+				],
+				[
+					'playerD',
+					{ data: undefined },
+				],
+			]);
 
-      render(<MatchSimulatorPage />);
+			render(<MatchSimulatorPage />);
 
-      expect(useFetchPlayersRankings).toHaveBeenCalledWith({
-        playerA: "licenceA",
-        playerB: "licenceB",
-      });
-    });
+			expect(useFetchPlayersRankings).toHaveBeenCalledWith({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+			});
+		});
 
-    it("should switch to doubles view on switch click", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: "licenceA",
-        playerB: "licenceB",
-      });
+		it('should switch to doubles view on switch click', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: undefined }],
-        ["playerD", { data: undefined }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: undefined },
+				],
+				[
+					'playerD',
+					{ data: undefined },
+				],
+			]);
 
-      const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-      act(() => getByRole("button").click());
-      rerender(<MatchSimulatorPage />);
+			act(() => getByRole('button').click());
+			rerender(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -317,29 +366,41 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
-  });
+		});
+	});
 
-  describe("Doubles", () => {
-    it("should render untouched", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: undefined,
-        playerB: undefined,
-      });
+	describe('Doubles', () => {
+		it('should render untouched', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: undefined,
+				playerB: undefined,
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: undefined }],
-        ["playerB", { data: undefined }],
-        ["playerC", { data: undefined }],
-        ["playerD", { data: undefined }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: undefined },
+				],
+				[
+					'playerB',
+					{ data: undefined },
+				],
+				[
+					'playerC',
+					{ data: undefined },
+				],
+				[
+					'playerD',
+					{ data: undefined },
+				],
+			]);
 
-      const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-      act(() => getByRole("button").click());
-      rerender(<MatchSimulatorPage />);
+			act(() => getByRole('button').click());
+			rerender(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -428,27 +489,39 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
+		});
 
-    it("should render with both teams set", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: undefined,
-        playerB: undefined,
-      });
+		it('should render with both teams set', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: undefined,
+				playerB: undefined,
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: malePlayerInfo }],
-        ["playerD", { data: femalePlayerInfo }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerD',
+					{ data: femalePlayerInfo },
+				],
+			]);
 
-      const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-      act(() => getByRole("button").click());
-      rerender(<MatchSimulatorPage />);
+			act(() => getByRole('button').click());
+			rerender(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -540,54 +613,78 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
+		});
 
-    it("should automatically fill players from search params", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: "licenceA",
-        playerB: "licenceB",
-        playerC: "licenceC",
-        playerD: "licenceD",
-      });
+		it('should automatically fill players from search params', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+				playerC: 'licenceC',
+				playerD: 'licenceD',
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: malePlayerInfo }],
-        ["playerD", { data: femalePlayerInfo }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerD',
+					{ data: femalePlayerInfo },
+				],
+			]);
 
-      render(<MatchSimulatorPage />);
+			render(<MatchSimulatorPage />);
 
-      expect(useFetchPlayersRankings).toHaveBeenCalledWith({
-        playerA: "licenceA",
-        playerB: "licenceB",
-        playerC: "licenceC",
-        playerD: "licenceD",
-      });
-    });
+			expect(useFetchPlayersRankings).toHaveBeenCalledWith({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+				playerC: 'licenceC',
+				playerD: 'licenceD',
+			});
+		});
 
-    it("should switch to singles view on switch click", () => {
-      (Route.useSearch as jest.Mock).mockReturnValue({
-        playerA: "licenceA",
-        playerB: "licenceB",
-        playerC: "licenceC",
-        playerD: "licenceD",
-      });
+		it('should switch to singles view on switch click', () => {
+			(Route.useSearch as jest.Mock).mockReturnValue({
+				playerA: 'licenceA',
+				playerB: 'licenceB',
+				playerC: 'licenceC',
+				playerD: 'licenceD',
+			});
 
-      (useFetchPlayersRankings as jest.Mock).mockReturnValue([
-        ["playerA", { data: malePlayerInfo }],
-        ["playerB", { data: femalePlayerInfo }],
-        ["playerC", { data: malePlayerInfo }],
-        ["playerD", { data: femalePlayerInfo }],
-      ]);
+			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
+				[
+					'playerA',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerB',
+					{ data: femalePlayerInfo },
+				],
+				[
+					'playerC',
+					{ data: malePlayerInfo },
+				],
+				[
+					'playerD',
+					{ data: femalePlayerInfo },
+				],
+			]);
 
-      const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-      act(() => getByRole("button").click());
-      rerender(<MatchSimulatorPage />);
+			act(() => getByRole('button').click());
+			rerender(<MatchSimulatorPage />);
 
-      expect(container).toMatchInlineSnapshot(`
+			expect(container).toMatchInlineSnapshot(`
         <div
           class="container"
         >
@@ -648,6 +745,6 @@ describe("MatchSimulatorPage", () => {
           </div>
         </div>
       `);
-    });
-  });
+		});
+	});
 });
