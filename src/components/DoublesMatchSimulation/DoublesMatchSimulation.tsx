@@ -5,6 +5,7 @@ import { LOSES, Outcome, WINS, simulateDoublesMatch } from '@engine/simulation/s
 import { simulatePointsDistribution } from '@engine/simulation/simulate-points-distribution';
 import { PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './DoublesMatchSimulation.module.css';
+import { mean } from 'mathjs';
 
 export type DoublesMatchSimulationProps = {
 	playerA: PlayerInfo,
@@ -21,7 +22,7 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 	const playerCDoublesRanking = rankingExtractor(playerC);
 	const playerDDoublesRanking = rankingExtractor(playerD);
 
-	const matchResult = simulateDoublesMatch(playerADoublesRanking + playerCDoublesRanking, playerBDoublesRanking + playerDDoublesRanking);
+	const matchResult = simulateDoublesMatch(mean(playerADoublesRanking, playerCDoublesRanking), mean(playerBDoublesRanking, playerDDoublesRanking));
 
 	const convertToOutcome = (player: PlayerInfo, teammate: PlayerInfo, pointsToShare: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,
