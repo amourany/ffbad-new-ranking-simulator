@@ -13,8 +13,9 @@ export type DoublesMatchSimulationProps = {
 	playerC: PlayerInfo,
 	playerD: PlayerInfo,
 	rankingExtractor: (player: PlayerInfo) => number,
+	matchFactor: number
 };
-export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor }:DoublesMatchSimulationProps) => {
+export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor, matchFactor }:DoublesMatchSimulationProps) => {
 	const { t } = useTranslation({ keyPrefix: 'DOUBLES_MATCH_SIMULATION' });
 
 	const playerADoublesRanking = rankingExtractor(playerA);
@@ -22,7 +23,7 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 	const playerCDoublesRanking = rankingExtractor(playerC);
 	const playerDDoublesRanking = rankingExtractor(playerD);
 
-	const matchResult = simulateDoublesMatch(mean(playerADoublesRanking, playerCDoublesRanking), mean(playerBDoublesRanking, playerDDoublesRanking));
+	const matchResult = simulateDoublesMatch(mean(playerADoublesRanking, playerCDoublesRanking), mean(playerBDoublesRanking, playerDDoublesRanking), matchFactor);
 
 	const convertToOutcome = (player: PlayerInfo, teammate: PlayerInfo, pointsToShare: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,

@@ -14,7 +14,7 @@ export type MatchResult = {
 	losses: number;
 };
 
-const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: number, playerB: number): MatchResult[] => {
+const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: number, playerB: number, multiplyingFactor: number): MatchResult[] => {
 	const rankingDelta = Math.abs(playerA - playerB);
 	const matchSimulationTableEntry = Object.entries(matchSimulationTable)
 		.filter(([
@@ -28,12 +28,12 @@ const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: 
 
 	const matchResult: MatchResult[] = [
 		{
-			losses: matchSimulationTableEntry.higherRankedPlayerWinsPointsForLoser,
-			wins: matchSimulationTableEntry.higherRankedPlayerWinsPointsForWinner,
+			losses: computePoints(matchSimulationTableEntry.higherRankedPlayerWinsPointsForLoser, multiplyingFactor),
+			wins: computePoints(matchSimulationTableEntry.higherRankedPlayerWinsPointsForWinner, multiplyingFactor),
 		},
 		{
-			losses: matchSimulationTableEntry.lowerRankedPlayerWinsPointsForLoser,
-			wins: matchSimulationTableEntry.lowerRankedPlayerWinsPointsForWinner,
+			losses: computePoints(matchSimulationTableEntry.lowerRankedPlayerWinsPointsForLoser, multiplyingFactor),
+			wins: computePoints(matchSimulationTableEntry.lowerRankedPlayerWinsPointsForWinner, multiplyingFactor),
 		},
 	];
 
@@ -43,6 +43,8 @@ const simulateMatch = (matchSimulationTable: MatchSimulationTable) => (playerA: 
 		return matchResult.reverse();
 	}
 };
+
+const computePoints = (points: number, factor: number): number => Math.round(points * factor);
 
 export const simulateSinglesMatch = simulateMatch(matchSimulationTableForSingles);
 export const simulateDoublesMatch = simulateMatch(matchSimulationTableForDoubles);

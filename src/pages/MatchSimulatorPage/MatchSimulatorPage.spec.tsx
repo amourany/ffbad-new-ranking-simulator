@@ -22,12 +22,22 @@ jest.mock('@api/player-ranking/useFetchPlayersRankings', () => ({
 	useFetchPlayersRankings: jest.fn(),
 }));
 
-jest.mock('@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation', () => ({
-	SinglesMatchSimulation: () => <div>SinglesMatchSimulation</div>,
-}));
+jest.mock(
+	'@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation',
+	() => ({
+		SinglesMatchSimulation: () => <div>SinglesMatchSimulation</div>,
+	}),
+);
 
-jest.mock('@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation', () => ({
-	DoublesMatchSimulation: () => <div>DoublesMatchSimulation</div>,
+jest.mock(
+	'@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation',
+	() => ({
+		DoublesMatchSimulation: () => <div>DoublesMatchSimulation</div>,
+	}),
+);
+
+jest.mock('@components/MatchConfiguration/MatchConfiguration', () => ({
+	MatchConfiguration: () => <div>MatchConfiguration</div>,
 }));
 
 jest.mock('@routes/simulate', () => ({
@@ -120,6 +130,13 @@ describe('MatchSimulatorPage', () => {
               </div>
             </div>
           </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
+            </div>
+          </div>
         </div>
       `);
 		});
@@ -205,6 +222,13 @@ describe('MatchSimulatorPage', () => {
                 PlayerInMatch:
                 PLAYER_B
               </div>
+            </div>
+          </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
             </div>
           </div>
           <div>
@@ -364,6 +388,13 @@ describe('MatchSimulatorPage', () => {
               </div>
             </div>
           </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
+            </div>
+          </div>
         </div>
       `);
 		});
@@ -487,6 +518,13 @@ describe('MatchSimulatorPage', () => {
               </div>
             </div>
           </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
+            </div>
+          </div>
         </div>
       `);
 		});
@@ -606,6 +644,13 @@ describe('MatchSimulatorPage', () => {
                 PlayerInMatch:
                 PLAYER_D
               </div>
+            </div>
+          </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
             </div>
           </div>
           <div>
@@ -738,6 +783,13 @@ describe('MatchSimulatorPage', () => {
                 PlayerInMatch:
                 PLAYER_B
               </div>
+            </div>
+          </div>
+          <div
+            class="configuration"
+          >
+            <div>
+              MatchConfiguration
             </div>
           </div>
           <div>

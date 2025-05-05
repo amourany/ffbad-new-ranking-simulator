@@ -19,6 +19,7 @@ describe('SinglesMatchSimulation', () => {
 	it('should render', () => {
 		const { container } = render(
 			<SinglesMatchSimulation
+				matchFactor={1}
 				playerA={malePlayerInfo}
 				playerB={femalePlayerInfo}
 			/>,

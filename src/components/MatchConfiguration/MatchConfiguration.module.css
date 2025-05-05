@@ -1,0 +1,10 @@
+h2 {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+}
+
+.select {
+    @media(min-width: $mantine-breakpoint-sm) {
+        width: 50%;
+    }
+}

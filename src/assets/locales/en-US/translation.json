@@ -27,6 +27,19 @@
       "NO_LICENCE": "Please enter a FFBad licence number"
     }
   },
+  "MATCH_CONFIGURATION": {
+    "TITLE": "Configuration",
+    "LABEL": "Type of Tournament",
+    "FRENCH_CHAMPIONSHIP": "French National Championships",
+    "REGIONAL_CHAMPIONSHIP": "Regional Championships",
+    "DISTRICT_CHAMPIONSHIP": "District Championships",
+    "NATIONAL_TROPHY": "National Elite Circuits (CEJ, BAC, Elite Circuit, Veterans Circuit)",
+    "REGIONAL_TROPHY": "Regional Circuits and Trophies",
+    "DISTRICT_TROPHY": "District Circuits and Trophies",
+    "PROMOBAD_TOURNAMENT": "Promobad Events",
+    "TOURNAMENT": "Other Official Competitions (tournaments, district or regional interclubs, etc.)",
+    "UNOFFICIAL_TOURNAMENT": "Unofficial Competitions"
+  },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simulate a singles match",
     "DOUBLES_TITLE": "Simulate a doubles match",

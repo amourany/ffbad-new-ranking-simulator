@@ -27,6 +27,19 @@
       "NO_LICENCE": "Veuillez saisir un numéro de licence FFBad"
     }
   },
+  "MATCH_CONFIGURATION": {
+    "TITLE": "Configuration",
+    "LABEL": "Type de tournois",
+    "FRENCH_CHAMPIONSHIP": "Championnats de France",
+    "REGIONAL_CHAMPIONSHIP": "Championnats régionaux",
+    "DISTRICT_CHAMPIONSHIP": "Championnats départementaux",
+    "NATIONAL_TROPHY": "Circuits élite national (CEJ, BAC, Circuit Elite, Circuit Vétérans)",
+    "REGIONAL_TROPHY": "Circuits et trophées régionaux",
+    "DISTRICT_TROPHY": "Circuits et trophées départementaux",
+    "PROMOBAD_TOURNAMENT": "Rencontres Promobad",
+    "TOURNAMENT": "Autres compétitions officielles (tournois, interclubs départementaux ou régionaux, ...)",
+    "UNOFFICIAL_TOURNAMENT": "Compétitions non officielles"
+  },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simuler un match de simple",
     "DOUBLES_TITLE": "Simuler un match de double",
