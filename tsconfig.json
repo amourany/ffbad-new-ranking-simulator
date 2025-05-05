@@ -12,8 +12,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "emitDeclarationOnly": true,
-    "declaration": true,
+    "declaration": false,
 
     /* Linting */
     "strict": true,
@@ -48,7 +47,6 @@
     "rootDir": ".",
     "incremental": true,
     "tsBuildInfoFile": "dist/.tsbuildinfo",
-    "composite": true,
 
     "types": [
       "node",
