@@ -77,7 +77,7 @@
     "DESCRIPTION_2": "All official matches are considered individually in the ranking calculation. A tournament involving several matches leads to as many ranking updates as matches played.",
     "TITLE_3": "Individual point distribution in doubles and mixed",
     "DESCRIPTION_3": "In a doubles match (men’s, women’s, or mixed), the points gained or lost by a pair are distributed based on the individual ranking of each player. A player with a higher ranking will receive a smaller share than their partner.",
-    "TITLE_4": "A ranking scale from 400 to 2400",
+    "TITLE_4": "A ranking scale from 400 to 2800",
     "DESCRIPTION_4": "Each player has a score in each discipline (singles, doubles, mixed). This score changes after every match according to the calculation rules defined by the FFBaD. This simulator provides a preview of the points gained or lost depending on the match outcome.",
     "TITLE_5": "No expiration of performances",
     "DESCRIPTION_5": "Results no longer expire after one year. The ranking therefore reflects the full history of recorded performances.",
