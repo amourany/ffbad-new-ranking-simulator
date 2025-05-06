@@ -28,7 +28,6 @@ describe('SearchPlayerInput', () => {
             data-testid="TextInput"
             placeholder="PLACEHOLDER"
             role="input"
-            value=""
           />
         </div>
         <div
@@ -66,7 +65,6 @@ describe('SearchPlayerInput', () => {
             data-testid="TextInput"
             placeholder="PLACEHOLDER"
             role="input"
-            value=""
           />
         </div>
         <div
@@ -123,7 +121,6 @@ describe('SearchPlayerInput', () => {
             data-testid="TextInput"
             placeholder="PLACEHOLDER"
             role="input"
-            value=""
           />
         </div>
         <div

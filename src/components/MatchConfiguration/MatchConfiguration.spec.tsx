@@ -13,7 +13,6 @@ describe('MatchConfiguration', () => {
         <input
           data-testid="Select"
           role="input"
-          value=""
         />
       </div>
     `);
