@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amourany.github.io/ffbad-new-ranking-simulator/sitemap.xml

@@ -1,4 +1,8 @@
 {
+  "APP": {
+    "TITLE": "FFBad - Simulateur de classement",
+    "DESCRIPTION_CONTENT": "Utilisez ce simulateur pour estimer votre nouveau classement FFBaD."
+  },
   "TITLE": "FFBad - Simulateur nouveau classement",
   "CONVERT_PAGE": {
     "TITLE": "Convertir son classement dans le nouveau format",
