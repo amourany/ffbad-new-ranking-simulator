@@ -7,7 +7,7 @@ const SEARCH_PLAYER_KEY = 'searchPlayer';
 export const useSearchPlayer = (value: string| undefined) => useInfiniteQuery({
 	enabled: !!value,
 	getNextPageParam: (lastPage:SearchPlayerResponse, _allPages, _lastPageParam) => {
-		if (lastPage.currentPage === lastPage.totalPage) {
+		if (lastPage.currentPage >= lastPage.totalPage) {
 			return undefined;
 		}
 		return lastPage.currentPage +1;

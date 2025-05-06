@@ -27,9 +27,7 @@
   "SEARCH_PLAYER_INPUT": {
     "LOADING": "Chargement...",
     "PLACEHOLDER": "Rechercher par nom, prénom, licence, ...",
-    "ERROR": {
-      "NO_LICENCE": "Veuillez saisir un numéro de licence FFBad"
-    }
+    "NO_RESULT": "Aucun résultat"
   },
   "MATCH_CONFIGURATION": {
     "TITLE": "Configuration",
