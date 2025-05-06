@@ -23,10 +23,6 @@ const App = () => {
 		<Helmet>
 			<title>{t('TITLE')}</title>
 			<meta
-				content="50zOKje2qP4OfQVSF_s706oMrgIUU7v5rnIv0oE7snE"
-				name="google-site-verification"
-			/>
-			<meta
 				content={t('DESCRIPTION_CONTENT')}
 				name="description"
 			/>
