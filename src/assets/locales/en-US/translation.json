@@ -27,9 +27,7 @@
   "SEARCH_PLAYER_INPUT": {
     "PLACEHOLDER": "Search player by first or last name",
     "LOADING": "Loading...",
-    "ERROR": {
-      "NO_LICENCE": "Please enter a FFBad licence number"
-    }
+    "NO_RESULT": "No result found"
   },
   "MATCH_CONFIGURATION": {
     "TITLE": "Configuration",

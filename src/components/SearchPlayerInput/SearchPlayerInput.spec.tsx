@@ -149,4 +149,48 @@ describe('SearchPlayerInput', () => {
       </div>
     `);
 	});
+
+	it('should render when no results are found', () => {
+		(useSearchPlayer as jest.Mock).mockReturnValue({
+			data: [],
+			isFetching: false,
+		});
+
+		const { container } = render(
+			<SearchPlayerInput
+				label="Player"
+				onChange={jest.fn()}
+			/>,
+		);
+
+		expect(container).toMatchInlineSnapshot(`
+      <div
+        data-testid="Combobox"
+      >
+        <div
+          data-testid="Combobox.Target"
+        >
+          <input
+            data-testid="TextInput"
+            placeholder="PLACEHOLDER"
+            role="input"
+          />
+        </div>
+        <div
+          data-testid="Combobox.Dropdown"
+        >
+          <div
+            data-testid="Combobox.Options"
+          >
+            <div
+              data-testid="Combobox.Empty"
+            >
+              NO_RESULT
+            </div>
+            <div />
+          </div>
+        </div>
+      </div>
+    `);
+	});
 });

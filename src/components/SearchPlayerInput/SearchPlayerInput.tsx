@@ -53,6 +53,7 @@ export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) =
 	]);
 
 	const renderOptions = () => <>
+		{data?.length === 0 ? <Combobox.Empty>{t('NO_RESULT')}</Combobox.Empty> : null}
 		{data?.map((item) => (
 			<Combobox.Option
 				key={item.licence}
