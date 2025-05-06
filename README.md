@@ -28,5 +28,5 @@ This project is an independent tool developed for educational and personal use. 
 
 ---
 
-Made with 🏸 and ❤️ by [amourany](https://github.com/amourany)
+Made with 🏸 and ❤️ by [amourany](https://www.linkedin.com/in/alexandre-mourany)
 
