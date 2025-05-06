@@ -77,7 +77,7 @@
     "DESCRIPTION_2": "Tous les matchs officiels sont pris en compte individuellement dans le calcul du classement. Un tournoi comprenant plusieurs match entraîne autant de mises à jour du classement que de matchs joués.",
     "TITLE_3": "Répartition individualisée des points en double et mixte",
     "DESCRIPTION_3": "Lors d’un match de double (homme, femme ou mixte), les points gagnés ou perdus par une paire sont répartis en fonction du classement individuel de chaque joueur ou joueuse. Un joueur ayant une cote plus élevée recevra une part moins importante de celle de son partenaire.",
-    "TITLE_4": "Un classement exprimé sur une échelle de 400 à 2400",
+    "TITLE_4": "Un classement exprimé sur une échelle de 400 à 2800",
     "DESCRIPTION_4": "Chaque joueur ou joueuse possède une cote dans chaque discipline (simple, double, mixte). Ce score évolue après chaque match selon les règles de calcul établies par la FFBaD. Ce simulateur permet d'avoir un aperçu des points gagnés ou perdus suivant le résultat du match.",
     "TITLE_5": "Pas d’expiration des performances",
     "DESCRIPTION_5": "Les résultats ne disparaissent plus automatiquement au bout d’un an. Le classement reflète donc l’ensemble de l’historique des performances enregistrées.",
