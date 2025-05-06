@@ -22,7 +22,6 @@
     gap: 0.5rem;
     align-items: flex-start;
     font-weight: bold;
-    text-align: justify;
 }
 
 .icon {
@@ -32,5 +31,5 @@
 
 .description {
     margin-top: 0;
-    text-align: justify;
+    white-space: pre-line;
 }
