@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import svgr from 'vite-plugin-svgr';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import { resolve } from 'path';
+import {generateSitemap} from "tanstack-router-sitemap";
+import {sitemap} from "./src/sitemap";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,6 +17,7 @@ export default defineConfig({
 		}),
 		react(),
 		svgr(),
+		generateSitemap(sitemap)
 	],
 	resolve: {
 		alias: {
