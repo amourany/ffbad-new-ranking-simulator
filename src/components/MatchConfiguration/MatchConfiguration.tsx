@@ -35,12 +35,12 @@ export const MatchConfiguration = ({ onChange }: MatchConfigurationProps) => {
 	return (<div>
 		<h2>{t('TITLE')}</h2>
 		<Select
+			allowDeselect={false}
 			className={styles.select}
 			data={matchFactorsTable(t)}
 			defaultValue="1"
 			label={t('LABEL')}
 			onChange={(value) => onChange(Number(value))}
-			allowDeselect={false}
 		/>
 	</div>
 	);
