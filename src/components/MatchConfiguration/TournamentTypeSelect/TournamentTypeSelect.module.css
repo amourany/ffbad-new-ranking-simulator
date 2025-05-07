@@ -3,6 +3,7 @@
 
     @media(min-width: $mantine-breakpoint-sm) {
         width: unset;
+        max-width: 50%;
         flex: 1 0 auto;
     }
 }
