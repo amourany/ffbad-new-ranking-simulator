@@ -29,8 +29,8 @@
   },
   "devDependencies": {
     "@eslint/js": "9.26.0",
-    "@stylistic/eslint-plugin": "4.1.0",
-    "@stylistic/eslint-plugin-ts": "4.1.0",
+    "@stylistic/eslint-plugin": "4.2.0",
+    "@stylistic/eslint-plugin-ts": "4.2.0",
     "@tanstack/eslint-plugin-query": "5.62.1",
     "@tanstack/react-query-devtools": "5.62.7",
     "@tanstack/router-devtools": "1.87.12",
