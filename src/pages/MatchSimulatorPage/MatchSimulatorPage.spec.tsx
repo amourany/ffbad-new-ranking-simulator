@@ -8,6 +8,7 @@ import {
 	malePlayerInfo,
 } from '@jestConfig/__mocks__/playerInfoMock';
 import { act } from '@testing-library/react';
+import { TitleProps } from '@components/Title/Title';
 
 jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
 	PlayerInMatch: ({ label }: PlayerInMatchProps) => (
@@ -38,6 +39,10 @@ jest.mock(
 
 jest.mock('@components/MatchConfiguration/MatchConfiguration', () => ({
 	MatchConfiguration: () => <div>MatchConfiguration</div>,
+}));
+
+jest.mock('@components/Title/Title', () => ({
+	Title: ({ label }: TitleProps) => <h1>{label}</h1>,
 }));
 
 jest.mock('@routes/simulate', () => ({
@@ -81,9 +86,7 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
+            <h1>
               SINGLES_TITLE
             </h1>
             <div
@@ -175,9 +178,7 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
+            <h1>
               SINGLES_TITLE
             </h1>
             <div
@@ -308,33 +309,8 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
-              <span>
-                DOUBLES_TITLE
-              </span>
-              <div
-                data-testid="Popover"
-              >
-                <div
-                  data-testid="PopoverTarget"
-                >
-                  <div
-                    data-testid="mocked-icon-IconInfoCircleFilled"
-                  />
-                </div>
-                <div
-                  data-testid="PopoverDropdown"
-                >
-                  <div>
-                    DOUBLES_TOOLTIP_1
-                  </div>
-                  <div>
-                    DOUBLES_TOOLTIP_2
-                  </div>
-                </div>
-              </div>
+            <h1>
+              DOUBLES_TITLE
             </h1>
             <div
               class="button"
@@ -438,33 +414,8 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
-              <span>
-                DOUBLES_TITLE
-              </span>
-              <div
-                data-testid="Popover"
-              >
-                <div
-                  data-testid="PopoverTarget"
-                >
-                  <div
-                    data-testid="mocked-icon-IconInfoCircleFilled"
-                  />
-                </div>
-                <div
-                  data-testid="PopoverDropdown"
-                >
-                  <div>
-                    DOUBLES_TOOLTIP_1
-                  </div>
-                  <div>
-                    DOUBLES_TOOLTIP_2
-                  </div>
-                </div>
-              </div>
+            <h1>
+              DOUBLES_TITLE
             </h1>
             <div
               class="button"
@@ -566,33 +517,8 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
-              <span>
-                DOUBLES_TITLE
-              </span>
-              <div
-                data-testid="Popover"
-              >
-                <div
-                  data-testid="PopoverTarget"
-                >
-                  <div
-                    data-testid="mocked-icon-IconInfoCircleFilled"
-                  />
-                </div>
-                <div
-                  data-testid="PopoverDropdown"
-                >
-                  <div>
-                    DOUBLES_TOOLTIP_1
-                  </div>
-                  <div>
-                    DOUBLES_TOOLTIP_2
-                  </div>
-                </div>
-              </div>
+            <h1>
+              DOUBLES_TITLE
             </h1>
             <div
               class="button"
@@ -736,9 +662,7 @@ describe('MatchSimulatorPage', () => {
           <div
             class="titleRow"
           >
-            <h1
-              class="title"
-            >
+            <h1>
               SINGLES_TITLE
             </h1>
             <div

@@ -43,7 +43,9 @@
     "UNOFFICIAL_TOURNAMENT": "Compétitions non officielles",
     "DOUBLE_MATCH_TYPE": "Type de double",
     "CROSS_GENDER_DOUBLE": "Double inter-genre",
-    "MIXED_DOUBLE": "Double mixte"
+    "MIXED_DOUBLE": "Double mixte",
+    "COMPETITION_TYPE": "Dans le nouveau système, le type de compétition influe sur le nombre de points gagnés ou perdus.",
+    "DOUBLES_TYPE": "Dans le cas des matchs inter-genre, les cotes de doubles sont utilisés au lieu de celles de mixte."
   },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simuler un match de simple",

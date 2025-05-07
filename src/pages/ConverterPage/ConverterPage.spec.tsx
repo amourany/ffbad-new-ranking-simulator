@@ -2,6 +2,7 @@ import { ConverterPage } from './ConverterPage';
 import { render } from '@jestConfig/render';
 import { useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
 import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
+import { TitleProps } from '@components/Title/Title';
 
 jest.mock('@api/player-ranking/useFetchPlayersRankings', () => ({
 	useFetchPlayersRankings: jest.fn(),
@@ -13,6 +14,10 @@ jest.mock('@components/DisplayNewRankings/DisplayNewRankings', () => ({
 
 jest.mock('@components/SearchPlayerInput/SearchPlayerInput', () => ({
 	SearchPlayerInput: () => <div>SearchPlayerInput</div>,
+}));
+
+jest.mock('@components/Title/Title', () => ({
+	Title: ({ label }: TitleProps) => <h1>{label}</h1>,
 }));
 
 describe('ConverterPage', () => {
@@ -31,9 +36,7 @@ describe('ConverterPage', () => {
         <div
           data-testid="Stack"
         >
-          <h1
-            class="title"
-          >
+          <h1>
             TITLE
           </h1>
           <div>
@@ -60,9 +63,7 @@ describe('ConverterPage', () => {
         <div
           data-testid="Stack"
         >
-          <h1
-            class="title"
-          >
+          <h1>
             TITLE
           </h1>
           <div>
@@ -92,9 +93,7 @@ describe('ConverterPage', () => {
         <div
           data-testid="Stack"
         >
-          <h1
-            class="title"
-          >
+          <h1>
             TITLE
           </h1>
           <div>

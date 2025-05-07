@@ -43,7 +43,9 @@
     "UNOFFICIAL_TOURNAMENT": "Unofficial Competitions",
     "DOUBLE_MATCH_TYPE": "Doubles category",
     "CROSS_GENDER_DOUBLE": "Cross-gender double",
-    "MIXED_DOUBLE": "Mixed doubles"
+    "MIXED_DOUBLE": "Mixed doubles",
+    "COMPETITION_TYPE": "With the new system, the type of competition affects the number of points gained or lost.",
+    "DOUBLES_TYPE": "In cross-gender matches, the doubles rankings are used instead of the mixed doubles rankings."
   },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simulate a singles match",
