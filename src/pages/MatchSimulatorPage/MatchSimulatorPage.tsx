@@ -29,6 +29,10 @@ export const MatchSimulatorPage = () => {
 		setIsDoublesMatch,
 	] = useState<boolean>(!!playerCLicence || !!playerDLicence);
 	const [
+		isCrossGenderMatch,
+		setIsCrossGenderMatch,
+	] = useState<boolean>(false);
+	const [
 		matchMultiplyingFactor,
 		setMatchMultiplyingFactor,
 	] = useState<number>(1);
@@ -87,11 +91,16 @@ export const MatchSimulatorPage = () => {
 	const { data:playerC, isLoading: playerCLoading } = fetchedPlayers.find(item => item[0] === 'playerC')?.[1] as UseQueryResult<PlayerInfo>;
 	const { data:playerD, isLoading: playerDLoading } = fetchedPlayers.find(item => item[0] === 'playerD')?.[1] as UseQueryResult<PlayerInfo>;
 
+	const isMixedDoubles = isMixedDoublesTeam(playerA?.gender, playerC?.gender) && isMixedDoublesTeam(playerB?.gender, playerD?.gender);
+
 	const renderMatchResults = () => {
 		if (isDoublesMatch) {
 			if (!!playerA && !!playerB && !!playerC && !!playerD) {
-				const isMixedDoubles = isMixedDoublesTeam(playerA.gender, playerC.gender) && isMixedDoublesTeam(playerB.gender, playerD.gender);
-				const rankingExtractor = isMixedDoubles ? (player: PlayerInfo) => player.convertedRankings.mixedRate : (player: PlayerInfo) => player.convertedRankings.doubleRate;
+				const mixedDoublesExtractor = (player: PlayerInfo) => player.convertedRankings.mixedRate;
+				const doublesExtractor = (player: PlayerInfo) => player.convertedRankings.doubleRate;
+				const mixedOrCrossGenderExtractor = isCrossGenderMatch ?  doublesExtractor: mixedDoublesExtractor;
+
+				const rankingExtractor = isMixedDoubles ?  mixedOrCrossGenderExtractor:doublesExtractor;
 
 				return <DoublesMatchSimulation
 					matchFactor={matchMultiplyingFactor}
@@ -213,7 +222,11 @@ export const MatchSimulatorPage = () => {
 			</div>
 		</div>
 		<div className={styles.configuration}>
-			<MatchConfiguration onChange={setMatchMultiplyingFactor} />
+			<MatchConfiguration
+				isMixedDoublesMatch={isMixedDoubles}
+				onMatchTypeChange={setIsCrossGenderMatch}
+				onTournamentTypeChange={setMatchMultiplyingFactor}
+			/>
 		</div>
 		{renderMatchResults()}
 	</div>;

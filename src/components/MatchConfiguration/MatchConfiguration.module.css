@@ -3,8 +3,13 @@ h2 {
     margin: 0.5rem 0;
 }
 
-.select {
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
     @media(min-width: $mantine-breakpoint-sm) {
-        width: 50%;
+        flex-direction: row;
     }
 }
