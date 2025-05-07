@@ -6,6 +6,7 @@ import styles from './ConverterPage.module.css';
 import { UseQueryResult } from '@tanstack/react-query';
 import { SearchPlayerInput } from '@components/SearchPlayerInput/SearchPlayerInput';
 import { useTranslation } from '@hooks/useTranslation';
+import { Title } from '@components/Title/Title';
 
 export const ConverterPage = () => {
 
@@ -24,7 +25,7 @@ export const ConverterPage = () => {
 					root: styles.stack,
 				}}
 			>
-				<h1 className={styles.title}>{t('TITLE')}</h1>
+				<Title label={t('TITLE')} />
 				{data ? <DisplayNewRankings
 					onClear={() => setLicence(undefined)}
 					playerInfo={data}

@@ -1,5 +1,6 @@
 import { render } from '@jestConfig/render';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
+import { TitleProps } from '@components/Title/Title';
 
 jest.mock(
 	'@components/MatchConfiguration/TournamentTypeSelect/TournamentTypeSelect',
@@ -14,6 +15,10 @@ jest.mock(
 		CrossGenderMatchSelect: () => <div>CrossGenderMatchSelect</div>,
 	}),
 );
+
+jest.mock('@components/SubTitle/SubTitle', () => ({
+	SubTitle: ({ label }: TitleProps) => <h2>{label}</h2>,
+}));
 
 describe('MatchConfiguration', () => {
 	it('should render for a match', () => {

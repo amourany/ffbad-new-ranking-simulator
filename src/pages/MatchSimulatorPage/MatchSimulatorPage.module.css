@@ -20,20 +20,6 @@
     }
 }
 
-.title {
-    text-align: left;
-    font-size: 1.5rem;
-
-    @media (min-width: $mantine-breakpoint-md) {
-        flex: 1 0 auto;
-    }
-}
-
-.icon {
-    vertical-align: text-bottom;
-    margin-left: 0.5rem;
-}
-
 .playerInputsContainer {
     display: flex;
     flex-direction: column;

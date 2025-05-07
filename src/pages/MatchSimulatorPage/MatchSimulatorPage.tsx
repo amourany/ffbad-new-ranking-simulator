@@ -1,5 +1,5 @@
 import { ReactElement, useState } from 'react';
-import { Button, Popover } from '@mantine/core';
+import { Button } from '@mantine/core';
 import { PlayerInMatch } from '@components/PlayerInMatch/PlayerInMatch';
 import { PlayerInfo, PlayerLicences, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
 import { UseQueryResult } from '@tanstack/react-query';
@@ -9,9 +9,10 @@ import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
 import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
-import { IconInfoCircleFilled, IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
+import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
+import { Title } from '@components/Title/Title';
 
 export const MatchSimulatorPage = () => {
 
@@ -144,38 +145,16 @@ export const MatchSimulatorPage = () => {
 		</div>
 	);
 
-	const renderTitleWithTooltip = (title: string, tooltipContent: string[]) => (
-		<>
-			<span>{title}</span>
-			<Popover
-				position='bottom'
-				shadow='md'
-				width={300}
-				withArrow
-			>
-				<Popover.Target>
-					<IconInfoCircleFilled
-						className={styles.icon}
-						color="cornflowerblue"
-					/>
-				</Popover.Target>
-				<Popover.Dropdown>
-					{tooltipContent.map((content, index) => (
-						<div key={index}>{content}</div>
-					))}
-				</Popover.Dropdown>
-			</Popover>
-		</>
-	);
-
 	return <div className={styles.container}>
 		<div className={styles.titleRow}>
-			<h1 className={styles.title}>
-				{isDoublesMatch ? renderTitleWithTooltip(t('DOUBLES_TITLE'), [
+			<Title
+				label={isDoublesMatch ? t('DOUBLES_TITLE'): t('SINGLES_TITLE')}
+				tooltipContent={[
 					t('DOUBLES_TOOLTIP_1'),
 					t('DOUBLES_TOOLTIP_2'),
-				]) : t('SINGLES_TITLE')}
-			</h1>
+				]}
+				withTooltip = {isDoublesMatch}
+			/>
 			{isDoublesMatch ? renderMatchTypeSwitch(<>
 				<IconUsersMinus />
 				<div className={styles.buttonLabel}>{t('SIMULATE_SINGLES_MATCH')}</div>
