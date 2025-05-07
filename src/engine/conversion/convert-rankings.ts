@@ -112,3 +112,5 @@ const convertMixedWomen = (rankings: PlayerRankings): number => {
 		upperBound,
 	});
 };
+
+export const isN1 = (subLevel: string, ranking?: number) => subLevel === 'N1' && ranking === null;

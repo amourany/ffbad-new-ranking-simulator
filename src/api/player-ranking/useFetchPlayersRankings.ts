@@ -1,11 +1,20 @@
-import { ConvertedPlayerRankings, convertFemalePlayers, convertMalePlayers } from '@engine/conversion/convert-rankings';
-import { useQueries } from '@tanstack/react-query';
+import {
+	ConvertedPlayerRankings,
+	convertFemalePlayers,
+	convertMalePlayers,
+	isN1,
+} from '@engine/conversion/convert-rankings';
+import { useQueries, useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { TTL_24_HOURS } from '@api/api-constants';
+import { Disciplines, fetchTopPlayerRankings } from '@api/topPlayerRankings/fetchTopPlayerRankings';
 
 const FETCH_PLAYER_INFO_KEY = 'player-info';
 
 export const useFetchPlayersRankings = (licences: PlayerLicences) => {
+
+	const queryClient = useQueryClient();
+	const fetchTopPlayerRank = fetchTopPlayerRankings(queryClient);
 
 	const queries = useQueries({
 		queries: Object.entries(licences).map(([
@@ -13,7 +22,7 @@ export const useFetchPlayersRankings = (licences: PlayerLicences) => {
 			value,
 		]) => ({
 			enabled: !!value,
-			queryFn: () => fetchPlayerRanking(value),
+			queryFn: () => fetchPlayerRanking(value, fetchTopPlayerRank),
 			queryKey: [
 				FETCH_PLAYER_INFO_KEY,
 				value,
@@ -30,14 +39,14 @@ export const useFetchPlayersRankings = (licences: PlayerLicences) => {
 	]);
 };
 
-const fetchPlayerRanking = async (_licence: number): Promise<PlayerInfo> => {
+const fetchPlayerRanking = async (_licence: number, topPlayerFetcher: (discipline: number) => Promise<number>): Promise<PlayerInfo> => {
     const playerId = {} as PlayerFFBad;
     const response = {} as PlayerRankingsFFBad
 
     const isCompetitivePlayer = response as unknown !== '';
 
     const gender = playerId.sex === MALE ? MALE : FEMALE;
-    const rankings = convertToRankings(isCompetitivePlayer ? response : nonCompetitivePlayer);
+    const rankings = await convertToRankings(isCompetitivePlayer ? response : nonCompetitivePlayer, gender, topPlayerFetcher);
 	const convertedRankings = gender === MALE ? convertMalePlayers(rankings) : convertFemalePlayers(rankings);
 
 	return {
@@ -49,20 +58,27 @@ const fetchPlayerRanking = async (_licence: number): Promise<PlayerInfo> => {
 	};
 };
 
-const convertToRankings = (data: PlayerRankingsFFBad): PlayerRankings => ({
-	doubleDownRate: data.doubleDownRate,
-	doubleRate: data.doubleRate,
-	doubleSubLevel: data.doubleSubLevel,
-	doubleUpRate: data.doubleUpRate ?? data.doubleRate,
-	mixedDownRate: data.mixteDownRate,
-	mixedRate: data.mixteRate,
-	mixedSubLevel: data.mixteSubLevel,
-	mixedUpRate: data.mixteUpRate ?? data.mixteRate,
-	singleDownRate: data.simpleDownRate,
-	singleRate: data.simpleRate,
-	singleSubLevel: data.simpleSubLevel,
-	singleUpRate: data.simpleUpRate ?? data.simpleRate,
-});
+const convertToRankings = async (data: PlayerRankingsFFBad, gender: Gender, topPlayerFetcher: (discipline: number) => Promise<number>): Promise<PlayerRankings> => {
+	const isMale = gender === MALE;
+	const doubleUpRate = isN1(data.doubleSubLevel, data.doubleUpRate) ? await topPlayerFetcher(isMale ? Disciplines.MEN_DOUBLES : Disciplines.WOMEN_DOUBLES) : data.doubleUpRate!;
+	const singleUpRate = isN1(data.simpleSubLevel, data.simpleUpRate) ? await topPlayerFetcher(isMale ? Disciplines.MEN_SINGLES : Disciplines.WOMEN_SINGLES) : data.simpleUpRate!;
+	const mixedUpRate = isN1(data.mixteSubLevel, data.mixteUpRate) ? await topPlayerFetcher(isMale ? Disciplines.MEN_MIXED : Disciplines.WOMEN_MIXED) : data.mixteUpRate!;
+
+	return ({
+		doubleDownRate: data.doubleDownRate,
+		doubleRate: data.doubleRate,
+		doubleSubLevel: data.doubleSubLevel,
+		doubleUpRate: doubleUpRate,
+		mixedDownRate: data.mixteDownRate,
+		mixedRate: data.mixteRate,
+		mixedSubLevel: data.mixteSubLevel,
+		mixedUpRate: mixedUpRate,
+		singleDownRate: data.simpleDownRate,
+		singleRate: data.simpleRate,
+		singleSubLevel: data.simpleSubLevel,
+		singleUpRate: singleUpRate,
+	});
+};
 
 type PlayerFFBad = {
 	personId: number;
@@ -76,15 +92,15 @@ type PlayerRankingsFFBad = {
 	simpleRate: number;
 	simpleSubLevel: string;
 	simpleDownRate: number;
-	simpleUpRate: number;
+	simpleUpRate?: number;
 	doubleRate: number;
 	doubleSubLevel: string;
 	doubleDownRate: number;
-	doubleUpRate: number;
+	doubleUpRate?: number;
 	mixteRate: number;
 	mixteSubLevel: string;
 	mixteDownRate: number;
-	mixteUpRate: number;
+	mixteUpRate?: number;
 };
 
 export type PlayerLicences = {

@@ -1,9 +1,8 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { skipToken, useInfiniteQuery } from '@tanstack/react-query';
 
 const SEARCH_PLAYER_KEY = 'searchPlayer';
 
 export const useSearchPlayer = (value: string| undefined) => useInfiniteQuery({
-	enabled: !!value,
 	getNextPageParam: (lastPage:SearchPlayerResponse, _allPages, _lastPageParam) => {
 		if (lastPage.currentPage >= lastPage.totalPage) {
 			return undefined;
@@ -11,7 +10,7 @@ export const useSearchPlayer = (value: string| undefined) => useInfiniteQuery({
 		return lastPage.currentPage +1;
 	},
 	initialPageParam: 1,
-	queryFn: ({ pageParam }) => searchPlayer(value!, pageParam),
+	queryFn: value ? ({ pageParam }) => searchPlayer(value!, pageParam):skipToken,
 	queryKey: [
 		SEARCH_PLAYER_KEY,
 		value,
