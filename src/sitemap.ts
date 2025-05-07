@@ -19,5 +19,5 @@ export const sitemap: Sitemap<TRoutes> = {
 			priority: 1,
 		},
 	},
-	siteUrl: 'https://amourany.github.io/ffbad-new-ranking-simulator',
+	siteUrl: 'https://amourany.github.io/ffbad-new-ranking-simulator/#',
 };
