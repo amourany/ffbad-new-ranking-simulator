@@ -31,7 +31,7 @@
   },
   "MATCH_CONFIGURATION": {
     "TITLE": "Configuration",
-    "LABEL": "Type de tournois",
+    "LABEL": "Type de compétition",
     "FRENCH_CHAMPIONSHIP": "Championnats de France",
     "REGIONAL_CHAMPIONSHIP": "Championnats régionaux",
     "DISTRICT_CHAMPIONSHIP": "Championnats départementaux",
@@ -39,8 +39,11 @@
     "REGIONAL_TROPHY": "Circuits et trophées régionaux",
     "DISTRICT_TROPHY": "Circuits et trophées départementaux",
     "PROMOBAD_TOURNAMENT": "Rencontres Promobad",
-    "TOURNAMENT": "Autres compétitions officielles (tournois, interclubs départementaux ou régionaux, ...)",
-    "UNOFFICIAL_TOURNAMENT": "Compétitions non officielles"
+    "TOURNAMENT": "Compétition classique (tournois, interclubs départementaux ou régionaux, ...)",
+    "UNOFFICIAL_TOURNAMENT": "Compétitions non officielles",
+    "DOUBLE_MATCH_TYPE": "Type de double",
+    "CROSS_GENDER_DOUBLE": "Double inter-genre",
+    "MIXED_DOUBLE": "Double mixte"
   },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simuler un match de simple",

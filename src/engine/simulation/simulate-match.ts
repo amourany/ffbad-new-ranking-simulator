@@ -49,4 +49,4 @@ const computePoints = (points: number, factor: number): number => Math.round(poi
 export const simulateSinglesMatch = simulateMatch(matchSimulationTableForSingles);
 export const simulateDoublesMatch = simulateMatch(matchSimulationTableForDoubles);
 
-export const isMixedDoublesTeam = (playerAGender: Gender, playerBGender: Gender): boolean => playerAGender !== playerBGender;
+export const isMixedDoublesTeam = (playerAGender: Gender|undefined, playerBGender: Gender|undefined): boolean => !!playerAGender && !!playerBGender && playerAGender !== playerBGender;

@@ -3,7 +3,7 @@ import {
 	ButtonProps,
 	FlexProps,
 	ModalProps,
-	ScrollAreaProps,
+	ScrollAreaProps, SegmentedControlItem, SegmentedControlProps,
 	StepperProps,
 	SwitchProps, TextInputProps,
 	TooltipProps,
@@ -227,6 +227,12 @@ export const remMock = (value: number | undefined) =>
 	value ? `${value}px` : null;
 export const ScrollAreaMock = mockScrollArea();
 export const ScrollAreaAutosizeMock = renderAsDiv('ScrollAreaAutosize');
+export const SegmentedControlMock = ({ data, onChange }:SegmentedControlProps) => <>
+	{data.map((item, index) => {
+		const { label, value } = item as SegmentedControlItem;
+		return <div key={index}><button onClick={(_) => onChange ? onChange(value) :{}}>{label}</button></div>;
+	})}
+</>;
 export const SelectMock = renderAsInput('Select');
 export const SimpleGridMock = renderAsDiv('SimpleGrid');
 export const SkeletonMock = renderAsDiv('Skeleton');
@@ -324,6 +330,7 @@ export const mantineMock = {
 	Radio: RadioMock,
 	ScrollArea: ScrollAreaMock,
 	ScrollAreaAutosize: ScrollAreaAutosizeMock,
+	SegmentedControl: SegmentedControlMock,
 	Select: SelectMock,
 	SimpleGrid: SimpleGridMock,
 	Skeleton: SkeletonMock,

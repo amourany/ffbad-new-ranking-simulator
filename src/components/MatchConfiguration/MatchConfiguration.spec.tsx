@@ -1,19 +1,70 @@
 import { render } from '@jestConfig/render';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
 
+jest.mock(
+	'@components/MatchConfiguration/TournamentTypeSelect/TournamentTypeSelect',
+	() => ({
+		TournamentTypeSelect: () => <div>TournamentTypeSelect</div>,
+	}),
+);
+
+jest.mock(
+	'@components/MatchConfiguration/CrossGenderMatchSelect/CrossGenderMatchSelect',
+	() => ({
+		CrossGenderMatchSelect: () => <div>CrossGenderMatchSelect</div>,
+	}),
+);
+
 describe('MatchConfiguration', () => {
-	it('should render', () => {
-		const { container } = render(<MatchConfiguration onChange={jest.fn()} />);
+	it('should render for a match', () => {
+		const { container } = render(
+			<MatchConfiguration
+				isMixedDoublesMatch={false}
+				onMatchTypeChange={jest.fn()}
+				onTournamentTypeChange={jest.fn()}
+			/>,
+		);
 
 		expect(container).toMatchInlineSnapshot(`
       <div>
         <h2>
           TITLE
         </h2>
-        <input
-          data-testid="Select"
-          role="input"
-        />
+        <div
+          class="inputs"
+        >
+          <div>
+            TournamentTypeSelect
+          </div>
+        </div>
+      </div>
+    `);
+	});
+
+	it('should render for a mixed doubles match', () => {
+		const { container } = render(
+			<MatchConfiguration
+				isMixedDoublesMatch={true}
+				onMatchTypeChange={jest.fn()}
+				onTournamentTypeChange={jest.fn()}
+			/>,
+		);
+
+		expect(container).toMatchInlineSnapshot(`
+      <div>
+        <h2>
+          TITLE
+        </h2>
+        <div
+          class="inputs"
+        >
+          <div>
+            TournamentTypeSelect
+          </div>
+          <div>
+            CrossGenderMatchSelect
+          </div>
+        </div>
       </div>
     `);
 	});

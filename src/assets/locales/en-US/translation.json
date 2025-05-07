@@ -40,7 +40,10 @@
     "DISTRICT_TROPHY": "District Circuits and Trophies",
     "PROMOBAD_TOURNAMENT": "Promobad Events",
     "TOURNAMENT": "Other Official Competitions (tournaments, district or regional interclubs, etc.)",
-    "UNOFFICIAL_TOURNAMENT": "Unofficial Competitions"
+    "UNOFFICIAL_TOURNAMENT": "Unofficial Competitions",
+    "DOUBLE_MATCH_TYPE": "Doubles category",
+    "CROSS_GENDER_DOUBLE": "Cross-gender double",
+    "MIXED_DOUBLE": "Mixed doubles"
   },
   "MATCH_SIMULATOR_PAGE": {
     "SINGLES_TITLE": "Simulate a singles match",
