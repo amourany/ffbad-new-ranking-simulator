@@ -1,11 +1,11 @@
 import { ConverterPage } from './ConverterPage';
 import { render } from '@jestConfig/render';
-import { useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 import { TitleProps } from '@components/Title/Title';
 
-jest.mock('@api/player-ranking/useFetchPlayersRankings', () => ({
-	useFetchPlayersRankings: jest.fn(),
+jest.mock('@api/player-ranking/useFetchPlayerRankings', () => ({
+	useFetchPlayerRankings: jest.fn(),
 }));
 
 jest.mock('@components/DisplayNewRankings/DisplayNewRankings', () => ({
@@ -22,12 +22,7 @@ jest.mock('@components/Title/Title', () => ({
 
 describe('ConverterPage', () => {
 	it('should render with input untouched', () => {
-		(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-			[
-				'playerA',
-				{ data: undefined },
-			],
-		]);
+		(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined });
 
 		const { container } = render(<ConverterPage />);
 
@@ -48,13 +43,8 @@ describe('ConverterPage', () => {
 	});
 
 	it('should render when loading player information', () => {
-		(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-			[
-				'playerA',
-				{ data: undefined,
-					isLoading: true },
-			],
-		]);
+		(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined,
+			isLoading:true });
 
 		const { container } = render(<ConverterPage />);
 
@@ -78,13 +68,8 @@ describe('ConverterPage', () => {
 	});
 
 	it('should render with player information', () => {
-		(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-			[
-				'playerA',
-				{ data: malePlayerInfo,
-					isLoading: false },
-			],
-		]);
+		(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: malePlayerInfo,
+			isLoading:false });
 
 		const { container } = render(<ConverterPage />);
 

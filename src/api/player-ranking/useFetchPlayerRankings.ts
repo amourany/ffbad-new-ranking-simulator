@@ -4,42 +4,29 @@ import {
 	convertMalePlayers,
 	isN1,
 } from '@engine/conversion/convert-rankings';
-import { useQueries, useQueryClient } from '@tanstack/react-query';
+import { skipToken, useQuery, useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { TTL_24_HOURS } from '@api/api-constants';
 import { Disciplines, fetchTopPlayerRankings } from '@api/topPlayerRankings/fetchTopPlayerRankings';
 
 const FETCH_PLAYER_INFO_KEY = 'player-info';
 
-export const useFetchPlayersRankings = (licences: PlayerLicences) => {
+export const useFetchPlayerRankings = (licence: number|undefined) => {
 
 	const queryClient = useQueryClient();
 	const fetchTopPlayerRank = fetchTopPlayerRankings(queryClient);
 
-	const queries = useQueries({
-		queries: Object.entries(licences).map(([
-			_,
-			value,
-		]) => ({
-			enabled: !!value,
-			queryFn: () => fetchPlayerRanking(value, fetchTopPlayerRank),
-			queryKey: [
-				FETCH_PLAYER_INFO_KEY,
-				value,
-			],
-			staleTime: TTL_24_HOURS,
-		})),
+	return useQuery({
+		queryFn: licence ? () => fetchPlayerRankings(licence, fetchTopPlayerRank) :skipToken,
+		queryKey: [
+			FETCH_PLAYER_INFO_KEY,
+			licence,
+		],
+		staleTime: TTL_24_HOURS,
 	});
-
-	return Object.entries(licences).map(([
-		key,
-	], index) => [
-		key,
-		queries[index],
-	]);
 };
 
-const fetchPlayerRanking = async (_licence: number, topPlayerFetcher: (discipline: number) => Promise<number>): Promise<PlayerInfo> => {
+const fetchPlayerRankings = async (_licence: number, topPlayerFetcher: (discipline: number) => Promise<number>): Promise<PlayerInfo> => {
     const playerId = {} as PlayerFFBad;
     const response = {} as PlayerRankingsFFBad
 

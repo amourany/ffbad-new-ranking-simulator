@@ -3,7 +3,7 @@ import {
 	matchSimulationTableForDoubles,
 	matchSimulationTableForSingles,
 } from './match-simulation-table';
-import { Gender } from '@api/player-ranking/useFetchPlayersRankings';
+import { Gender } from '@api/player-ranking/useFetchPlayerRankings';
 
 export const WINS = 'wins';
 export const LOSES = 'loses';

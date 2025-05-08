@@ -1,8 +1,7 @@
 import { ReactElement, useState } from 'react';
 import { Button } from '@mantine/core';
 import { PlayerInMatch } from '@components/PlayerInMatch/PlayerInMatch';
-import { PlayerInfo, PlayerLicences, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
-import { UseQueryResult } from '@tanstack/react-query';
+import { PlayerInfo, PlayerLicences, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { SinglesMatchSimulation } from '@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation';
 import styles from './MatchSimulatorPage.module.css';
 import { useTranslation } from '@hooks/useTranslation';
@@ -37,7 +36,6 @@ export const MatchSimulatorPage = () => {
 		matchMultiplyingFactor,
 		setMatchMultiplyingFactor,
 	] = useState<number>(1);
-	const fetchedPlayers = useFetchPlayersRankings(playerLicences);
 	const navigate = useNavigate({ from: Route.fullPath });
 
 	const addUrlSearchParam = async (search: SimulateRouteSearch) => {
@@ -87,10 +85,10 @@ export const MatchSimulatorPage = () => {
 		await addUrlSearchParam({ playerD: undefined });
 	};
 
-	const { data:playerA, isLoading: playerALoading } = fetchedPlayers.find(item => item[0] === 'playerA')?.[1] as UseQueryResult<PlayerInfo>;
-	const { data:playerB, isLoading: playerBLoading } = fetchedPlayers.find(item => item[0] === 'playerB')?.[1] as UseQueryResult<PlayerInfo>;
-	const { data:playerC, isLoading: playerCLoading } = fetchedPlayers.find(item => item[0] === 'playerC')?.[1] as UseQueryResult<PlayerInfo>;
-	const { data:playerD, isLoading: playerDLoading } = fetchedPlayers.find(item => item[0] === 'playerD')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data:playerA } = useFetchPlayerRankings(playerLicences.playerA);
+	const { data:playerB } = useFetchPlayerRankings(playerLicences.playerB);
+	const { data:playerC } = useFetchPlayerRankings(playerLicences.playerC);
+	const { data:playerD } = useFetchPlayerRankings(playerLicences.playerD);
 
 	const isMixedDoubles = isMixedDoublesTeam(playerA?.gender, playerC?.gender) && isMixedDoublesTeam(playerB?.gender, playerD?.gender);
 
@@ -168,35 +166,31 @@ export const MatchSimulatorPage = () => {
 			<div className={styles.team} >
 
 				<PlayerInMatch
-					isLoading={playerALoading ?? false}
 					label={t('PLAYER_A')}
+					licence={playerLicences.playerA}
 					onChange={addPlayerA}
 					onClear={clearPlayerA}
-					playerInfo={playerA}
 				/>
 				{isDoublesMatch ? <PlayerInMatch
-					isLoading={playerCLoading ?? false}
 					label={t('PLAYER_C')}
+					licence={playerLicences.playerC}
 					onChange={addPlayerC}
 					onClear={clearPlayerC}
-					playerInfo={playerC}
 				/> : null}
 			</div>
 			<div className={styles.versus}>{t('VS')}</div>
 			<div className={styles.team} >
 				<PlayerInMatch
-					isLoading={playerBLoading ?? false}
 					label={t('PLAYER_B')}
+					licence={playerLicences.playerB}
 					onChange={addPlayerB}
 					onClear={clearPlayerB}
-					playerInfo={playerB}
 				/>
 				{isDoublesMatch ? <PlayerInMatch
-					isLoading={playerDLoading ?? false}
 					label={t('PLAYER_D')}
+					licence={playerLicences.playerD}
 					onChange={addPlayerD}
 					onClear={clearPlayerD}
-					playerInfo={playerD}
 				/> : null}
 			</div>
 		</div>

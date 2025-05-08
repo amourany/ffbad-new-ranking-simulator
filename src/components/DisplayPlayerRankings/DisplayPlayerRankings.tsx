@@ -1,4 +1,4 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 import { RankingSet } from '@components/RankingSet/RankingSet';
 import styles from './DisplayPlayerRankings.module.css';
 import { ActionIcon } from '@mantine/core';

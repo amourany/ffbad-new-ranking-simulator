@@ -1,4 +1,4 @@
-import { FEMALE, MALE, PlayerRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { FEMALE, MALE, PlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { conversionTable, rankLabelsOrder } from '@engine/conversion/conversion-table';
 import { adjustNewRankings, calculateNewRanking } from '@engine/conversion/migrate-ranking';
 

@@ -1,4 +1,4 @@
-import { FEMALE, MALE, PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
+import { FEMALE, MALE, PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 import dayjs from 'dayjs';
 
 export const malePlayerInfo: PlayerInfo = {

@@ -1,9 +1,8 @@
 import { Stack } from '@mantine/core';
 import { useState } from 'react';
-import { PlayerInfo, useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { DisplayNewRankings } from '@components/DisplayNewRankings/DisplayNewRankings';
 import styles from './ConverterPage.module.css';
-import { UseQueryResult } from '@tanstack/react-query';
 import { SearchPlayerInput } from '@components/SearchPlayerInput/SearchPlayerInput';
 import { useTranslation } from '@hooks/useTranslation';
 import { Title } from '@components/Title/Title';
@@ -15,8 +14,7 @@ export const ConverterPage = () => {
 		licence,
 		setLicence,
 	] = useState<number|undefined>(undefined);
-	const players = useFetchPlayersRankings({ playerA: licence });
-	const { data, isLoading } = players.find(item => item[0] === 'playerA')?.[1] as UseQueryResult<PlayerInfo>;
+	const { data, isLoading } = useFetchPlayerRankings(licence);
 
 	return (
 		<div>

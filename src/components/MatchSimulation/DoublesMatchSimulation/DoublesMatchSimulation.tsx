@@ -1,4 +1,4 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 import { useTranslation } from '@hooks/useTranslation';
 import { MatchOutcome } from '@components/MatchOutcome/MatchOutcome';
 import { LOSES, Outcome, WINS, simulateDoublesMatch } from '@engine/simulation/simulate-match';

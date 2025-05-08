@@ -1,4 +1,4 @@
-import { Gender, MALE } from '@api/player-ranking/useFetchPlayersRankings';
+import { Gender, MALE } from '@api/player-ranking/useFetchPlayerRankings';
 import {
 	MAX_RANKING,
 	MEN_MIXED_MAX_RANKING,
