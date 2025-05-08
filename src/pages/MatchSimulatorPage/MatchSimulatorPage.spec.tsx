@@ -3,14 +3,11 @@ import { MatchSimulatorPage } from '@pages/MatchSimulatorPage/MatchSimulatorPage
 import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { Route } from '@routes/simulate';
 import { PlayerInMatchProps } from '@components/PlayerInMatch/PlayerInMatch';
-import {
-	femalePlayerInfo,
-	malePlayerInfo,
-} from '@jestConfig/__mocks__/playerInfoMock';
-import { act } from '@testing-library/react';
+import { femalePlayerInfo, malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 import { TitleProps } from '@components/Title/Title';
 import { TeamProps } from '@components/Team/Team';
 import { MatchSimulationProps } from '@components/MatchSimulation/MatchSimulation';
+import { userEvent } from '@testing-library/user-event';
 
 jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
 	PlayerInMatch: ({ label }: PlayerInMatchProps) => (
@@ -216,7 +213,7 @@ describe('MatchSimulatorPage', () => {
 			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceB');
 		});
 
-		it('should switch to doubles view on switch click', () => {
+		it('should switch to doubles view on switch click', async () => {
 			(Route.useSearch as jest.Mock).mockReturnValue({
 				playerA: 'licenceA',
 				playerB: 'licenceB',
@@ -229,7 +226,7 @@ describe('MatchSimulatorPage', () => {
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-			act(() => getByRole('button').click());
+			await userEvent.click(getByRole('button'));
 			rerender(<MatchSimulatorPage />);
 
 			expect(container).toMatchInlineSnapshot(`
@@ -292,7 +289,7 @@ describe('MatchSimulatorPage', () => {
 	});
 
 	describe('Doubles', () => {
-		it('should render untouched', () => {
+		it('should render untouched', async () => {
 			(Route.useSearch as jest.Mock).mockReturnValue({
 				playerA: undefined,
 				playerB: undefined,
@@ -304,7 +301,7 @@ describe('MatchSimulatorPage', () => {
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
-			act(() => getByRole('button').click());
+			await userEvent.click(getByRole('button'));
 			rerender(<MatchSimulatorPage />);
 
 			expect(container).toMatchInlineSnapshot(`
@@ -365,7 +362,7 @@ describe('MatchSimulatorPage', () => {
       `);
 		});
 
-		it('should render with both teams set', () => {
+		it('should render with both teams set', async () => {
 			(Route.useSearch as jest.Mock).mockReturnValue({
 				playerA: undefined,
 				playerB: undefined,
@@ -375,10 +372,10 @@ describe('MatchSimulatorPage', () => {
 				data: malePlayerInfo,
 			});
 
-			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage/>);
 
-			act(() => getByRole('button').click());
-			rerender(<MatchSimulatorPage />);
+			await userEvent.click(getByRole('button'));
+			rerender(<MatchSimulatorPage/>);
 
 			expect(container).toMatchInlineSnapshot(`
         <div
@@ -460,7 +457,7 @@ describe('MatchSimulatorPage', () => {
 			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceD');
 		});
 
-		it('should switch to singles view on switch click', () => {
+		it('should switch to singles view on switch click', async () => {
 			(Route.useSearch as jest.Mock).mockReturnValue({
 				playerA: 'licenceA',
 				playerB: 'licenceB',
@@ -475,10 +472,10 @@ describe('MatchSimulatorPage', () => {
 				.mockReturnValueOnce({ data: femalePlayerInfo })
 				.mockReturnValue({ data: malePlayerInfo });
 
-			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
+			const { container, getByRole, rerender } = render(<MatchSimulatorPage/>);
 
-			act(() => getByRole('button').click());
-			rerender(<MatchSimulatorPage />);
+			await userEvent.click(getByRole('button'));
+			rerender(<MatchSimulatorPage/>);
 
 			expect(container).toMatchInlineSnapshot(`
         <div
