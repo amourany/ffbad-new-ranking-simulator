@@ -1,8 +1,9 @@
 {
-  "TITLE": "Simulateur du classement 2025 au badminton",
+  "TITLE": "Simulateur de classement FFBad 2025",
   "CONVERT_PAGE": {
     "TITLE": "Convertir son classement dans le nouveau format",
-    "LOADING": "Chargement..."
+    "LOADING": "Chargement...",
+    "INPUT_LABEL": "Chercher un joueur ou joueuse"
   },
   "DISPLAY_NEW_RANKINGS": {
     "RANKING_DATE": "Date d'actualisation des classements : ",
