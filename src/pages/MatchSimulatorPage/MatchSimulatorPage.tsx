@@ -1,6 +1,6 @@
 import { ReactElement, useState } from 'react';
 import { Button } from '@mantine/core';
-import { PlayerLicences, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
+import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import styles from './MatchSimulatorPage.module.css';
 import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
@@ -12,6 +12,18 @@ import { Title } from '@components/Title/Title';
 import { Team } from '@components/Team/Team';
 import { MatchSimulation } from '@components/MatchSimulation/MatchSimulation';
 
+const PLAYER_A_INDEX = 0;
+const PLAYER_B_INDEX = 1;
+const PLAYER_C_INDEX = 2;
+const PLAYER_D_INDEX = 3;
+
+const searchParamOrder:string[] = [
+	'playerA',
+	'playerB',
+	'playerC',
+	'playerD',
+];
+
 export const MatchSimulatorPage = () => {
 
 	const { playerA: playerALicence, playerB: playerBLicence, playerC: playerCLicence, playerD: playerDLicence } = Route.useSearch();
@@ -19,10 +31,12 @@ export const MatchSimulatorPage = () => {
 	const [
 		playerLicences,
 		setPlayerLicences,
-	] = useState<PlayerLicences>({ playerA:playerALicence,
-		playerB: playerBLicence,
-		playerC: playerCLicence,
-		playerD: playerDLicence });
+	] = useState<(number|undefined)[]>([
+		playerALicence,
+		playerBLicence,
+		playerCLicence,
+		playerDLicence,
+	]);
 	const [
 		isDoublesMatch,
 		setIsDoublesMatch,
@@ -42,62 +56,47 @@ export const MatchSimulatorPage = () => {
 			...search }) });
 	};
 
-	const addPlayerA = async (licence: number) => {
-		setPlayerLicences({ ...playerLicences,
-			playerA: licence });
-		await addUrlSearchParam({ playerA: licence });
-	};
-	const addPlayerB = async (licence: number) => {
-		setPlayerLicences({ ...playerLicences,
-			playerB: licence });
-		await addUrlSearchParam({ playerB: licence });
-	};
-	const addPlayerC = async (licence: number) => {
-		setPlayerLicences({ ...playerLicences,
-			playerC: licence });
-		await addUrlSearchParam({ playerC: licence });
-	};
-	const addPlayerD = async (licence: number) => {
-		setPlayerLicences({ ...playerLicences,
-			playerD: licence });
-		await addUrlSearchParam({ playerD: licence });
+	const addPlayer = (index:number) => async (licence: number) => {
+		setPlayerLicences([
+			...playerLicences.slice(0, index),
+			licence,
+			...playerLicences.slice(index + 1),
+		]);
+		const params = new Map<string, number>([
+			[
+				searchParamOrder[index],
+				licence,
+			],
+		]);
+		await addUrlSearchParam(Object.fromEntries(params));
 	};
 
-	const clearPlayerA = async () => {
-		setPlayerLicences({ ...playerLicences,
-			playerA: undefined });
-		await addUrlSearchParam({ playerA: undefined });
-	};
-	const clearPlayerB = async () => {
-		setPlayerLicences({ ...playerLicences,
-			playerB: undefined });
-		await addUrlSearchParam({ playerB: undefined });
-	};
-	const clearPlayerC = async () => {
-		setPlayerLicences({ ...playerLicences,
-			playerC: undefined });
-		await addUrlSearchParam({ playerC: undefined });
-	};
-	const clearPlayerD = async () => {
-		setPlayerLicences({ ...playerLicences,
-			playerD: undefined });
-		await addUrlSearchParam({ playerD: undefined });
+	const clearPlayer = (index:number) => async () => {
+		setPlayerLicences([
+			...playerLicences.slice(0, index),
+			undefined,
+			...playerLicences.slice(index + 1),
+		]);
+		const params = new Map<string, undefined>([
+			[
+				searchParamOrder[index],
+				undefined,
+			],
+		]);
+		await addUrlSearchParam(Object.fromEntries(params));
 	};
 
-	const { data:playerA } = useFetchPlayerRankings(playerLicences.playerA);
-	const { data:playerB } = useFetchPlayerRankings(playerLicences.playerB);
-	const { data:playerC } = useFetchPlayerRankings(playerLicences.playerC);
-	const { data:playerD } = useFetchPlayerRankings(playerLicences.playerD);
+	const { data:playerA } = useFetchPlayerRankings(playerLicences[PLAYER_A_INDEX]);
+	const { data:playerB } = useFetchPlayerRankings(playerLicences[PLAYER_B_INDEX]);
+	const { data:playerC } = useFetchPlayerRankings(playerLicences[PLAYER_C_INDEX]);
+	const { data:playerD } = useFetchPlayerRankings(playerLicences[PLAYER_D_INDEX]);
 
 	const isMixedDoubles = isMixedDoublesTeam(playerA?.gender, playerC?.gender) && isMixedDoublesTeam(playerB?.gender, playerD?.gender);
 
 	const switchMatchType = async () => {
 		setIsDoublesMatch(!isDoublesMatch);
-		setPlayerLicences({ ...playerLicences,
-			playerC: undefined,
-			playerD: undefined });
-		await addUrlSearchParam({ playerC: undefined,
-			playerD: undefined });
+		await clearPlayer(PLAYER_C_INDEX)();
+		await clearPlayer(PLAYER_D_INDEX)();
 	};
 
 	const renderMatchTypeSwitch = (children: ReactElement) => (
@@ -134,24 +133,24 @@ export const MatchSimulatorPage = () => {
 		<div className={styles.playerInputsContainer}>
 			<Team
 				isDoublesMatch={isDoublesMatch}
-				licenceA={playerLicences.playerA}
-				licenceB={playerLicences.playerC}
-				onPlayerAChange={addPlayerA}
-				onPlayerAClear={clearPlayerA}
-				onPlayerBChange={addPlayerC}
-				onPlayerBClear={clearPlayerC}
+				licenceA={playerLicences[PLAYER_A_INDEX]}
+				licenceB={playerLicences[PLAYER_C_INDEX]}
+				onPlayerAChange={addPlayer(PLAYER_A_INDEX)}
+				onPlayerAClear={clearPlayer(PLAYER_A_INDEX)}
+				onPlayerBChange={addPlayer(PLAYER_C_INDEX)}
+				onPlayerBClear={clearPlayer(PLAYER_C_INDEX)}
 				playerALabel={t('PLAYER_A')}
 				playerBLabel={t('PLAYER_C')}
 			/>
 			<div className={styles.versus}>{t('VS')}</div>
 			<Team
 				isDoublesMatch={isDoublesMatch}
-				licenceA={playerLicences.playerB}
-				licenceB={playerLicences.playerD}
-				onPlayerAChange={addPlayerB}
-				onPlayerAClear={clearPlayerB}
-				onPlayerBChange={addPlayerD}
-				onPlayerBClear={clearPlayerD}
+				licenceA={playerLicences[PLAYER_B_INDEX]}
+				licenceB={playerLicences[PLAYER_D_INDEX]}
+				onPlayerAChange={addPlayer(PLAYER_B_INDEX)}
+				onPlayerAClear={clearPlayer(PLAYER_B_INDEX)}
+				onPlayerBChange={addPlayer(PLAYER_D_INDEX)}
+				onPlayerBClear={clearPlayer(PLAYER_D_INDEX)}
 				playerALabel={t('PLAYER_B')}
 				playerBLabel={t('PLAYER_D')}
 			/>
@@ -170,10 +169,10 @@ export const MatchSimulatorPage = () => {
 				isMixedDoubles,
 				matchMultiplyingFactor,
 			}}
-			playerALicence={playerLicences.playerA}
-			playerBLicence={playerLicences.playerB}
-			playerCLicence={playerLicences.playerC}
-			playerDLicence={playerLicences.playerD}
+			playerALicence={playerLicences[PLAYER_A_INDEX]}
+			playerBLicence={playerLicences[PLAYER_B_INDEX]}
+			playerCLicence={playerLicences[PLAYER_C_INDEX]}
+			playerDLicence={playerLicences[PLAYER_D_INDEX]}
 		/>
 	</div>;
 

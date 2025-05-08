@@ -90,13 +90,6 @@ type PlayerRankingsFFBad = {
 	mixteUpRate?: number;
 };
 
-export type PlayerLicences = {
-	playerA?: number;
-	playerB?: number;
-	playerC?: number;
-	playerD?: number;
-};
-
 export type PlayerInfo = {
 	gender: Gender;
 	name: string;
