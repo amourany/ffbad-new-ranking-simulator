@@ -9,6 +9,7 @@ import {
 } from '@jestConfig/__mocks__/playerInfoMock';
 import { act } from '@testing-library/react';
 import { TitleProps } from '@components/Title/Title';
+import { TeamProps } from '@components/Team/Team';
 
 jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
 	PlayerInMatch: ({ label }: PlayerInMatchProps) => (
@@ -45,6 +46,14 @@ jest.mock('@components/Title/Title', () => ({
 	Title: ({ label }: TitleProps) => <h1>{label}</h1>,
 }));
 
+jest.mock('@components/Team/Team', () => ({
+	Team: ({ playerALabel, playerBLabel, isDoublesMatch }: TeamProps) => (
+		<div>
+			{isDoublesMatch ? `${playerALabel} ${playerBLabel}` : `${playerALabel}`}
+		</div>
+	),
+}));
+
 jest.mock('@routes/simulate', () => ({
 	Route: { fullPath: '/simulate',
 		useSearch: jest.fn() },
@@ -58,7 +67,9 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined });
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({
+				data: undefined,
+			});
 
 			const { container } = render(<MatchSimulatorPage />);
 
@@ -94,26 +105,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
+            <div>
+              PLAYER_A
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
+            <div>
+              PLAYER_B
             </div>
           </div>
           <div
@@ -136,7 +137,7 @@ describe('MatchSimulatorPage', () => {
 			(useFetchPlayerRankings as jest.Mock)
 				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
-				.mockReturnValue({ data:undefined });
+				.mockReturnValue({ data: undefined });
 
 			const { container } = render(<MatchSimulatorPage />);
 
@@ -172,26 +173,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
+            <div>
+              PLAYER_A
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
+            <div>
+              PLAYER_B
             </div>
           </div>
           <div
@@ -217,7 +208,7 @@ describe('MatchSimulatorPage', () => {
 			(useFetchPlayerRankings as jest.Mock)
 				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
-				.mockReturnValue({ data:undefined });
+				.mockReturnValue({ data: undefined });
 
 			render(<MatchSimulatorPage />);
 
@@ -234,7 +225,7 @@ describe('MatchSimulatorPage', () => {
 			(useFetchPlayerRankings as jest.Mock)
 				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
-				.mockReturnValue({ data:undefined });
+				.mockReturnValue({ data: undefined });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -273,34 +264,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_C
-              </div>
+            <div>
+              PLAYER_A PLAYER_C
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_D
-              </div>
+            <div>
+              PLAYER_B PLAYER_D
             </div>
           </div>
           <div
@@ -322,7 +295,9 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined });
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({
+				data: undefined,
+			});
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -361,34 +336,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_C
-              </div>
+            <div>
+              PLAYER_A PLAYER_C
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_D
-              </div>
+            <div>
+              PLAYER_B PLAYER_D
             </div>
           </div>
           <div
@@ -408,7 +365,9 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data:malePlayerInfo });
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({
+				data: malePlayerInfo,
+			});
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -447,34 +406,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_C
-              </div>
+            <div>
+              PLAYER_A PLAYER_C
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
-              <div>
-                PlayerInMatch:
-                PLAYER_D
-              </div>
+            <div>
+              PLAYER_B PLAYER_D
             </div>
           </div>
           <div
@@ -499,7 +440,8 @@ describe('MatchSimulatorPage', () => {
 				playerD: 'licenceD',
 			});
 
-			(useFetchPlayerRankings as jest.Mock).mockReturnValueOnce({ data: malePlayerInfo })
+			(useFetchPlayerRankings as jest.Mock)
+				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
 				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo });
@@ -520,11 +462,12 @@ describe('MatchSimulatorPage', () => {
 				playerD: 'licenceD',
 			});
 
-			(useFetchPlayerRankings as jest.Mock).mockReturnValueOnce({ data: malePlayerInfo })
+			(useFetchPlayerRankings as jest.Mock)
+				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
 				.mockReturnValueOnce({ data: malePlayerInfo })
 				.mockReturnValueOnce({ data: femalePlayerInfo })
-				.mockReturnValue({ data:malePlayerInfo });
+				.mockReturnValue({ data: malePlayerInfo });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -563,26 +506,16 @@ describe('MatchSimulatorPage', () => {
           <div
             class="playerInputsContainer"
           >
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_A
-              </div>
+            <div>
+              PLAYER_A
             </div>
             <div
               class="versus"
             >
               VS
             </div>
-            <div
-              class="team"
-            >
-              <div>
-                PlayerInMatch:
-                PLAYER_B
-              </div>
+            <div>
+              PLAYER_B
             </div>
           </div>
           <div
