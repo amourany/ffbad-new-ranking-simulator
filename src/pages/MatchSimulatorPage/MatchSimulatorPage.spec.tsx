@@ -10,6 +10,7 @@ import {
 import { act } from '@testing-library/react';
 import { TitleProps } from '@components/Title/Title';
 import { TeamProps } from '@components/Team/Team';
+import { MatchSimulationProps } from '@components/MatchSimulation/MatchSimulation';
 
 jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
 	PlayerInMatch: ({ label }: PlayerInMatchProps) => (
@@ -24,26 +25,22 @@ jest.mock('@api/player-ranking/useFetchPlayerRankings', () => ({
 	useFetchPlayerRankings: jest.fn(),
 }));
 
-jest.mock(
-	'@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation',
-	() => ({
-		SinglesMatchSimulation: () => <div>SinglesMatchSimulation</div>,
-	}),
-);
-
-jest.mock(
-	'@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation',
-	() => ({
-		DoublesMatchSimulation: () => <div>DoublesMatchSimulation</div>,
-	}),
-);
-
 jest.mock('@components/MatchConfiguration/MatchConfiguration', () => ({
 	MatchConfiguration: () => <div>MatchConfiguration</div>,
 }));
 
 jest.mock('@components/Title/Title', () => ({
 	Title: ({ label }: TitleProps) => <h1>{label}</h1>,
+}));
+
+jest.mock('@components/MatchSimulation/MatchSimulation', () => ({
+	MatchSimulation: ({ matchConfiguration }: MatchSimulationProps) => (
+		<div>
+			{matchConfiguration.isDoublesMatch
+				? 'DoublesMatchSimulation'
+				: 'SinglesMatchSimulation'}
+		</div>
+	),
 }));
 
 jest.mock('@components/Team/Team', () => ({
@@ -123,6 +120,9 @@ describe('MatchSimulatorPage', () => {
             <div>
               MatchConfiguration
             </div>
+          </div>
+          <div>
+            SinglesMatchSimulation
           </div>
         </div>
       `);
@@ -283,6 +283,9 @@ describe('MatchSimulatorPage', () => {
               MatchConfiguration
             </div>
           </div>
+          <div>
+            DoublesMatchSimulation
+          </div>
         </div>
       `);
 		});
@@ -354,6 +357,9 @@ describe('MatchSimulatorPage', () => {
             <div>
               MatchConfiguration
             </div>
+          </div>
+          <div>
+            DoublesMatchSimulation
           </div>
         </div>
       `);

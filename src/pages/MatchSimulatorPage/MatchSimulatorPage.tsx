@@ -1,17 +1,16 @@
 import { ReactElement, useState } from 'react';
 import { Button } from '@mantine/core';
-import { PlayerInfo, PlayerLicences, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
-import { SinglesMatchSimulation } from '@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation';
+import { PlayerLicences, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import styles from './MatchSimulatorPage.module.css';
 import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
-import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
 import { Title } from '@components/Title/Title';
 import { Team } from '@components/Team/Team';
+import { MatchSimulation } from '@components/MatchSimulation/MatchSimulation';
 
 export const MatchSimulatorPage = () => {
 
@@ -92,36 +91,6 @@ export const MatchSimulatorPage = () => {
 
 	const isMixedDoubles = isMixedDoublesTeam(playerA?.gender, playerC?.gender) && isMixedDoublesTeam(playerB?.gender, playerD?.gender);
 
-	const renderMatchResults = () => {
-		if (isDoublesMatch) {
-			if (!!playerA && !!playerB && !!playerC && !!playerD) {
-				const mixedDoublesExtractor = (player: PlayerInfo) => player.convertedRankings.mixedRate;
-				const doublesExtractor = (player: PlayerInfo) => player.convertedRankings.doubleRate;
-				const mixedOrCrossGenderExtractor = isCrossGenderMatch ?  doublesExtractor: mixedDoublesExtractor;
-
-				const rankingExtractor = isMixedDoubles ?  mixedOrCrossGenderExtractor:doublesExtractor;
-
-				return <DoublesMatchSimulation
-					matchFactor={matchMultiplyingFactor}
-					playerA={playerA}
-					playerB={playerB}
-					playerC={playerC}
-					playerD={playerD}
-					rankingExtractor={rankingExtractor}
-				/>;
-			}
-		} else {
-			if (!!playerA && !!playerB) {
-				return <SinglesMatchSimulation
-					matchFactor={matchMultiplyingFactor}
-					playerA={playerA}
-					playerB={playerB}
-				/>;
-			}
-		}
-		return null;
-	};
-
 	const switchMatchType = async () => {
 		setIsDoublesMatch(!isDoublesMatch);
 		setPlayerLicences({ ...playerLicences,
@@ -194,7 +163,18 @@ export const MatchSimulatorPage = () => {
 				onTournamentTypeChange={setMatchMultiplyingFactor}
 			/>
 		</div>
-		{renderMatchResults()}
+		<MatchSimulation
+			matchConfiguration={{
+				isCrossGenderMatch,
+				isDoublesMatch,
+				isMixedDoubles,
+				matchMultiplyingFactor,
+			}}
+			playerALicence={playerLicences.playerA}
+			playerBLicence={playerLicences.playerB}
+			playerCLicence={playerLicences.playerC}
+			playerDLicence={playerLicences.playerD}
+		/>
 	</div>;
 
 };
