@@ -1,6 +1,5 @@
 import { ReactElement, useState } from 'react';
 import { Button } from '@mantine/core';
-import { PlayerInMatch } from '@components/PlayerInMatch/PlayerInMatch';
 import { PlayerInfo, PlayerLicences, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { SinglesMatchSimulation } from '@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation';
 import styles from './MatchSimulatorPage.module.css';
@@ -12,6 +11,7 @@ import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
 import { Title } from '@components/Title/Title';
+import { Team } from '@components/Team/Team';
 
 export const MatchSimulatorPage = () => {
 
@@ -163,36 +163,29 @@ export const MatchSimulatorPage = () => {
 				</>)}
 		</div>
 		<div className={styles.playerInputsContainer}>
-			<div className={styles.team} >
-
-				<PlayerInMatch
-					label={t('PLAYER_A')}
-					licence={playerLicences.playerA}
-					onChange={addPlayerA}
-					onClear={clearPlayerA}
-				/>
-				{isDoublesMatch ? <PlayerInMatch
-					label={t('PLAYER_C')}
-					licence={playerLicences.playerC}
-					onChange={addPlayerC}
-					onClear={clearPlayerC}
-				/> : null}
-			</div>
+			<Team
+				isDoublesMatch={isDoublesMatch}
+				licenceA={playerLicences.playerA}
+				licenceB={playerLicences.playerC}
+				onPlayerAChange={addPlayerA}
+				onPlayerAClear={clearPlayerA}
+				onPlayerBChange={addPlayerC}
+				onPlayerBClear={clearPlayerC}
+				playerALabel={t('PLAYER_A')}
+				playerBLabel={t('PLAYER_C')}
+			/>
 			<div className={styles.versus}>{t('VS')}</div>
-			<div className={styles.team} >
-				<PlayerInMatch
-					label={t('PLAYER_B')}
-					licence={playerLicences.playerB}
-					onChange={addPlayerB}
-					onClear={clearPlayerB}
-				/>
-				{isDoublesMatch ? <PlayerInMatch
-					label={t('PLAYER_D')}
-					licence={playerLicences.playerD}
-					onChange={addPlayerD}
-					onClear={clearPlayerD}
-				/> : null}
-			</div>
+			<Team
+				isDoublesMatch={isDoublesMatch}
+				licenceA={playerLicences.playerB}
+				licenceB={playerLicences.playerD}
+				onPlayerAChange={addPlayerB}
+				onPlayerAClear={clearPlayerB}
+				onPlayerBChange={addPlayerD}
+				onPlayerBClear={clearPlayerD}
+				playerALabel={t('PLAYER_B')}
+				playerBLabel={t('PLAYER_D')}
+			/>
 		</div>
 		<div className={styles.configuration}>
 			<MatchConfiguration
