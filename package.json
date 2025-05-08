@@ -21,7 +21,7 @@
     "axios": "1.9.0",
     "dayjs": "1.11.13",
     "i18next": "24.2.3",
-    "i18next-browser-languagedetector": "8.0.2",
+    "i18next-browser-languagedetector": "8.1.0",
     "mathjs": "14.4.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
