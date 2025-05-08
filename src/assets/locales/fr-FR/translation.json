@@ -1,13 +1,8 @@
 {
-  "APP": {
-    "TITLE": "FFBad - Simulateur de classement",
-    "DESCRIPTION_CONTENT": "Utilisez ce simulateur pour estimer votre nouveau classement FFBaD."
-  },
-  "TITLE": "FFBad - Simulateur nouveau classement",
+  "TITLE": "Simulateur du classement 2025 au badminton",
   "CONVERT_PAGE": {
     "TITLE": "Convertir son classement dans le nouveau format",
-    "LOADING": "Chargement...",
-    "INPUT_LABEL": "Chercher un joueur ou joueuse"
+    "LOADING": "Chargement..."
   },
   "DISPLAY_NEW_RANKINGS": {
     "RANKING_DATE": "Date d'actualisation des classements : ",
