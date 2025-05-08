@@ -62,18 +62,3 @@
     align-items: center;
     gap: 1rem;
 }
-
-.button {
-    width: 100%;
-    &>button {
-        padding: 0;
-    }
-    @media (min-width: $mantine-breakpoint-md) {
-        width: unset;
-        flex: 0 0 auto;
-    }
-}
-
-.buttonLabel {
-    padding-left: 0.5rem;
-}

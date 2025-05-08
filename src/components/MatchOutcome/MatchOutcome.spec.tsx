@@ -13,56 +13,169 @@ jest.mock('@components/PlayerOutcome/PlayerOutcome', () => ({
 }));
 
 describe('MatchOutcome', () => {
-	it('should render for a singles match', () => {
-		const playerA: PlayerOutcomeProps = {
-			name: 'Player A',
-			outcome: WINS,
-			points: 1,
-			ranking: 500,
-		};
-		const playerB: PlayerOutcomeProps = {
-			name: 'Player B',
-			outcome: LOSES,
-			points: -1,
-			ranking: 500,
-		};
-		const { container } = render(
-			<MatchOutcome
-				label="Singles"
-				playerA={playerA}
-				playerB={playerB}
-			/>,
-		);
+	describe('variant large', () => {
+		it('should render for a singles match', () => {
+			const playerA: PlayerOutcomeProps = {
+				name: 'Player A',
+				outcome: WINS,
+				points: 1,
+				ranking: 500,
+			};
+			const playerB: PlayerOutcomeProps = {
+				name: 'Player B',
+				outcome: LOSES,
+				points: -1,
+				ranking: 500,
+			};
+			const { container } = render(
+				<MatchOutcome
+					label="Singles"
+					playerA={playerA}
+					playerB={playerB}
+				/>,
+			);
 
-		expect(container).toMatchInlineSnapshot(`
-      <div
-        class="container"
-      >
-        <span>
-          Singles
-        </span>
+			expect(container).toMatchInlineSnapshot(`
         <div
-          class="calculationContainer"
+          class="container large"
         >
+          <span>
+            Singles
+          </span>
           <div
-            class="team"
+            class="calculationContainer"
           >
-            <div>
-              PlayerOutcome:
-              Player A
+            <div
+              class="team"
+            >
+              <div>
+                PlayerOutcome:
+                Player A
+              </div>
             </div>
-          </div>
-          <div
-            class="team"
-          >
-            <div>
-              PlayerOutcome:
-              Player B
+            <div
+              class="team"
+            >
+              <div>
+                PlayerOutcome:
+                Player B
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `);
+      `);
+		});
+
+		it('should render for a doubles match', () => {
+			const playerA: PlayerOutcomeProps = {
+				name: 'Player A',
+				outcome: WINS,
+				points: 1,
+				ranking: 500,
+			};
+			const playerB: PlayerOutcomeProps = {
+				name: 'Player B',
+				outcome: LOSES,
+				points: -1,
+				ranking: 500,
+			};
+			const playerC: PlayerOutcomeProps = {
+				name: 'Player C',
+				outcome: WINS,
+				points: 1,
+				ranking: 500,
+			};
+			const playerD: PlayerOutcomeProps = {
+				name: 'Player D',
+				outcome: LOSES,
+				points: -1,
+				ranking: 500,
+			};
+			const { container } = render(
+				<MatchOutcome
+					label="Doubles"
+					playerA={playerA}
+					playerB={playerB}
+					playerC={playerC}
+					playerD={playerD}
+				/>,
+			);
+
+			expect(container).toMatchInlineSnapshot(`
+        <div
+          class="container large"
+        >
+          <span>
+            Doubles
+          </span>
+          <div
+            class="calculationContainer"
+          >
+            <div
+              class="team"
+            >
+              <div>
+                PlayerOutcome:
+                Player A
+              </div>
+              <div>
+                PlayerOutcome:
+                Player C
+              </div>
+            </div>
+            <div
+              class="team"
+            >
+              <div>
+                PlayerOutcome:
+                Player B
+              </div>
+              <div>
+                PlayerOutcome:
+                Player D
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+		});
+	});
+
+	describe('variant small', () => {
+		it('should render for a singles match', () => {
+			const playerA: PlayerOutcomeProps = {
+				name: 'Player A',
+				outcome: WINS,
+				points: 1,
+				ranking: 500,
+			};
+			const { container } = render(
+				<MatchOutcome
+					label="Singles"
+					playerA={playerA}
+					variant="small"
+				/>,
+			);
+
+			expect(container).toMatchInlineSnapshot(`
+        <div
+          class="container small"
+        >
+          <div
+            class="calculationContainer"
+          >
+            <div
+              class="team"
+            >
+              <div>
+                PlayerOutcome:
+                Player A
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+		});
 	});
 
 	it('should render for a doubles match', () => {
@@ -72,41 +185,25 @@ describe('MatchOutcome', () => {
 			points: 1,
 			ranking: 500,
 		};
-		const playerB: PlayerOutcomeProps = {
-			name: 'Player B',
-			outcome: LOSES,
-			points: -1,
-			ranking: 500,
-		};
 		const playerC: PlayerOutcomeProps = {
 			name: 'Player C',
 			outcome: WINS,
 			points: 1,
 			ranking: 500,
 		};
-		const playerD: PlayerOutcomeProps = {
-			name: 'Player D',
-			outcome: LOSES,
-			points: -1,
-			ranking: 500,
-		};
 		const { container } = render(
 			<MatchOutcome
 				label="Doubles"
 				playerA={playerA}
-				playerB={playerB}
 				playerC={playerC}
-				playerD={playerD}
+				variant={'small'}
 			/>,
 		);
 
 		expect(container).toMatchInlineSnapshot(`
       <div
-        class="container"
+        class="container small"
       >
-        <span>
-          Doubles
-        </span>
         <div
           class="calculationContainer"
         >
@@ -120,18 +217,6 @@ describe('MatchOutcome', () => {
             <div>
               PlayerOutcome:
               Player C
-            </div>
-          </div>
-          <div
-            class="team"
-          >
-            <div>
-              PlayerOutcome:
-              Player B
-            </div>
-            <div>
-              PlayerOutcome:
-              Player D
             </div>
           </div>
         </div>

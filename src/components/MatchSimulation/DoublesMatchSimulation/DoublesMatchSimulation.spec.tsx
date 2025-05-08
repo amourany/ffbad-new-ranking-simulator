@@ -23,7 +23,7 @@ jest.mock('@engine/simulation/simulate-points-distribution', () => ({
 }));
 
 describe('DoublesMatchSimulation', () => {
-	it('should render', () => {
+	it('should render for large variation', () => {
 		const { container } = render(
 			<DoublesMatchSimulation
 				matchFactor={1}
@@ -47,5 +47,48 @@ describe('DoublesMatchSimulation', () => {
         </div>
       </div>
     `);
+	});
+
+	it('should render for small variation', () => {
+		const { container } = render(
+			<DoublesMatchSimulation
+				matchFactor={1}
+				playerA={malePlayerInfo}
+				playerB={malePlayerInfo}
+				playerC={femalePlayerInfo}
+				playerD={femalePlayerInfo}
+				rankingExtractor={(player) => player.convertedRankings.mixedRate}
+				variant={'small'}
+			/>,
+		);
+
+		expect(container).toMatchInlineSnapshot(`
+      <div
+        class="outcomes"
+      >
+        <div>
+          MatchOutcome
+        </div>
+      </div>
+    `);
+	});
+
+	it('should register points when function is provided', () => {
+		const registerPoints = jest.fn();
+		render(
+			<DoublesMatchSimulation
+				isTeamAWinning={true}
+				matchFactor={1}
+				playerA={malePlayerInfo}
+				playerB={malePlayerInfo}
+				playerC={femalePlayerInfo}
+				playerD={femalePlayerInfo}
+				rankingExtractor={(player) => player.convertedRankings.mixedRate}
+				registerOutcomePoints={registerPoints}
+				variant={'small'}
+			/>,
+		);
+
+		expect(registerPoints).toHaveBeenCalled();
 	});
 });

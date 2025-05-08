@@ -18,6 +18,10 @@ export const sitemap: Sitemap<TRoutes> = {
 			changeFrequency: 'daily',
 			priority: 1,
 		},
+		'/simulate-tournament': {
+			changeFrequency: 'daily',
+			priority: 1,
+		},
 	},
 	siteUrl: 'https://amourany.github.io/ffbad-new-ranking-simulator/#',
 };

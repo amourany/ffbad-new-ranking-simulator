@@ -1,7 +1,7 @@
 {
   "name": "ffbad-new-ranking-simulator",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
@@ -25,7 +25,9 @@
     "mathjs": "14.4.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-i18next": "15.5.1"
+    "react-i18next": "15.5.1",
+    "uuid": "11.1.0",
+    "zustand": "5.0.4"
   },
   "devDependencies": {
     "@eslint/js": "9.26.0",
@@ -62,7 +64,7 @@
     "postcss": "8.5.3",
     "postcss-preset-mantine": "1.17.0",
     "postcss-simple-vars": "7.0.1",
-    "prettier-2": "npm:prettier@^3.0.0",
+    "prettier-2": "npm:prettier@^2",
     "tanstack-router-sitemap": "1.0.12",
     "ts-jest": "29.3.2",
     "ts-node": "10.9.2",

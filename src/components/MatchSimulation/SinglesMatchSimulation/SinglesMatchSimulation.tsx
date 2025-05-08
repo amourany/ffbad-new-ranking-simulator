@@ -4,20 +4,37 @@ import { useTranslation } from '@hooks/useTranslation';
 import { LOSES, Outcome, WINS, simulateSinglesMatch } from '@engine/simulation/simulate-match';
 import { PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './SinglesMatchSimulation.module.css';
+import { useEffect, useMemo } from 'react';
 
 export type SinglesMatchSimulationProps = {
 	playerA: PlayerInfo;
 	playerB: PlayerInfo;
 	matchFactor: number;
+	isTeamAWinning?: boolean;
+	registerOutcomePoints?: (points: number) => void;
+	variant?: 'small' | 'large';
 };
 
-export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor }: SinglesMatchSimulationProps) => {
+export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor, isTeamAWinning, registerOutcomePoints, variant }: SinglesMatchSimulationProps) => {
 
 	const { t } = useTranslation({ keyPrefix: 'SINGLES_MATCH_SIMULATION' });
 
 	const singleRankingMe = playerA.convertedRankings.singleRate;
 	const singleRankingOpponent = playerB.convertedRankings.singleRate;
-	const matchResult = simulateSinglesMatch(singleRankingMe, singleRankingOpponent, matchFactor);
+	const matchResult = useMemo(() => simulateSinglesMatch(singleRankingMe, singleRankingOpponent, matchFactor), [
+		singleRankingMe,
+		singleRankingOpponent,
+		matchFactor,
+	]);
+
+	useEffect(() => {
+		if (registerOutcomePoints) {
+			registerOutcomePoints(isTeamAWinning ? matchResult[0].wins : matchResult[1].losses);
+		}
+	}, [
+		isTeamAWinning,
+		matchResult,
+	]);
 
 	const convertToOutcome = (player: PlayerInfo, points: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,
@@ -26,18 +43,36 @@ export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor }: Single
 		ranking: player.convertedRankings.singleRate,
 	});
 
+	const renderWinningTeam = () => (
+		<MatchOutcome
+			label={t('LABEL', { value: playerA.name })}
+			playerA={convertToOutcome(playerA, matchResult[0].wins, WINS)}
+			playerB={convertToOutcome(playerB, matchResult[0].losses, LOSES)}
+			variant={variant}
+		/>
+	);
+
+	const renderLosingTeam = () => (
+		<MatchOutcome
+			label={t('LABEL', { value: playerB.name })}
+			playerA={convertToOutcome(playerA, matchResult[1].losses, LOSES)}
+			playerB={convertToOutcome(playerB, matchResult[1].wins, WINS)}
+			variant={variant}
+		/>
+	);
+
+	const renderSmall = () => (<>{isTeamAWinning ? renderWinningTeam() : renderLosingTeam()}</>);
+
+	const renderLarge = () => (
+		<>
+			{renderWinningTeam()}
+			{renderLosingTeam()}
+		</>
+	);
+
 	return (
 		<div className={styles.outcomes}>
-			<MatchOutcome
-				label={t('LABEL', { value: playerA.name })}
-				playerA={convertToOutcome(playerA, matchResult[0].wins, WINS)}
-				playerB={convertToOutcome(playerB, matchResult[0].losses, LOSES)}
-			/>
-			<MatchOutcome
-				label={t('LABEL', { value: playerB.name })}
-				playerA={convertToOutcome(playerA, matchResult[1].losses, LOSES)}
-				playerB={convertToOutcome(playerB, matchResult[1].wins, WINS)}
-			/>
+			{variant === 'small' ? renderSmall() : renderLarge()}
 		</div>
 	);
 };

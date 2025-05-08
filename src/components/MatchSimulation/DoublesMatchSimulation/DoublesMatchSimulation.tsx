@@ -6,6 +6,7 @@ import { simulatePointsDistribution } from '@engine/simulation/simulate-points-d
 import { PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './DoublesMatchSimulation.module.css';
 import { mean } from 'mathjs';
+import { useEffect, useMemo } from 'react';
 
 export type DoublesMatchSimulationProps = {
 	playerA: PlayerInfo,
@@ -14,8 +15,11 @@ export type DoublesMatchSimulationProps = {
 	playerD: PlayerInfo,
 	rankingExtractor: (player: PlayerInfo) => number,
 	matchFactor: number
+	isTeamAWinning?: boolean;
+	registerOutcomePoints?: (points: number) => void;
+	variant?: 'small' | 'large';
 };
-export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor, matchFactor }:DoublesMatchSimulationProps) => {
+export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor, matchFactor, isTeamAWinning, variant, registerOutcomePoints }:DoublesMatchSimulationProps) => {
 	const { t } = useTranslation({ keyPrefix: 'DOUBLES_MATCH_SIMULATION' });
 
 	const playerADoublesRanking = rankingExtractor(playerA);
@@ -23,7 +27,22 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 	const playerCDoublesRanking = rankingExtractor(playerC);
 	const playerDDoublesRanking = rankingExtractor(playerD);
 
-	const matchResult = simulateDoublesMatch(mean(playerADoublesRanking, playerCDoublesRanking), mean(playerBDoublesRanking, playerDDoublesRanking), matchFactor);
+	const matchResult = useMemo(() => simulateDoublesMatch(mean(playerADoublesRanking, playerCDoublesRanking), mean(playerBDoublesRanking, playerDDoublesRanking), matchFactor), [
+		playerADoublesRanking,
+		playerBDoublesRanking,
+		playerCDoublesRanking,
+		playerDDoublesRanking,
+		matchFactor,
+	]);
+
+	useEffect(() => {
+		if (registerOutcomePoints) {
+			registerOutcomePoints(isTeamAWinning ? matchResult[0].wins : matchResult[1].losses);
+		}
+	}, [
+		isTeamAWinning,
+		matchResult,
+	]);
 
 	const convertToOutcome = (player: PlayerInfo, teammate: PlayerInfo, pointsToShare: number, outcome: Outcome): PlayerOutcomeProps => ({
 		name: player.name,
@@ -32,24 +51,42 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 		ranking: rankingExtractor(player),
 	});
 
+	const renderWinningTeam = () => (
+		<MatchOutcome
+			label={t('LABEL', { playerA: playerA.name,
+				playerB: playerC.name })}
+			playerA={convertToOutcome(playerA, playerC, matchResult[0].wins, WINS)}
+			playerB={convertToOutcome(playerB, playerD, matchResult[0].losses, LOSES)}
+			playerC={convertToOutcome(playerC, playerA, matchResult[0].wins, WINS)}
+			playerD={convertToOutcome(playerD, playerB, matchResult[0].losses, LOSES)}
+			variant={variant}
+		/>
+	);
+
+	const renderLosingTeam = () => (
+		<MatchOutcome
+			label={t('LABEL', { playerA: playerB.name,
+				playerB: playerD.name })}
+			playerA={convertToOutcome(playerA, playerC, matchResult[1].losses, LOSES)}
+			playerB={convertToOutcome(playerB, playerD, matchResult[1].wins, WINS)}
+			playerC={convertToOutcome(playerC, playerA, matchResult[1].losses, LOSES)}
+			playerD={convertToOutcome(playerD, playerB, matchResult[1].wins, WINS)}
+			variant={variant}
+		/>
+	);
+
+	const renderSmall = () => (<>{isTeamAWinning ? renderWinningTeam() : renderLosingTeam()}</>);
+
+	const renderLarge = () => (
+		<>
+			{renderWinningTeam()}
+			{renderLosingTeam()}
+		</>
+	);
+
 	return (
 		<div className={styles.outcomes}>
-			<MatchOutcome
-				label={t('LABEL', { playerA: playerA.name,
-					playerB: playerC.name })}
-				playerA={convertToOutcome(playerA, playerC, matchResult[0].wins, WINS)}
-				playerB={convertToOutcome(playerB, playerD, matchResult[0].losses, LOSES)}
-				playerC={convertToOutcome(playerC, playerA, matchResult[0].wins, WINS)}
-				playerD={convertToOutcome(playerD, playerB, matchResult[0].losses, LOSES)}
-			/>
-			<MatchOutcome
-				label={t('LABEL', { playerA: playerB.name,
-					playerB: playerD.name })}
-				playerA={convertToOutcome(playerA, playerC, matchResult[1].losses, LOSES)}
-				playerB={convertToOutcome(playerB, playerD, matchResult[1].wins, WINS)}
-				playerC={convertToOutcome(playerC, playerA, matchResult[1].losses, LOSES)}
-				playerD={convertToOutcome(playerD, playerB, matchResult[1].wins, WINS)}
-			/>
+			{variant === 'small' ? renderSmall() : renderLarge()}
 		</div>
 	);
 };

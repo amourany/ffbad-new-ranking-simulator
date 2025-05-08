@@ -21,6 +21,10 @@ jest.mock('@api/player-ranking/useFetchPlayerRankings', () => ({
 	useFetchPlayerRankings: jest.fn(),
 }));
 
+jest.mock('@engine/simulation/resolve-rank-extractor', () => ({
+	resolveExtractor: jest.fn(),
+}));
+
 describe('MatchSimulation', () => {
 	describe('Singles', () => {
 		it('should render', () => {

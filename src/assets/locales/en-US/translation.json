@@ -18,7 +18,11 @@
   },
   "LAYOUT": {
     "CONVERT": "Convert",
-    "SIMULATE": "Simulate a match"
+    "SIMULATE": "Simulate a match",
+    "SIMULATE_TOURNAMENT": "Simulate a tournament",
+    "MOBILE_CONVERT": "Convert",
+    "MOBILE_SIMULATE": "Match",
+    "MOBILE_SIMULATE_TOURNAMENT": "Tournament"
   },
   "SEARCH_PLAYER_INPUT": {
     "PLACEHOLDER": "Search player by first or last name",
@@ -91,5 +95,26 @@
     "DOUBLES": "Doubles",
     "MIXED": "Mixed"
   },
+  "TOURNAMENT_SIMULATION_PAGE": {
+    "ADD_MATCH": "Add Match",
+    "DOUBLES_TITLE": "Simulate a Doubles Tournament",
+    "SINGLES_TITLE": "Simulate a Singles Tournament",
+    "TOURNAMENT_RESULT": "Tournament Result:",
+    "SIMULATE_SINGLES_TOURNAMENT": "Simulate Singles Tournament",
+    "SIMULATE_DOUBLES_TOURNAMENT": "Simulate Doubles Tournament",
+    "PLAYER_A": "Player A",
+    "PLAYER_B": "Player B"
+  },
+  "TOURNAMENT_MATCH": {
+    "MATCH_OUTCOME": "Match Outcome:",
+    "WINS": "Wins",
+    "LOSES": "Loses",
+    "AGAINST": "against",
+    "MATCH_INDEX": "Match {{index}}",
+    "REMOVE_MATCH": "Remove Match",
+    "PLAYER_A": "Player A",
+    "PLAYER_B": "Player B"
+  },
+
   "intlDate": "{{val, datetime}}"
 }
