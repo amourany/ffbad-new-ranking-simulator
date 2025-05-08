@@ -174,6 +174,7 @@ const mockAppShell = () => {
 	MockAppShell.Header = renderAsDiv('AppShellHeader');
 	MockAppShell.Main = renderAsDiv('AppShellMain');
 	MockAppShell.Navbar = renderAsNav('AppShellNavbar');
+	MockAppShell.Footer = renderAsDiv('AppShellFooter');
 
 	return MockAppShell;
 };

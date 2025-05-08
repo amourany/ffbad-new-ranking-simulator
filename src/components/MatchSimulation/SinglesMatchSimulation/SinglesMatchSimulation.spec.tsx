@@ -16,7 +16,7 @@ jest.mock('@engine/simulation/simulate-match', () => ({
 }));
 
 describe('SinglesMatchSimulation', () => {
-	it('should render', () => {
+	it('should render for large variant', () => {
 		const { container } = render(
 			<SinglesMatchSimulation
 				matchFactor={1}
@@ -39,4 +39,40 @@ describe('SinglesMatchSimulation', () => {
     `);
 	});
 
+	it('should render for small variant', () => {
+		const { container } = render(
+			<SinglesMatchSimulation
+				matchFactor={1}
+				playerA={malePlayerInfo}
+				playerB={femalePlayerInfo}
+				variant={'small'}
+			/>,
+		);
+
+		expect(container).toMatchInlineSnapshot(`
+      <div
+        class="outcomes"
+      >
+        <div>
+          MatchOutcome
+        </div>
+      </div>
+    `);
+	});
+
+	it('should register points when function is provided', () => {
+		const registerPoints = jest.fn();
+		render(
+			<SinglesMatchSimulation
+				isTeamAWinning={true}
+				matchFactor={1}
+				playerA={malePlayerInfo}
+				playerB={malePlayerInfo}
+				registerOutcomePoints={registerPoints}
+				variant={'small'}
+			/>,
+		);
+
+		expect(registerPoints).toHaveBeenCalled();
+	});
 });

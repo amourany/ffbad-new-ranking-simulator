@@ -1,0 +1,77 @@
+.match {
+    padding: 1rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    width: inherit;
+}
+
+.opponent {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+
+    @media(min-width: $mantine-breakpoint-lg) {
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+    }
+}
+
+.matchTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.outcome {
+    width: 80%;
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    @media(min-width: $mantine-breakpoint-lg) {
+        width: unset;
+    }
+}
+
+.winLoseSelector {
+    flex: 1 0 auto;
+}
+
+.against {
+    width: 100%;
+    @media(min-width: $mantine-breakpoint-lg) {
+        width: unset;
+    }
+}
+
+.opponentTeam {
+    flex: 1 0 auto;
+    width: 100%;
+    @media(min-width: $mantine-breakpoint-lg) {
+        width: unset;
+        max-width: 50%;
+    }
+}
+
+.divider {
+    width: 100%;
+    @media(min-width: $mantine-breakpoint-lg) {
+        width: unset;
+        flex: 0 0 auto
+    }
+}
+
+.simulation {
+    flex: 0 1 auto;
+    width: 100%;
+
+    @media(min-width: $mantine-breakpoint-lg) {
+        width: unset;
+        max-width: 50%;
+    }
+}

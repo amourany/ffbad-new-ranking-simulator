@@ -1,6 +1,7 @@
-import { PlayerInfo, useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
+import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 import { SinglesMatchSimulation } from '@components/MatchSimulation/SinglesMatchSimulation/SinglesMatchSimulation';
+import { resolveExtractor } from '@engine/simulation/resolve-rank-extractor';
 
 export type MatchConfig = {
 	matchMultiplyingFactor: number;
@@ -14,10 +15,13 @@ export type MatchSimulationProps = {
 	playerBLicence: number|undefined;
 	playerCLicence: number|undefined;
 	playerDLicence: number|undefined;
-	matchConfiguration: MatchConfig
+	matchConfiguration: MatchConfig;
+	isTeamAWinning?: boolean;
+	registerOutcomePoints?: (points: number) => void;
+	variant?: 'small' | 'large';
 };
 
-export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence, playerDLicence, matchConfiguration }: MatchSimulationProps) => {
+export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence, playerDLicence, matchConfiguration, isTeamAWinning, registerOutcomePoints, variant='large' }: MatchSimulationProps) => {
 
 	const { matchMultiplyingFactor, isCrossGenderMatch, isMixedDoubles, isDoublesMatch } = matchConfiguration;
 
@@ -28,27 +32,29 @@ export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence
 
 	if (isDoublesMatch) {
 		if (!!playerA && !!playerB && !!playerC && !!playerD) {
-			const mixedDoublesExtractor = (player: PlayerInfo) => player.convertedRankings.mixedRate;
-			const doublesExtractor = (player: PlayerInfo) => player.convertedRankings.doubleRate;
-			const mixedOrCrossGenderExtractor = isCrossGenderMatch ?  doublesExtractor: mixedDoublesExtractor;
-
-			const rankingExtractor = isMixedDoubles ?  mixedOrCrossGenderExtractor:doublesExtractor;
+			const rankingExtractor = resolveExtractor(true, isCrossGenderMatch, isMixedDoubles);
 
 			return <DoublesMatchSimulation
+				isTeamAWinning={isTeamAWinning}
 				matchFactor={matchMultiplyingFactor}
 				playerA={playerA}
 				playerB={playerB}
 				playerC={playerC}
 				playerD={playerD}
 				rankingExtractor={rankingExtractor}
+				registerOutcomePoints={registerOutcomePoints}
+				variant={variant}
 			/>;
 		}
 	} else {
 		if (!!playerA && !!playerB) {
 			return <SinglesMatchSimulation
+				isTeamAWinning={isTeamAWinning}
 				matchFactor={matchMultiplyingFactor}
 				playerA={playerA}
 				playerB={playerB}
+				registerOutcomePoints={registerOutcomePoints}
+				variant={variant}
 			/>;
 		}
 	}

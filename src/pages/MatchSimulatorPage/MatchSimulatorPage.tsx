@@ -1,16 +1,15 @@
-import { ReactElement, useState } from 'react';
-import { Button } from '@mantine/core';
+import { useState } from 'react';
 import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import styles from './MatchSimulatorPage.module.css';
 import { useTranslation } from '@hooks/useTranslation';
 import { useNavigate } from '@tanstack/react-router';
 import { Route, SimulateRouteSearch } from '@routes/simulate';
-import { IconUsersMinus, IconUsersPlus } from '@tabler/icons-react';
 import { isMixedDoublesTeam } from '@engine/simulation/simulate-match';
 import { MatchConfiguration } from '@components/MatchConfiguration/MatchConfiguration';
 import { Title } from '@components/Title/Title';
 import { Team } from '@components/Team/Team';
 import { MatchSimulation } from '@components/MatchSimulation/MatchSimulation';
+import { SinglesDoublesSwitcher } from '@components/SinglesDoublesSwitcher/SinglesDoublesSwitcher';
 
 const PLAYER_A_INDEX = 0;
 const PLAYER_B_INDEX = 1;
@@ -99,18 +98,6 @@ export const MatchSimulatorPage = () => {
 		await clearPlayer(PLAYER_D_INDEX)();
 	};
 
-	const renderMatchTypeSwitch = (children: ReactElement) => (
-		<div className={styles.button}>
-			<Button
-				color= 'black'
-				onClick={switchMatchType}
-				variant='subtle'
-			>
-				{children}
-			</Button>
-		</div>
-	);
-
 	return <div className={styles.container}>
 		<div className={styles.titleRow}>
 			<Title
@@ -121,14 +108,12 @@ export const MatchSimulatorPage = () => {
 				]}
 				withTooltip = {isDoublesMatch}
 			/>
-			{isDoublesMatch ? renderMatchTypeSwitch(<>
-				<IconUsersMinus />
-				<div className={styles.buttonLabel}>{t('SIMULATE_SINGLES_MATCH')}</div>
-			</>) :
-				renderMatchTypeSwitch(<>
-					<IconUsersPlus />
-					<div className={styles.buttonLabel}>{t('SIMULATE_DOUBLES_MATCH')}</div>
-				</>)}
+			<SinglesDoublesSwitcher
+				doublesLabel={t('DOUBLES_TITLE')}
+				isDoublesMatch={isDoublesMatch}
+				onChange={switchMatchType}
+				singlesLabel={t('SINGLES_TITLE')}
+			/>
 		</div>
 		<div className={styles.playerInputsContainer}>
 			<Team

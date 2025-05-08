@@ -17,8 +17,12 @@
     "LABEL": "Si {{value}} gagne le match"
   },
   "LAYOUT": {
-    "CONVERT": "Convertir",
-    "SIMULATE": "Simuler un match"
+    "CONVERT": "Convertir son classement",
+    "SIMULATE": "Simuler un match",
+    "SIMULATE_TOURNAMENT": "Simuler un tournoi",
+    "MOBILE_CONVERT": "Classement",
+    "MOBILE_SIMULATE": "Match",
+    "MOBILE_SIMULATE_TOURNAMENT": "Tournoi"
   },
   "SEARCH_PLAYER_INPUT": {
     "LOADING": "Chargement...",
@@ -89,6 +93,26 @@
     "SINGLE": "Simple",
     "DOUBLES": "Double",
     "MIXED": "Mixte"
+  },
+  "TOURNAMENT_SIMULATION_PAGE": {
+    "ADD_MATCH": "Ajouter un match",
+    "DOUBLES_TITLE": "Simuler un tournoi de doubles",
+    "SINGLES_TITLE": "Simuler un tournoi de simples",
+    "TOURNAMENT_RESULT": "Résultat du tournoi :",
+    "SIMULATE_SINGLES_TOURNAMENT": "Simuler un tournoi de simples",
+    "SIMULATE_DOUBLES_TOURNAMENT": "Simuler un tournoi de doubles",
+    "PLAYER_A": "Joueur A",
+    "PLAYER_B": "Joueur B"
+  },
+  "TOURNAMENT_MATCH" : {
+    "MATCH_OUTCOME": "Résultat du match : ",
+    "WINS": "Victoire",
+    "LOSES": "Défaite",
+    "AGAINST": "contre",
+    "MATCH_INDEX": "Match {{index}}",
+    "REMOVE_MATCH": "Supprimer le match",
+    "PLAYER_A": "Joueur A",
+    "PLAYER_B": "Joueur B"
   },
   "intlDate": "{{val, datetime}}"
 }
