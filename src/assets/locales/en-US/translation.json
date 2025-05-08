@@ -2,7 +2,8 @@
   "TITLE": "Badminton new ranking simulator",
   "CONVERT_PAGE": {
     "TITLE": "Convert a ranking to new system",
-    "LOADING": "Loading..."
+    "LOADING": "Loading...",
+    "INPUT_LABEL": "Search for a player"
   },
   "DISPLAY_NEW_RANKINGS": {
     "RANKING_DATE": "Actualisation date: ",
