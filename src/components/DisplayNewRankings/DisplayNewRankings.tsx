@@ -1,4 +1,4 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayersRankings';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 import { useTranslation } from '@hooks/useTranslation';
 import { useDateFormat } from '@hooks/useFormatDate';
 import { RankingSet } from '@components/RankingSet/RankingSet';

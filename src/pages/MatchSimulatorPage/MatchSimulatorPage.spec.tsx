@@ -1,6 +1,6 @@
 import { render } from '@jestConfig/render';
 import { MatchSimulatorPage } from '@pages/MatchSimulatorPage/MatchSimulatorPage';
-import { useFetchPlayersRankings } from '@api/player-ranking/useFetchPlayersRankings';
+import { useFetchPlayerRankings } from '@api/player-ranking/useFetchPlayerRankings';
 import { Route } from '@routes/simulate';
 import { PlayerInMatchProps } from '@components/PlayerInMatch/PlayerInMatch';
 import {
@@ -19,8 +19,8 @@ jest.mock('@components/PlayerInMatch/PlayerInMatch', () => ({
 	),
 }));
 
-jest.mock('@api/player-ranking/useFetchPlayersRankings', () => ({
-	useFetchPlayersRankings: jest.fn(),
+jest.mock('@api/player-ranking/useFetchPlayerRankings', () => ({
+	useFetchPlayerRankings: jest.fn(),
 }));
 
 jest.mock(
@@ -58,24 +58,7 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: undefined },
-				],
-				[
-					'playerB',
-					{ data: undefined },
-				],
-				[
-					'playerC',
-					{ data: undefined },
-				],
-				[
-					'playerD',
-					{ data: undefined },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined });
 
 			const { container } = render(<MatchSimulatorPage />);
 
@@ -150,24 +133,10 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: undefined },
-				],
-				[
-					'playerD',
-					{ data: undefined },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock)
+				.mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValue({ data:undefined });
 
 			const { container } = render(<MatchSimulatorPage />);
 
@@ -245,31 +214,15 @@ describe('MatchSimulatorPage', () => {
 				playerB: 'licenceB',
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: undefined },
-				],
-				[
-					'playerD',
-					{ data: undefined },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock)
+				.mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValue({ data:undefined });
 
 			render(<MatchSimulatorPage />);
 
-			expect(useFetchPlayersRankings).toHaveBeenCalledWith({
-				playerA: 'licenceA',
-				playerB: 'licenceB',
-			});
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceA');
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceB');
 		});
 
 		it('should switch to doubles view on switch click', () => {
@@ -278,24 +231,10 @@ describe('MatchSimulatorPage', () => {
 				playerB: 'licenceB',
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: undefined },
-				],
-				[
-					'playerD',
-					{ data: undefined },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock)
+				.mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValue({ data:undefined });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -383,24 +322,7 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: undefined },
-				],
-				[
-					'playerB',
-					{ data: undefined },
-				],
-				[
-					'playerC',
-					{ data: undefined },
-				],
-				[
-					'playerD',
-					{ data: undefined },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data: undefined });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -486,24 +408,7 @@ describe('MatchSimulatorPage', () => {
 				playerB: undefined,
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerD',
-					{ data: femalePlayerInfo },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock).mockReturnValue({ data:malePlayerInfo });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 
@@ -594,33 +499,17 @@ describe('MatchSimulatorPage', () => {
 				playerD: 'licenceD',
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerD',
-					{ data: femalePlayerInfo },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock).mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo });
 
 			render(<MatchSimulatorPage />);
 
-			expect(useFetchPlayersRankings).toHaveBeenCalledWith({
-				playerA: 'licenceA',
-				playerB: 'licenceB',
-				playerC: 'licenceC',
-				playerD: 'licenceD',
-			});
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceA');
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceB');
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceC');
+			expect(useFetchPlayerRankings).toHaveBeenCalledWith('licenceD');
 		});
 
 		it('should switch to singles view on switch click', () => {
@@ -631,24 +520,11 @@ describe('MatchSimulatorPage', () => {
 				playerD: 'licenceD',
 			});
 
-			(useFetchPlayersRankings as jest.Mock).mockReturnValue([
-				[
-					'playerA',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerB',
-					{ data: femalePlayerInfo },
-				],
-				[
-					'playerC',
-					{ data: malePlayerInfo },
-				],
-				[
-					'playerD',
-					{ data: femalePlayerInfo },
-				],
-			]);
+			(useFetchPlayerRankings as jest.Mock).mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValueOnce({ data: malePlayerInfo })
+				.mockReturnValueOnce({ data: femalePlayerInfo })
+				.mockReturnValue({ data:malePlayerInfo });
 
 			const { container, getByRole, rerender } = render(<MatchSimulatorPage />);
 

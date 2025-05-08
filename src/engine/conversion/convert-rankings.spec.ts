@@ -1,5 +1,5 @@
 import { adjustNewRankings } from '@engine/conversion/migrate-ranking';
-import { FEMALE, MALE } from '@api/player-ranking/useFetchPlayersRankings';
+import { FEMALE, MALE } from '@api/player-ranking/useFetchPlayerRankings';
 
 describe('convertRankings', () => {
 	it('should adjust for a male player', () => {
