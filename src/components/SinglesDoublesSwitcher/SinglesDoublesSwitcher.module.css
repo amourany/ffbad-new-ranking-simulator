@@ -3,7 +3,7 @@
     &>button {
         padding: 0;
     }
-    @media (min-width: $mantine-breakpoint-lg) {
+    @media (min-width: $mantine-breakpoint-md) {
         width: unset;
         flex: 0 0 auto;
     }
