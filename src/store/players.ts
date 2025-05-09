@@ -58,11 +58,14 @@ export const usePlayersStore = create<PlayersStore & PlayersActionsType>((set) =
 			return opponent;
 		}),
 	})),
-	clearTournament: () => set({ opponents: [],
+	clearTournament: () => set((state) => ({
+		...state,
+		opponents: [],
 		players: [
+			state.players[0],
 			undefined,
-			undefined,
-		] }),
+		],
+	})),
 	opponents: [],
 	players: [
 		undefined,
