@@ -34,7 +34,6 @@ export const TournamentSimulationPage = () => {
 	const clearTournament = usePlayersStore(state => state.clearTournament);
 
 	const isDoublesMatch = useTournamentConfigurationStore(state => state.isDoublesMatch);
-	// const isMixedDoubles = useTournamentConfigurationStore(state => state.isMixedDoubles)
 	const isCrossGenderMatch = useTournamentConfigurationStore(state => state.isCrossGenderMatch);
 	const setIsDoublesMatch = useTournamentConfigurationStore(state => state.setIsDoublesMatch);
 	const setIsCrossGenderMatch = useTournamentConfigurationStore(state => state.setIsCrossGenderMatch);
