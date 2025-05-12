@@ -37,6 +37,7 @@ export const TournamentSimulationPage = () => {
 	const isCrossGenderMatch = useTournamentConfigurationStore(state => state.isCrossGenderMatch);
 	const setIsDoublesMatch = useTournamentConfigurationStore(state => state.setIsDoublesMatch);
 	const setIsCrossGenderMatch = useTournamentConfigurationStore(state => state.setIsCrossGenderMatch);
+	const setIsMixedDoubles = useTournamentConfigurationStore(state => state.setIsMixedDoubles);
 	const setMatchMultiplyingFactor = useTournamentConfigurationStore(state => state.setMatchMultiplyingFactor);
 
 	const { t } = useTranslation({ keyPrefix: 'TOURNAMENT_SIMULATION_PAGE' });
@@ -52,6 +53,7 @@ export const TournamentSimulationPage = () => {
 	const isMixedDoubles = isMixedDoublesTeam(playerA?.gender, playerB?.gender);
 
 	useEffect(() => {
+		setIsMixedDoubles(isMixedDoubles);
 		setIsCrossGenderMatch(!isMixedDoubles);
 	}, [
 		isMixedDoubles,
