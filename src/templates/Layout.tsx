@@ -17,6 +17,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 
 	const theme = useMantineTheme();
 	const isDesktop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`, true);
+	const activeTab = location.pathname.slice(1).length > 0 ? location.pathname.slice(1) : 'convert';
 
 	const renderContent = () => (
 		<div className={styles.content}>
@@ -29,7 +30,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 		<Tabs
 			keepMounted={false}
 			radius="md"
-			value={location.pathname.slice(1)}
+			value={activeTab}
 			variant="outline"
 		>
 			<Tabs.List>
