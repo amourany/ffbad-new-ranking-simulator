@@ -10,6 +10,7 @@ export type TournamentConfigurationStore = {
 export type TournamentConfigurationActionsType = {
 	setIsDoublesMatch: (isDoublesMatch: boolean) => void,
 	setIsCrossGenderMatch: (isCrossGenderMatch: boolean) =>void,
+	setIsMixedDoubles: (isMixedDoubles: boolean) => void,
 	setMatchMultiplyingFactor: (matchMultiplyingFactor: number) => void,
 };
 
@@ -20,6 +21,7 @@ export const useTournamentConfigurationStore = create<TournamentConfigurationSto
 	matchMultiplyingFactor: 1,
 	setIsCrossGenderMatch: (isCrossGenderMatch: boolean) => set(() => ({ isCrossGenderMatch })),
 	setIsDoublesMatch: (isDoublesMatch: boolean) => set(() => ({ isDoublesMatch })),
+	setIsMixedDoubles: (isMixedDoubles: boolean) => set(() => ({ isMixedDoubles })),
 	setMatchMultiplyingFactor: (matchMultiplyingFactor: number) => set(() => ({
 		matchMultiplyingFactor,
 	})),
