@@ -1,5 +1,8 @@
 {
   "TITLE": "Badminton new ranking simulator",
+  "BACK_SOON": {
+    "TITLE": "Back soon"
+  },
   "CONVERT_PAGE": {
     "TITLE": "Convert a ranking to new system",
     "LOADING": "Loading...",

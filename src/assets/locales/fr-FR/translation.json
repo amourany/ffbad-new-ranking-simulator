@@ -1,5 +1,8 @@
 {
   "TITLE": "Simulateur de classement FFBaD 2025",
+  "BACK_SOON": {
+    "TITLE": "Le simulateur revient bientôt"
+  },
   "CONVERT_PAGE": {
     "TITLE": "Convertir son classement dans le nouveau format",
     "LOADING": "Chargement...",

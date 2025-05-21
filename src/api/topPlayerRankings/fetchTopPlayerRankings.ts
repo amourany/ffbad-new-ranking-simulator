@@ -21,10 +21,4 @@ export const fetchTopPlayerRankings = (queryClient: QueryClient) =>async (discip
 	staleTime: TTL_24_HOURS,
 });
 
-const fetchTopPlayer = async (_discipline: number) => {
-	return {} as TopPlayer;
-};
-
-type TopPlayer = {
-	rate: number
-};
+const fetchTopPlayer = async (_discipline: number) => (20_000);

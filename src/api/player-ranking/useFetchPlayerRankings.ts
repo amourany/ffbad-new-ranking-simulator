@@ -27,13 +27,13 @@ export const useFetchPlayerRankings = (licence: number|undefined) => {
 };
 
 const fetchPlayerRankings = async (_licence: number, topPlayerFetcher: (discipline: number) => Promise<number>): Promise<PlayerInfo> => {
-    const playerId = {} as PlayerFFBad;
-    const response = {} as PlayerRankingsFFBad
+	const playerId = {} as PlayerFFBad;
+	const response = {} as PlayerRankingsFFBad;
 
-    const isCompetitivePlayer = response as unknown !== '';
+	const isCompetitivePlayer = response as unknown !== '';
 
-    const gender = playerId.sex === MALE ? MALE : FEMALE;
-    const rankings = await convertToRankings(isCompetitivePlayer ? response : nonCompetitivePlayer, gender, topPlayerFetcher);
+	const gender = playerId.sex === MALE ? MALE : FEMALE;
+	const rankings = await convertToRankings(isCompetitivePlayer ? response : nonCompetitivePlayer, gender, topPlayerFetcher);
 	const convertedRankings = gender === MALE ? convertMalePlayers(rankings) : convertFemalePlayers(rankings);
 
 	return {

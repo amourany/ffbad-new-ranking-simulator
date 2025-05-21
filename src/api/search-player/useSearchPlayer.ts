@@ -18,9 +18,9 @@ export const useSearchPlayer = (value: string| undefined) => useInfiniteQuery({
 	select: data => data.pages.flatMap(page => page.persons),
 });
 
-const searchPlayer = async (_value: string, _pageNumber: number): Promise<SearchPlayerResponse> => {
-	return {totalPage: 0, currentPage: 0, persons: []};
-};
+const searchPlayer = async (_value: string, _pageNumber: number): Promise<SearchPlayerResponse> => ({ currentPage: 0,
+	persons: [],
+	totalPage: 0 });
 
 type SearchPlayerResponse = {
 	totalPage: number;
