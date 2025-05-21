@@ -100,16 +100,8 @@ describe('Layout', () => {
                 <div>
                   RankingExplanation
                 </div>
-              </div>
-            </div>
-            <div
-              data-testid="Tabs.Panel"
-            >
-              <div
-                class="content"
-              >
                 <div>
-                  RankingExplanation
+                  TITLE
                 </div>
               </div>
             </div>
@@ -121,6 +113,23 @@ describe('Layout', () => {
               >
                 <div>
                   RankingExplanation
+                </div>
+                <div>
+                  TITLE
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid="Tabs.Panel"
+            >
+              <div
+                class="content"
+              >
+                <div>
+                  RankingExplanation
+                </div>
+                <div>
+                  TITLE
                 </div>
               </div>
             </div>
@@ -154,6 +163,9 @@ describe('Layout', () => {
           >
             <div>
               RankingExplanation
+            </div>
+            <div>
+              TITLE
             </div>
           </div>
         </div>

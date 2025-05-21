@@ -10,10 +10,10 @@ import { useTranslation } from '@hooks/useTranslation';
 import { IconTournament, IconTransform, IconVs } from '@tabler/icons-react';
 import { RankingExplanation } from '@components/RankingExplanation/RankingExplanation';
 import { useMediaQuery } from '@mantine/hooks';
-import {BackSoon} from "@components/BackSoon/BackSoon";
+import { BackSoon } from '@components/BackSoon/BackSoon';
 
 // @ts-ignore
-export const Layout = ({ children }: PropsWithChildren) => {
+export const Layout = ({ _children }: PropsWithChildren) => {
 	const location = useRouterState({ select: (s) => s.location });
 	const { t } = useTranslation({ keyPrefix: 'LAYOUT' });
 
