@@ -45,7 +45,7 @@
     "@types/i18n": "0.13.12",
     "@types/jest": "29.5.14",
     "@types/node": "22.15.21",
-    "@types/react": "19.1.5",
+    "@types/react": "19.1.6",
     "@types/react-dom": "19.1.5",
     "@typescript-eslint/parser": "8.32.1",
     "@vitejs/plugin-react": "4.5.0",
