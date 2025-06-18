@@ -88,13 +88,13 @@ describe('SearchPlayerInput', () => {
 		(useSearchPlayer as jest.Mock).mockReturnValue({
 			data: [
 				{
-					club: { acronym: 'ABC' },
+					club: 'ABC',
 					licence: '123',
 					name: 'John Doe',
 					personId: '123',
 				},
 				{
-					club: { acronym: 'ABC' },
+					club: 'ABC',
 					licence: '456',
 					name: 'Jane Doe',
 					personId: '456',

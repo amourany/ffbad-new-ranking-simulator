@@ -10,79 +10,33 @@
 
 import { createFileRoute } from '@tanstack/react-router'
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as SimulateTournamentRouteImport } from './routes/simulate-tournament'
+import { Route as SimulateRouteImport } from './routes/simulate'
+import { Route as ConvertRouteImport } from './routes/convert'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as SimulateTournamentImport } from './routes/simulate-tournament'
-import { Route as SimulateImport } from './routes/simulate'
-import { Route as ConvertImport } from './routes/convert'
+const IndexLazyRouteImport = createFileRoute('/')()
 
-// Create Virtual Routes
-
-const IndexLazyImport = createFileRoute('/')()
-
-// Create/Update Routes
-
-const SimulateTournamentRoute = SimulateTournamentImport.update({
+const SimulateTournamentRoute = SimulateTournamentRouteImport.update({
   id: '/simulate-tournament',
   path: '/simulate-tournament',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const SimulateRoute = SimulateImport.update({
+const SimulateRoute = SimulateRouteImport.update({
   id: '/simulate',
   path: '/simulate',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ConvertRoute = ConvertImport.update({
+const ConvertRoute = ConvertRouteImport.update({
   id: '/convert',
   path: '/convert',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const IndexLazyRoute = IndexLazyImport.update({
+const IndexLazyRoute = IndexLazyRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/convert': {
-      id: '/convert'
-      path: '/convert'
-      fullPath: '/convert'
-      preLoaderRoute: typeof ConvertImport
-      parentRoute: typeof rootRoute
-    }
-    '/simulate': {
-      id: '/simulate'
-      path: '/simulate'
-      fullPath: '/simulate'
-      preLoaderRoute: typeof SimulateImport
-      parentRoute: typeof rootRoute
-    }
-    '/simulate-tournament': {
-      id: '/simulate-tournament'
-      path: '/simulate-tournament'
-      fullPath: '/simulate-tournament'
-      preLoaderRoute: typeof SimulateTournamentImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
@@ -90,22 +44,19 @@ export interface FileRoutesByFullPath {
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/convert': typeof ConvertRoute
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
   '/convert': typeof ConvertRoute
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths: '/' | '/convert' | '/simulate' | '/simulate-tournament'
@@ -114,12 +65,44 @@ export interface FileRouteTypes {
   id: '__root__' | '/' | '/convert' | '/simulate' | '/simulate-tournament'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   ConvertRoute: typeof ConvertRoute
   SimulateRoute: typeof SimulateRoute
   SimulateTournamentRoute: typeof SimulateTournamentRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/simulate-tournament': {
+      id: '/simulate-tournament'
+      path: '/simulate-tournament'
+      fullPath: '/simulate-tournament'
+      preLoaderRoute: typeof SimulateTournamentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simulate': {
+      id: '/simulate'
+      path: '/simulate'
+      fullPath: '/simulate'
+      preLoaderRoute: typeof SimulateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/convert': {
+      id: '/convert'
+      path: '/convert'
+      fullPath: '/convert'
+      preLoaderRoute: typeof ConvertRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -128,35 +111,6 @@ const rootRouteChildren: RootRouteChildren = {
   SimulateRoute: SimulateRoute,
   SimulateTournamentRoute: SimulateTournamentRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/convert",
-        "/simulate",
-        "/simulate-tournament"
-      ]
-    },
-    "/": {
-      "filePath": "index.lazy.tsx"
-    },
-    "/convert": {
-      "filePath": "convert.tsx"
-    },
-    "/simulate": {
-      "filePath": "simulate.tsx"
-    },
-    "/simulate-tournament": {
-      "filePath": "simulate-tournament.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

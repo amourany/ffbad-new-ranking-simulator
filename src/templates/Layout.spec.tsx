@@ -100,9 +100,6 @@ describe('Layout', () => {
                 <div>
                   RankingExplanation
                 </div>
-                <div>
-                  TITLE
-                </div>
               </div>
             </div>
             <div
@@ -114,9 +111,6 @@ describe('Layout', () => {
                 <div>
                   RankingExplanation
                 </div>
-                <div>
-                  TITLE
-                </div>
               </div>
             </div>
             <div
@@ -127,9 +121,6 @@ describe('Layout', () => {
               >
                 <div>
                   RankingExplanation
-                </div>
-                <div>
-                  TITLE
                 </div>
               </div>
             </div>
@@ -163,9 +154,6 @@ describe('Layout', () => {
           >
             <div>
               RankingExplanation
-            </div>
-            <div>
-              TITLE
             </div>
           </div>
         </div>

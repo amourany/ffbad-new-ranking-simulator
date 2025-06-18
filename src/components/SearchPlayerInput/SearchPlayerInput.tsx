@@ -61,7 +61,7 @@ export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) =
 			>
 				{item.name}
 				{' - '}
-				{item.club.acronym}
+				{item.club}
 			</Combobox.Option>
 		))}
 		{isFetching ? <Combobox.Empty>{t('LOADING')}</Combobox.Empty>:null}
