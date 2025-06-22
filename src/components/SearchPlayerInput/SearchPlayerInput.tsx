@@ -26,7 +26,7 @@ export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) =
 	});
 
 	const handleOnChange = useDebouncedCallback(async (value:string|undefined) => {
-		const isValid = !!value && value?.trim()?.length > 0;
+		const isValid = !!value && value?.trim()?.length >= 3;
 		if (isValid) {
 			setValue(value);
 			combobox.openDropdown();
