@@ -8,7 +8,7 @@ export type MatchOutcomeProps = {
 	playerB?: PlayerOutcomeProps;
 	playerC?: PlayerOutcomeProps;
 	playerD?: PlayerOutcomeProps;
-	winningChances: number;
+	winningChances?: number;
 	variant?: 'small' | 'large';
 };
 
