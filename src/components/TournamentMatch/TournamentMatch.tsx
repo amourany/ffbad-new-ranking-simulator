@@ -7,6 +7,7 @@ import { MatchSimulation } from '@components/MatchSimulation/MatchSimulation';
 import styles from './TournamentMatch.module.css';
 import { IconX } from '@tabler/icons-react';
 import { useMediaQuery } from '@mantine/hooks';
+import { DisplayWinProbabilities } from '@components/DisplayWinProbabilities/DisplayWinProbabilities';
 
 export type TournamentMatchProps = {
 	matchId: string
@@ -25,18 +26,24 @@ export const TournamentMatch = ({ matchId, matchIndex }: TournamentMatchProps) =
 	const updateOpponent = usePlayersStore(state => state.updateOpponent);
 	const toggleOpponentWinningAgainstThisTeam = usePlayersStore(state => state.toggleOpponentWinningAgainstThisTeam);
 	const clearOpponent = usePlayersStore(state => state.clearOpponent);
-	const updateOpponentPoints = usePlayersStore(state => state.updateOpponentPoints);
+	const updateMatchResult = usePlayersStore(state => state.updateMatchResult);
 
 	const isDoublesMatch = useTournamentConfigurationStore(state => state.isDoublesMatch);
 	const isMixedDoubles = useTournamentConfigurationStore(state => state.isMixedDoubles);
 	const isCrossGenderMatch = useTournamentConfigurationStore(state => state.isCrossGenderMatch);
 	const matchMultiplyingFactor = useTournamentConfigurationStore(state => state.matchMultiplyingFactor);
 
-	const { players: opponent, winningAgainstThisTeam } = opponents.find(opponent => opponent.matchId === matchId)!;
+	const { players: opponent, winningAgainstThisTeam, winningChances } = opponents.find(opponent => opponent.matchId === matchId)!;
 
 	return (<div className={styles.match}>
-		<div className={styles.matchTitle}>
-			<span>{t('MATCH_INDEX', { index: matchIndex+1 })}</span>
+		<div className={styles.matchTitleContainer}>
+			<span className={styles.titleContainer}>
+				<span className={styles.matchTitle}>{t('MATCH_INDEX', { index: matchIndex+1 })}</span>
+				{winningChances ? <DisplayWinProbabilities
+					probabilities={winningChances}
+					variant='large'
+				/>:null}
+			</span>
 			<ActionIcon
 				color= 'black'
 				onClick={() => removeMatch(matchId)}
@@ -96,7 +103,7 @@ export const TournamentMatch = ({ matchId, matchIndex }: TournamentMatchProps) =
 					playerBLicence={opponent[PlayersIndexes.PLAYER_A]}
 					playerCLicence={players[PlayersIndexes.PLAYER_B]}
 					playerDLicence={opponent[PlayersIndexes.PLAYER_B]}
-					registerOutcomePoints={updateOpponentPoints(matchId)}
+					updateMatchResult={updateMatchResult(matchId)}
 					variant='small'
 				/>
 			</div>

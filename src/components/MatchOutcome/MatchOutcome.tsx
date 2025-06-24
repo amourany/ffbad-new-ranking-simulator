@@ -1,5 +1,6 @@
 import { PlayerOutcome, PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './MatchOutcome.module.css';
+import { DisplayWinProbabilities } from '@components/DisplayWinProbabilities/DisplayWinProbabilities';
 
 export type MatchOutcomeProps = {
 	label: string;
@@ -7,6 +8,7 @@ export type MatchOutcomeProps = {
 	playerB?: PlayerOutcomeProps;
 	playerC?: PlayerOutcomeProps;
 	playerD?: PlayerOutcomeProps;
+	winningChances: number;
 	variant?: 'small' | 'large';
 };
 
@@ -16,6 +18,7 @@ export const MatchOutcome = ({
 	playerB,
 	playerC,
 	playerD,
+	winningChances,
 	variant = 'large',
 }: MatchOutcomeProps) => {
 	const isLarge = variant === 'large';
@@ -24,7 +27,10 @@ export const MatchOutcome = ({
 		styles[variant],
 	].join(' ')}
 	>
-		{isLarge ? <span>{label}</span>: null}
+		{isLarge ? <span className={styles.title}>
+			{label}
+			{winningChances ? <DisplayWinProbabilities probabilities={winningChances} /> : null}
+		</span>: null}
 		<div className={styles.calculationContainer}>
 			<div className={styles.team}>
 				<PlayerOutcome

@@ -84,7 +84,7 @@ describe('DoublesMatchSimulation', () => {
 				playerC={femalePlayerInfo}
 				playerD={femalePlayerInfo}
 				rankingExtractor={(player) => player.convertedRankings.mixedRate}
-				registerOutcomePoints={registerPoints}
+				updateMatchResult={registerPoints}
 				variant={'small'}
 			/>,
 		);

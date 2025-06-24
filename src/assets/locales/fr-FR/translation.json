@@ -13,6 +13,10 @@
     "CURRENT_RANKINGS": "Classements actuels",
     "NEW_RANKINGS": "Classements après transition"
   },
+  "DISPLAY_WIN_PROBABILITIES": {
+    "LABEL": "(probabilités de victoire : {{value}}%)",
+    "SHORT_LABEL": "(probabilités : {{value}}%)"
+  },
   "DOUBLES_MATCH_SIMULATION": {
     "LABEL": "Si {{playerA}} et {{playerB}} gagnent le match"
   },

@@ -16,10 +16,10 @@ export type DoublesMatchSimulationProps = {
 	rankingExtractor: (player: PlayerInfo) => number,
 	matchFactor: number
 	isTeamAWinning?: boolean;
-	registerOutcomePoints?: (points: number) => void;
+	updateMatchResult?: (points: number, winningChances: number) => void;
 	variant?: 'small' | 'large';
 };
-export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor, matchFactor, isTeamAWinning, variant, registerOutcomePoints }:DoublesMatchSimulationProps) => {
+export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, rankingExtractor, matchFactor, isTeamAWinning, variant, updateMatchResult }:DoublesMatchSimulationProps) => {
 	const { t } = useTranslation({ keyPrefix: 'DOUBLES_MATCH_SIMULATION' });
 
 	const playerADoublesRanking = rankingExtractor(playerA);
@@ -36,8 +36,10 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 	]);
 
 	useEffect(() => {
-		if (registerOutcomePoints) {
-			registerOutcomePoints(isTeamAWinning ? matchResult[0].wins : matchResult[1].losses);
+		if (updateMatchResult) {
+			const points = isTeamAWinning ? matchResult[0].wins : matchResult[1].losses;
+			const winningChances = matchResult[0].winningChances;
+			updateMatchResult(points, winningChances);
 		}
 	}, [
 		isTeamAWinning,
@@ -60,6 +62,7 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 			playerC={convertToOutcome(playerC, playerA, matchResult[0].wins, WINS)}
 			playerD={convertToOutcome(playerD, playerB, matchResult[0].losses, LOSES)}
 			variant={variant}
+			winningChances={matchResult[0].winningChances}
 		/>
 	);
 
@@ -72,6 +75,7 @@ export const DoublesMatchSimulation = ({ playerA, playerB, playerC, playerD, ran
 			playerC={convertToOutcome(playerC, playerA, matchResult[1].losses, LOSES)}
 			playerD={convertToOutcome(playerD, playerB, matchResult[1].wins, WINS)}
 			variant={variant}
+			winningChances={matchResult[1].winningChances}
 		/>
 	);
 

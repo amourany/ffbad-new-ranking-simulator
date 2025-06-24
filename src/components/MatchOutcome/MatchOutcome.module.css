@@ -5,6 +5,18 @@
     margin: 0.5rem;
     padding: 0.5rem;
     width: 100%;
+    gap: 0.5rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+
+    @media(min-width: $mantine-breakpoint-sm) {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
 }
 
 .large {

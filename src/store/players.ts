@@ -13,6 +13,7 @@ export type Opponent = {
 	players: (number|undefined)[],
 	winningAgainstThisTeam: boolean,
 	points: number,
+	winningChances?: number,
 };
 
 export type PlayersStore = {
@@ -27,7 +28,7 @@ export type PlayersActionsType = {
 	removeMatch: (matchId: string) => void,
 	updateOpponent: (matchId: string, opponentIndex: number) => (licence: number) => void,
 	toggleOpponentWinningAgainstThisTeam: (matchId: string) => (isWinningAgainst:boolean) => void,
-	updateOpponentPoints: (matchId: string) => (points: number) => void,
+	updateMatchResult: (matchId: string) => (points: number, winningChances: number) => void,
 	clearOpponent: (matchId: string, opponentIndex: number) => void,
 	clearTournament: () => void,
 };
@@ -92,6 +93,18 @@ export const usePlayersStore = create<PlayersStore & PlayersActionsType>((set) =
 			return opponent;
 		}),
 	})),
+	updateMatchResult: (matchId: string) => (points:number, winningChances:number) => set((state) =>({
+		opponents: state.opponents.map(opponent => {
+			if(opponent.matchId === matchId) {
+				return {
+					...opponent,
+					points,
+					winningChances,
+				};
+			}
+			return opponent;
+		}),
+	})),
 	updateOpponent: (matchId: string, opponentIndex: number) => (licence: number) => set((state) => ({
 		opponents: state.opponents.map(opponent => {
 			if(opponent.matchId === matchId) {
@@ -102,17 +115,6 @@ export const usePlayersStore = create<PlayersStore & PlayersActionsType>((set) =
 						licence,
 						...opponent.players.slice(opponentIndex + 1),
 					],
-				};
-			}
-			return opponent;
-		}),
-	})),
-	updateOpponentPoints: (matchId: string) => (points:number) => set((state) =>({
-		opponents: state.opponents.map(opponent => {
-			if(opponent.matchId === matchId) {
-				return {
-					...opponent,
-					points,
 				};
 			}
 			return opponent;

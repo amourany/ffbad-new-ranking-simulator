@@ -32,6 +32,7 @@ describe('MatchOutcome', () => {
 					label="Singles"
 					playerA={playerA}
 					playerB={playerB}
+					winningChances={50}
 				/>,
 			);
 
@@ -39,8 +40,15 @@ describe('MatchOutcome', () => {
         <div
           class="container large"
         >
-          <span>
+          <span
+            class="title"
+          >
             Singles
+            <span
+              class="label"
+            >
+              SHORT_LABEL
+            </span>
           </span>
           <div
             class="calculationContainer"
@@ -98,6 +106,7 @@ describe('MatchOutcome', () => {
 					playerB={playerB}
 					playerC={playerC}
 					playerD={playerD}
+					winningChances={50}
 				/>,
 			);
 
@@ -105,8 +114,15 @@ describe('MatchOutcome', () => {
         <div
           class="container large"
         >
-          <span>
+          <span
+            class="title"
+          >
             Doubles
+            <span
+              class="label"
+            >
+              SHORT_LABEL
+            </span>
           </span>
           <div
             class="calculationContainer"
@@ -154,6 +170,7 @@ describe('MatchOutcome', () => {
 					label="Singles"
 					playerA={playerA}
 					variant="small"
+					winningChances={50}
 				/>,
 			);
 
@@ -197,6 +214,7 @@ describe('MatchOutcome', () => {
 				playerA={playerA}
 				playerC={playerC}
 				variant={'small'}
+				winningChances={50}
 			/>,
 		);
 

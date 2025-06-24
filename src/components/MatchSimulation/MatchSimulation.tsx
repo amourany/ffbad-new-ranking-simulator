@@ -17,11 +17,11 @@ export type MatchSimulationProps = {
 	playerDLicence: number|undefined;
 	matchConfiguration: MatchConfig;
 	isTeamAWinning?: boolean;
-	registerOutcomePoints?: (points: number) => void;
+	updateMatchResult?: (points: number, winningChances: number) => void;
 	variant?: 'small' | 'large';
 };
 
-export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence, playerDLicence, matchConfiguration, isTeamAWinning, registerOutcomePoints, variant='large' }: MatchSimulationProps) => {
+export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence, playerDLicence, matchConfiguration, isTeamAWinning, updateMatchResult, variant='large' }: MatchSimulationProps) => {
 
 	const { matchMultiplyingFactor, isCrossGenderMatch, isMixedDoubles, isDoublesMatch } = matchConfiguration;
 
@@ -42,7 +42,7 @@ export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence
 				playerC={playerC}
 				playerD={playerD}
 				rankingExtractor={rankingExtractor}
-				registerOutcomePoints={registerOutcomePoints}
+				updateMatchResult={updateMatchResult}
 				variant={variant}
 			/>;
 		}
@@ -53,7 +53,7 @@ export const MatchSimulation = ({ playerALicence, playerBLicence, playerCLicence
 				matchFactor={matchMultiplyingFactor}
 				playerA={playerA}
 				playerB={playerB}
-				registerOutcomePoints={registerOutcomePoints}
+				updateMatchResult={updateMatchResult}
 				variant={variant}
 			/>;
 		}

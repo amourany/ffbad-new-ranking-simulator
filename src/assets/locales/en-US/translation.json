@@ -13,6 +13,10 @@
     "CURRENT_RANKINGS": "Current rankings",
     "NEW_RANKINGS": "New rankings"
   },
+  "DISPLAY_WIN_PROBABILITIES": {
+    "LABEL": "(win probability: {{value}}%)",
+    "SHORT_LABEL": "(probability: {{value}}%)"
+  },
   "DOUBLES_MATCH_SIMULATION": {
     "LABEL": "If {{playerA}} and {{playerB}} wins"
   },

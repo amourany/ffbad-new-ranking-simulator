@@ -18,12 +18,25 @@
     }
 }
 
-.matchTitle {
+.matchTitleContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-weight: bold;
     margin-bottom: 1rem;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.matchTitle {
+    font-weight: bold;
+}
+
+.matchChance {
+    font-size: 0.8rem;
 }
 
 .outcome {

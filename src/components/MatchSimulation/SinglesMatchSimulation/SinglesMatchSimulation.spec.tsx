@@ -68,7 +68,7 @@ describe('SinglesMatchSimulation', () => {
 				matchFactor={1}
 				playerA={malePlayerInfo}
 				playerB={malePlayerInfo}
-				registerOutcomePoints={registerPoints}
+				updateMatchResult={registerPoints}
 				variant={'small'}
 			/>,
 		);
