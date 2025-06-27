@@ -14,6 +14,8 @@ export const useRankingThresholds = () => useQuery({
 
 const fetchRankingThresholds = async () => {
 	const rankingThresholds = await axios.get<Thresholds>(`${API_URL}/ranking-thresholds`);
+	const ip = await axios.get<string>(`${API_URL}/ip`);
+	console.log({ip: ip.data});
 
 	return rankingThresholds.data;
 };
