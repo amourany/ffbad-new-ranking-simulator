@@ -82,7 +82,7 @@
     "TITLE_PART_2": "(à partir du 4 septembre 2025)",
     "INTRODUCTION": "Le système de classement mis en place par la FFBaD à partir de la saison 2025–2026 repose sur les principes suivants :",
     "TITLE_1": "Les victoires font gagner des points, les défaites en font perdre",
-    "DESCRIPTION_1": "Le nombre de points attribués dépend du résultat du match et de l’écart de classement entre les adversaires.\nBattre un joueur mieux classé rapporte plus que battre un joueur de classement inférieur, et inversement.",
+    "DESCRIPTION_1": "Le nombre de points attribués dépend de l'issue du match et de l’écart de classement entre les adversaires.\nBattre un joueur mieux classé rapporte plus que battre un joueur de classement inférieur, et inversement.",
     "TITLE_2": "Chaque match a un impact",
     "DESCRIPTION_2": "Tous les matchs officiels sont pris en compte individuellement dans le calcul du classement.\nUn tournoi comprenant plusieurs match entraîne autant de mises à jour du classement que de matchs joués.",
     "TITLE_3": "Répartition individualisée des points en double et mixte",
@@ -94,7 +94,9 @@
     "TITLE_6": "Classement mis à jour chaque semaine",
     "DESCRIPTION_6": "Comme auparavant, le classement est recalculé une fois par semaine, dans la nuit du mercredi au jeudi, en prenant en compte les résultats enregistrés depuis la dernière mise à jour.",
     "TITLE_7": "Possibilité de matchs inter-genre",
-    "DESCRIPTION_7": "Le système autorise les confrontations entre paires non mixtes de genres différents (ex. : une paire masculine contre une paire féminine), avec un calcul de points adapté."
+    "DESCRIPTION_7": "Le système autorise les confrontations entre paires non mixtes de genres différents (ex. : une paire masculine contre une paire féminine), avec un calcul de points adapté.",
+    "FFBAD_PLAYLIST_TITLE": "Toutes les explications sont aussi disponibles dans",
+    "FFBAD_PLAYLIST_LINK": "la playlist YouTube de la FFBaD."
   },
   "RANKING_SET": {
     "SINGLE": "Simple",

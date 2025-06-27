@@ -94,7 +94,9 @@
     "TITLE_6": "Weekly ranking updates",
     "DESCRIPTION_6": "As before, the ranking is updated once a week, during the night between Wednesday and Thursday, taking into account the results recorded since the last update.",
     "TITLE_7": "Support for cross-gender matches",
-    "DESCRIPTION_7": "The system allows matches between same-gender pairs of different sexes (e.g., a men's pair versus a women's pair), with an adapted point calculation."
+    "DESCRIPTION_7": "The system allows matches between same-gender pairs of different sexes (e.g., a men's pair versus a women's pair), with an adapted point calculation.",
+    "FFBAD_PLAYLIST_TITLE": "All explanations are also available in",
+    "FFBAD_PLAYLIST_LINK": "the FFBaD YouTube playlist."
   },
 
   "RANKING_SET": {

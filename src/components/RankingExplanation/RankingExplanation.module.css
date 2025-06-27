@@ -33,3 +33,14 @@
     margin-top: 0;
     white-space: pre-line;
 }
+
+.playlist {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+
+    & > a {
+        text-decoration: underline;
+        color: blue;
+    }
+}

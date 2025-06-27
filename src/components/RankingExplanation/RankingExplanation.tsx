@@ -78,6 +78,10 @@ export const RankingExplanation = () => {
 						</div>
 						<p className={styles.description}>{t('DESCRIPTION_7')}</p>
 					</div>
+					<p className={styles.playlist}>
+						{t('FFBAD_PLAYLIST_TITLE')}
+						<a href="https://youtube.com/playlist?list=PLE-Y2Ueg1p2j4GLTgAyCax5GQIN7KNJWJ&si=iBwTvo6lmtg1eJdz">{t('FFBAD_PLAYLIST_LINK')}</a>
+					</p>
 				</Accordion.Panel>
 			</Accordion.Item>
 		</Accordion>
