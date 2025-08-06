@@ -1,18 +1,5 @@
 {
   "TITLE": "Badminton new ranking simulator",
-  "BACK_SOON": {
-    "TITLE": "Back soon"
-  },
-  "CONVERT_PAGE": {
-    "TITLE": "Convert a ranking to new system",
-    "LOADING": "Loading...",
-    "INPUT_LABEL": "Search for a player"
-  },
-  "DISPLAY_NEW_RANKINGS": {
-    "RANKING_DATE": "Actualisation date: ",
-    "CURRENT_RANKINGS": "Current rankings",
-    "NEW_RANKINGS": "New rankings"
-  },
   "DISPLAY_WIN_PROBABILITIES": {
     "LABEL": "(win probability: {{value}}%)",
     "SHORT_LABEL": "(probability: {{value}}%)"
@@ -24,11 +11,9 @@
     "LABEL": "If {{value}} wins"
   },
   "LAYOUT": {
-    "CONVERT": "Convert",
     "SIMULATE": "Simulate a match",
     "SIMULATE_TOURNAMENT": "Simulate a tournament",
     "CLUB_PODIUMS": "View club podiums",
-    "MOBILE_CONVERT": "Convert",
     "MOBILE_SIMULATE": "Match",
     "MOBILE_SIMULATE_TOURNAMENT": "Tournament",
     "MOBILE_CLUB_PODIUMS": "Podiums"

@@ -1,14 +1,13 @@
-import { AppShell, Tabs, useMantineTheme } from '@mantine/core';
+import {AppShell, Tabs, useMantineTheme} from '@mantine/core';
 import styles from './Layout.module.css';
 import { PropsWithChildren } from 'react';
 import { Header } from '@components/Header/Header';
 import { Link, useRouterState } from '@tanstack/react-router';
-import { Route as convertRoute } from '@routes/convert';
 import { Route as simulateRoute } from '@routes/simulate';
 import { Route as simulateTournamentRoute } from '@routes/simulate-tournament';
 import { Route as clubPodiumsRoute } from '@routes/club-podiums';
 import { useTranslation } from '@hooks/useTranslation';
-import { IconTournament, IconTransform, IconTrophy, IconVs } from '@tabler/icons-react';
+import { IconTournament, IconTrophy, IconVs } from '@tabler/icons-react';
 import { RankingExplanation } from '@components/RankingExplanation/RankingExplanation';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -19,7 +18,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 
 	const theme = useMantineTheme();
 	const isDesktop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`, true);
-	const activeTab = location.pathname.slice(1).length > 0 ? location.pathname.slice(1) : 'convert';
+	const activeTab = location.pathname.slice(1).length > 0 ? location.pathname.slice(1) : 'simulate-tournament';
 
 	const renderContentWithExplanation = () => (
 		<div className={styles.content}>
@@ -42,15 +41,6 @@ export const Layout = ({ children }: PropsWithChildren) => {
 			variant="outline"
 		>
 			<Tabs.List>
-				<Tabs.Tab value="convert">
-					<Link
-						className={styles.navigationLink}
-						to={convertRoute.to}
-					>
-						<IconTransform/>
-						{t('CONVERT')}
-					</Link>
-				</Tabs.Tab>
 				<Tabs.Tab value="simulate">
 					<Link
 						className={styles.navigationLink}
@@ -79,9 +69,6 @@ export const Layout = ({ children }: PropsWithChildren) => {
 					</Link>
 				</Tabs.Tab>
 			</Tabs.List>
-			<Tabs.Panel value="convert">
-				{renderContentWithExplanation()}
-			</Tabs.Panel>
 			<Tabs.Panel value="simulate">
 				{renderContentWithExplanation()}
 			</Tabs.Panel>
@@ -104,16 +91,6 @@ export const Layout = ({ children }: PropsWithChildren) => {
 				<div className={styles.footerEntry}>
 					<IconVs/>
 					{t('MOBILE_SIMULATE')}
-				</div>
-			</Link>
-			<Link
-				activeProps={{ className: styles.active }}
-				className={styles.navigationLink}
-				to={convertRoute.to}
-			>
-				<div className={styles.footerEntry}>
-					<IconTransform/>
-					{t('MOBILE_CONVERT')}
 				</div>
 			</Link>
 			<Link
