@@ -1,10 +1,10 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
-import { MatchOutcome } from '@components/MatchOutcome/MatchOutcome';
-import { useTranslation } from '@hooks/useTranslation';
-import { LOSES, Outcome, WINS, simulateSinglesMatch } from '@engine/simulation/simulate-match';
-import { PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
+import {PlayerInfo} from '@api/player-ranking/useFetchPlayerRankings';
+import {MatchOutcome} from '@components/MatchOutcome/MatchOutcome';
+import {useTranslation} from '@hooks/useTranslation';
+import {LOSES, Outcome, simulateSinglesMatch, WINS} from '@engine/simulation/simulate-match';
+import {PlayerOutcomeProps} from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './SinglesMatchSimulation.module.css';
-import { useEffect, useMemo } from 'react';
+import {useEffect, useMemo} from 'react';
 
 export type SinglesMatchSimulationProps = {
 	playerA: PlayerInfo;
@@ -19,8 +19,8 @@ export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor, isTeamAW
 
 	const { t } = useTranslation({ keyPrefix: 'SINGLES_MATCH_SIMULATION' });
 
-	const singleRankingMe = playerA.convertedRankings.singleRate;
-	const singleRankingOpponent = playerB.convertedRankings.singleRate;
+	const singleRankingMe = playerA.rankings.singleRate;
+	const singleRankingOpponent = playerB.rankings.singleRate;
 	const matchResult = useMemo(() => simulateSinglesMatch(singleRankingMe, singleRankingOpponent, matchFactor), [
 		singleRankingMe,
 		singleRankingOpponent,
@@ -42,7 +42,7 @@ export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor, isTeamAW
 		name: player.name,
 		outcome,
 		points,
-		ranking: player.convertedRankings.singleRate,
+		ranking: player.rankings.singleRate,
 	});
 
 	const renderWinningTeam = () => (

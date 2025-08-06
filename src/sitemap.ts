@@ -1,5 +1,5 @@
-import { Sitemap } from 'tanstack-router-sitemap';
-import { FileRouteTypes } from 'routeTree.gen';
+import {Sitemap} from 'tanstack-router-sitemap';
+import {FileRouteTypes} from 'routeTree.gen';
 
 export type TRoutes = FileRouteTypes['fullPaths'];
 
@@ -7,10 +7,6 @@ export const sitemap: Sitemap<TRoutes> = {
 	defaultPriority: 0.5,
 	routes: {
 		'/':{
-			changeFrequency: 'daily',
-			priority: 1,
-		},
-		'/convert': {
 			changeFrequency: 'daily',
 			priority: 1,
 		},
