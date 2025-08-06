@@ -1,8 +1,8 @@
-import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
+import {PlayerInfo} from '@api/player-ranking/useFetchPlayerRankings';
 
-export const singlesExtractor = (player: PlayerInfo) => player.convertedRankings.singleRate;
-export const doublesExtractor = (player: PlayerInfo) => player.convertedRankings.doubleRate;
-export const mixedDoublesExtractor = (player: PlayerInfo) => player.convertedRankings.mixedRate;
+export const singlesExtractor = (player: PlayerInfo) => player.rankings.singleRate;
+export const doublesExtractor = (player: PlayerInfo) => player.rankings.doubleRate;
+export const mixedDoublesExtractor = (player: PlayerInfo) => player.rankings.mixedRate;
 
 export const resolveExtractor = (isDoublesMatch: boolean, isCrossGenderMatch: boolean, isMixedDoubles: boolean) => {
 	if(!isDoublesMatch) {
