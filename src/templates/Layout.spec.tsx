@@ -15,12 +15,11 @@ jest.mock('@routes/simulate', () => ({
 	Route: { to: '/simulate' },
 }));
 
-jest.mock('@routes/convert', () => ({
-	Route: { to: '/convert' },
-}));
-
 jest.mock('@routes/simulate-tournament', () => ({
 	Route: { to: '/simulate-tournament' },
+}));
+jest.mock('@routes/convert', () => ({
+	Route: { to: '/convert' },
 }));
 
 jest.mock('@mantine/hooks', () => ({
@@ -32,7 +31,7 @@ describe('Layout', () => {
 		(useRouterState as jest.Mock).mockReturnValue({ pathname: '/simulate' });
 		(useMediaQuery as jest.Mock).mockReturnValue(true);
 
-		const { container } = render(<Layout />);
+		const { container } = render(<Layout/>);
 
 		expect(container).toMatchInlineSnapshot(`
       <div
@@ -133,7 +132,7 @@ describe('Layout', () => {
 	it('should render in mobile view', () => {
 		(useRouterState as jest.Mock).mockReturnValue({ pathname: '/simulate' });
 		(useMediaQuery as jest.Mock).mockReturnValue(false);
-		const { container } = render(<Layout />);
+		const { container } = render(<Layout/>);
 
 		expect(container).toMatchInlineSnapshot(`
       <div
@@ -164,25 +163,37 @@ describe('Layout', () => {
             href="/simulate"
           >
             <div
-              data-testid="mocked-icon-IconVs"
-            />
-            MOBILE_SIMULATE
+              class="footerEntry"
+            >
+              <div
+                data-testid="mocked-icon-IconVs"
+              />
+              MOBILE_SIMULATE
+            </div>
           </a>
           <a
             href="/convert"
           >
             <div
-              data-testid="mocked-icon-IconTransform"
-            />
-            MOBILE_CONVERT
+              class="footerEntry"
+            >
+              <div
+                data-testid="mocked-icon-IconTransform"
+              />
+              MOBILE_CONVERT
+            </div>
           </a>
           <a
             href="/simulate-tournament"
           >
             <div
-              data-testid="mocked-icon-IconTournament"
-            />
-            MOBILE_SIMULATE_TOURNAMENT
+              class="footerEntry"
+            >
+              <div
+                data-testid="mocked-icon-IconTournament"
+              />
+              MOBILE_SIMULATE_TOURNAMENT
+            </div>
           </a>
         </div>
       </div>

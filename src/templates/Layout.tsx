@@ -36,19 +36,28 @@ export const Layout = ({ children }: PropsWithChildren) => {
 		>
 			<Tabs.List>
 				<Tabs.Tab value="convert">
-					<Link to={convertRoute.to}>
+					<Link
+						className={styles.navigationLink}
+						to={convertRoute.to}
+					>
 						<IconTransform/>
 						{t('CONVERT')}
 					</Link>
 				</Tabs.Tab>
 				<Tabs.Tab value="simulate">
-					<Link to={simulateRoute.to}>
+					<Link
+						className={styles.navigationLink}
+						to={simulateRoute.to}
+					>
 						<IconVs />
 						{t('SIMULATE')}
 					</Link>
 				</Tabs.Tab>
 				<Tabs.Tab value="simulate-tournament">
-					<Link to={simulateTournamentRoute.to}>
+					<Link
+						className={styles.navigationLink}
+						to={simulateTournamentRoute.to}
+					>
 						<IconTournament />
 						{t('SIMULATE_TOURNAMENT')}
 					</Link>
@@ -70,24 +79,33 @@ export const Layout = ({ children }: PropsWithChildren) => {
 		<AppShell.Footer className={styles.footer}>
 			<Link
 				activeProps={{ className:styles.active }}
+				className={styles.navigationLink}
 				to={simulateRoute.to}
 			>
-				<IconVs />
-				{t('MOBILE_SIMULATE')}
+				<div className={styles.footerEntry}>
+					<IconVs/>
+					{t('MOBILE_SIMULATE')}
+				</div>
 			</Link>
 			<Link
-				activeProps={{ className:styles.active }}
+				activeProps={{ className: styles.active }}
+				className={styles.navigationLink}
 				to={convertRoute.to}
 			>
-				<IconTransform/>
-				{t('MOBILE_CONVERT')}
+				<div className={styles.footerEntry}>
+					<IconTransform/>
+					{t('MOBILE_CONVERT')}
+				</div>
 			</Link>
 			<Link
 				activeProps={{ className:styles.active }}
+				className={styles.navigationLink}
 				to={simulateTournamentRoute.to}
 			>
-				<IconTournament />
-				{t('MOBILE_SIMULATE_TOURNAMENT')}
+				<div className={styles.footerEntry}>
+					<IconTournament/>
+					{t('MOBILE_SIMULATE_TOURNAMENT')}
+				</div>
 			</Link>
 		</AppShell.Footer>
 	);
@@ -102,7 +120,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 			}}
 			padding="md"
 		>
-			<AppShell.Header className={styles.header}>
+			<AppShell.Header>
 				<Header/>
 			</AppShell.Header>
 			<AppShell.Main>

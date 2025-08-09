@@ -20,8 +20,11 @@ export const RankingExplanation = () => {
 			className={styles.accordion}
 			variant="separated"
 		>
-			<Accordion.Item value="info">
-				<Accordion.Control icon={<IconInfoCircleFilled color="cornflowerblue"/>}>
+			<Accordion.Item
+				className={styles.item}
+				value="info"
+			>
+				<Accordion.Control icon={<IconInfoCircleFilled className={styles.controlIcon}/>}>
 					<div className={styles.control}>
 						<span>{t('TITLE_PART_1')}</span>
 						<span>{t('TITLE_PART_2')}</span>

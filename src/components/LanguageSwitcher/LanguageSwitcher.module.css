@@ -1,0 +1,4 @@
+.icon {
+    --ai-color: var(--mantine-color-gray-0) !important;
+    --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid var(--mantine-color-gray-0) !important;
+}

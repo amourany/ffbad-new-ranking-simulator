@@ -17,7 +17,7 @@ export const Header = () => {
 		<div className={styles.icons}>
 			<ActionIcon
 				aria-label="Github"
-				color="black"
+				className={styles.icon}
 				component="a"
 				href="https://github.com/amourany/ffbad-new-ranking-simulator"
 				target="_blank"

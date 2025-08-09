@@ -19,9 +19,9 @@
 }
 
 .win {
-    color: #0BAE4A;
+    color: var(--mantine-color-green-7);
 }
 
 .loss {
-    color: #f21616;
+    color: var(--mantine-color-red-8);
 }

@@ -67,6 +67,7 @@
 .addMatch {
     width: inherit;
     & button {
+        --button-color: var(--mantine-color-blue-4) !important;
         margin-left: -1rem;
     }
 }

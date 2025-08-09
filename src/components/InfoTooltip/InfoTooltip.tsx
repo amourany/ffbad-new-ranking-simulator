@@ -15,7 +15,6 @@ export const InfoTooltip = ({ content }: InfoTooltipProps) => (<Popover
 	<Popover.Target>
 		<IconInfoCircleFilled
 			className={styles.icon}
-			color="cornflowerblue"
 		/>
 	</Popover.Target>
 	<Popover.Dropdown>

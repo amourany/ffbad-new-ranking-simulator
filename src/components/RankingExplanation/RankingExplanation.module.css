@@ -1,5 +1,13 @@
 .accordion {
     width: 100%;
+
+    & .item {
+        --item-filled-color: var(--mantine-color-gray-2);
+
+        & > button {
+            background-color: var(--mantine-color-gray-2);
+        }
+    }
 }
 
 .control {
@@ -11,7 +19,11 @@
     }
 }
 
-.content > div{
+.controlIcon {
+    color: var(--mantine-color-blue-4);
+}
+
+.content > div {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
