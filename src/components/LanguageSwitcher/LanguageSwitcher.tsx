@@ -1,6 +1,7 @@
 import { ActionIcon, Combobox, useCombobox } from '@mantine/core';
 import { IconLanguage } from '@tabler/icons-react';
 import { useTranslation } from '@hooks/useTranslation';
+import styles from './LanguageSwitcher.module.css';
 
 export const LanguageSwitcher = () => {
 	const { i18n } = useTranslation();
@@ -20,7 +21,7 @@ export const LanguageSwitcher = () => {
 				switchLanguage(val);
 				combobox.closeDropdown();
 			}}
-			position="bottom-start"
+			position="bottom-end"
 			store={combobox}
 			width={100}
 			withArrow
@@ -29,7 +30,7 @@ export const LanguageSwitcher = () => {
 			<Combobox.Target>
 				<ActionIcon
 					aria-label="Language"
-					color="black"
+					className={styles.icon}
 					component="button"
 					onClick={() => combobox.toggleDropdown()}
 					size="md"
