@@ -3,6 +3,7 @@ import { useTranslation } from '@hooks/useTranslation';
 
 export type FormatDate = {
 	formatDate: (date: Date) => string,
+	formatDateSmall: (date: Date) => string,
 	formatDateTime: (date: Date) => string,
 	formatDateTimeWithDay: (date: Date) => string,
 };
@@ -31,6 +32,16 @@ const formatDate = (t: TFunction<string, undefined>, date: Date) => t('intlDate'
 	val: date,
 });
 
+const formatDateSmall = (t: TFunction<string, undefined>, date: Date) => t('intlDate', {
+	formatParams: {
+		val: {
+			day: 'numeric',
+			month: 'short',
+		},
+	},
+	val: date,
+});
+
 const formatDateTimeWithDay = (t: TFunction<string, undefined>, date: Date) => t('intlDate', {
 	formatParams: {
 		val: {
@@ -49,6 +60,7 @@ export const useDateFormat = (): FormatDate => {
 	const { t } = useTranslation();
 	return {
 		formatDate: (date: Date) => formatDate(t, date),
+		formatDateSmall: (date: Date) => formatDateSmall(t, date),
 		formatDateTime: (date: Date) => formatDateTime(t, date),
 		formatDateTimeWithDay: (date: Date) => formatDateTimeWithDay(t, date),
 	};

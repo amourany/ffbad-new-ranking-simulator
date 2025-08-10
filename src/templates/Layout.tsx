@@ -6,8 +6,9 @@ import { Link, useRouterState } from '@tanstack/react-router';
 import { Route as convertRoute } from '@routes/convert';
 import { Route as simulateRoute } from '@routes/simulate';
 import { Route as simulateTournamentRoute } from '@routes/simulate-tournament';
+import { Route as clubPodiumsRoute } from '@routes/club-podiums';
 import { useTranslation } from '@hooks/useTranslation';
-import { IconTournament, IconTransform, IconVs } from '@tabler/icons-react';
+import { IconTournament, IconTransform, IconTrophy, IconVs } from '@tabler/icons-react';
 import { RankingExplanation } from '@components/RankingExplanation/RankingExplanation';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -20,9 +21,15 @@ export const Layout = ({ children }: PropsWithChildren) => {
 	const isDesktop = useMediaQuery(`(min-width: ${theme.breakpoints.sm})`, true);
 	const activeTab = location.pathname.slice(1).length > 0 ? location.pathname.slice(1) : 'convert';
 
-	const renderContent = () => (
+	const renderContentWithExplanation = () => (
 		<div className={styles.content}>
 			<RankingExplanation />
+			{children}
+		</div>
+	);
+
+	const renderContent = () => (
+		<div className={styles.content}>
 			{children}
 		</div>
 	);
@@ -62,14 +69,26 @@ export const Layout = ({ children }: PropsWithChildren) => {
 						{t('SIMULATE_TOURNAMENT')}
 					</Link>
 				</Tabs.Tab>
+				<Tabs.Tab value="club-podiums">
+					<Link
+						className={styles.navigationLink}
+						to={clubPodiumsRoute.to}
+					>
+						<IconTrophy />
+						{t('CLUB_PODIUMS')}
+					</Link>
+				</Tabs.Tab>
 			</Tabs.List>
 			<Tabs.Panel value="convert">
-				{renderContent()}
+				{renderContentWithExplanation()}
 			</Tabs.Panel>
 			<Tabs.Panel value="simulate">
-				{renderContent()}
+				{renderContentWithExplanation()}
 			</Tabs.Panel>
 			<Tabs.Panel value="simulate-tournament">
+				{renderContentWithExplanation()}
+			</Tabs.Panel>
+			<Tabs.Panel value="club-podiums">
 				{renderContent()}
 			</Tabs.Panel>
 		</Tabs>
@@ -107,6 +126,16 @@ export const Layout = ({ children }: PropsWithChildren) => {
 					{t('MOBILE_SIMULATE_TOURNAMENT')}
 				</div>
 			</Link>
+			<Link
+				activeProps={{ className:styles.active }}
+				className={styles.navigationLink}
+				to={clubPodiumsRoute.to}
+			>
+				<div className={styles.footerEntry}>
+					<IconTrophy />
+					{t('MOBILE_CLUB_PODIUMS')}
+				</div>
+			</Link>
 		</AppShell.Footer>
 	);
 
@@ -124,7 +153,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
 				<Header/>
 			</AppShell.Header>
 			<AppShell.Main>
-				{isDesktop ? renderDesktopView() : renderContent()}
+				{isDesktop ? renderDesktopView() : renderContentWithExplanation()}
 			</AppShell.Main>
 			{!isDesktop? renderMobileNavigation():null}
 		</AppShell>

@@ -6,7 +6,7 @@ import '@testing-library/jest-dom';
 // Import all mocks
 import './__mocks__/tanstackQueryRenderMock';
 import './__mocks__/mantineMock';
-import './__mocks__/dayjsMock';
+// import './__mocks__/dayjsMock';
 import './__mocks__/useTranslationMock';
 import './__mocks__/tablerIconsMock';
 import './__mocks__/svgReactMock';

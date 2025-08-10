@@ -2,12 +2,12 @@ import { Combobox, TextInput, useCombobox } from '@mantine/core';
 import { useTranslation } from '@hooks/useTranslation';
 import { useDebouncedCallback, useDidUpdate, useInViewport } from '@mantine/hooks';
 import { useState } from 'react';
-import { useSearchPlayer } from '@api/search-player/useSearchPlayer';
+import { BFFPlayer, useSearchPlayer } from '@api/search-player/useSearchPlayer';
 import styles from './SearchPlayerInput.module.css';
 
 export type SearchPlayerInputProps = {
 	label?: string;
-	onChange: (licence: number) => void
+	onChange: (licence: BFFPlayer) => void
 };
 
 export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) => {
@@ -70,8 +70,9 @@ export const SearchPlayerInput = ({ label, onChange }: SearchPlayerInputProps) =
 
 	return (
 		<Combobox
-			onOptionSubmit={(val) => {
-				onChange(val as unknown as number);
+			onOptionSubmit={(licence) => {
+				const selectedItem = data?.find(item => item.licence === licence)!!;
+				onChange(selectedItem);
 				combobox.closeDropdown();
 			}}
 			store={combobox}

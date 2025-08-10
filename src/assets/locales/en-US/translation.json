@@ -27,9 +27,11 @@
     "CONVERT": "Convert",
     "SIMULATE": "Simulate a match",
     "SIMULATE_TOURNAMENT": "Simulate a tournament",
+    "CLUB_PODIUMS": "View club podiums",
     "MOBILE_CONVERT": "Convert",
     "MOBILE_SIMULATE": "Match",
-    "MOBILE_SIMULATE_TOURNAMENT": "Tournament"
+    "MOBILE_SIMULATE_TOURNAMENT": "Tournament",
+    "MOBILE_CLUB_PODIUMS": "Podiums"
   },
   "SEARCH_PLAYER_INPUT": {
     "PLACEHOLDER": "Search player by first or last name",
@@ -98,11 +100,24 @@
     "FFBAD_PLAYLIST_TITLE": "All explanations are also available in",
     "FFBAD_PLAYLIST_LINK": "the FFBaD YouTube playlist."
   },
-
   "RANKING_SET": {
     "SINGLE": "Single",
     "DOUBLES": "Doubles",
     "MIXED": "Mixed"
+  },
+  "TOURNAMENT_RESULT_CARD": {
+    "EMPTY_PODIUM": "No podium",
+    "FIRST": "Winners",
+    "SECOND": "2nd place",
+    "THIRD": "3rd places"
+  },
+  "TOURNAMENT_RESULTS_PAGE": {
+    "EMPTY_STATE": "No players in tournaments this week",
+    "DATES": "Results from {{from}} to {{to}}",
+    "INPUT_LABEL": "Search for a club by player",
+    "LOADING": "Loading tournaments...",
+    "TITLE": "Tournament results",
+    "TITLE_CLUB": "Tournament results for {{club}}"
   },
   "TOURNAMENT_SIMULATION_PAGE": {
     "ADD_MATCH": "Add Match",

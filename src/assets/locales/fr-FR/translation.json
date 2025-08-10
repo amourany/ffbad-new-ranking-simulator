@@ -27,9 +27,11 @@
     "CONVERT": "Convertir son classement",
     "SIMULATE": "Simuler un match",
     "SIMULATE_TOURNAMENT": "Simuler un tournoi",
+    "CLUB_PODIUMS": "Voir les podiums du club",
     "MOBILE_CONVERT": "Classement",
     "MOBILE_SIMULATE": "Match",
-    "MOBILE_SIMULATE_TOURNAMENT": "Tournoi"
+    "MOBILE_SIMULATE_TOURNAMENT": "Tournoi",
+    "MOBILE_CLUB_PODIUMS": "Podiums"
   },
   "SEARCH_PLAYER_INPUT": {
     "LOADING": "Chargement...",
@@ -102,6 +104,20 @@
     "SINGLE": "Simple",
     "DOUBLES": "Double",
     "MIXED": "Mixte"
+  },
+  "TOURNAMENT_RESULT_CARD": {
+    "EMPTY_PODIUM": "Pas de podium",
+    "FIRST": "Vainqueurs",
+    "SECOND": "Finalistes",
+    "THIRD": "3ème places"
+  },
+  "TOURNAMENT_RESULTS_PAGE": {
+    "EMPTY_STATE": "Pas de joueurs en tournois cette semaine",
+    "DATES": "Résultats entre le {{from}} et le {{to}}",
+    "INPUT_LABEL": "Chercher un club à partir d'un joueur ou joueuse",
+    "LOADING": "Chargement des tournois...",
+    "TITLE": "Résultats des tournois",
+    "TITLE_CLUB": "Résultats des tournois de {{club}}"
   },
   "TOURNAMENT_SIMULATION_PAGE": {
     "ADD_MATCH": "Ajouter un match",

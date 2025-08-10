@@ -4,6 +4,7 @@ import { DisplayPlayerRankings } from '@components/DisplayPlayerRankings/Display
 import { useTranslation } from '@hooks/useTranslation';
 import styles from './PlayerInMatch.module.css';
 import { useState } from 'react';
+import { BFFPlayer } from '@api/search-player/useSearchPlayer';
 
 export type PlayerInMatchProps = {
 	label: string;
@@ -21,9 +22,9 @@ export const PlayerInMatch = ({ licence, label, onChange, onClear }: PlayerInMat
 
 	const { data: playerInfo, isLoading } = useFetchPlayerRankings(playerLicence);
 
-	const handleOnChange = (licence: number) => {
-		setPlayerLicence(licence);
-		onChange(licence);
+	const handleOnChange = (player: BFFPlayer) => {
+		setPlayerLicence(player.licence as unknown as number);
+		onChange(player.licence as unknown as number);
 	};
 
 	const handleOnClear = () => {

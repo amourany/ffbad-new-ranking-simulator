@@ -30,7 +30,7 @@ export const ConverterPage = () => {
 				/> :
 					<SearchPlayerInput
 						label={t('INPUT_LABEL')}
-						onChange={setLicence}
+						onChange={(player) => setLicence(player.licence as unknown as number)}
 					/>}
 				{isLoading ? <div>{t('LOADING')}</div> : null}
 			</Stack>

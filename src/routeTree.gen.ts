@@ -14,6 +14,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SimulateTournamentRouteImport } from './routes/simulate-tournament'
 import { Route as SimulateRouteImport } from './routes/simulate'
 import { Route as ConvertRouteImport } from './routes/convert'
+import { Route as ClubPodiumsRouteImport } from './routes/club-podiums'
 
 const IndexLazyRouteImport = createFileRoute('/')()
 
@@ -32,6 +33,11 @@ const ConvertRoute = ConvertRouteImport.update({
   path: '/convert',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClubPodiumsRoute = ClubPodiumsRouteImport.update({
+  id: '/club-podiums',
+  path: '/club-podiums',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexLazyRoute = IndexLazyRouteImport.update({
   id: '/',
   path: '/',
@@ -40,12 +46,14 @@ const IndexLazyRoute = IndexLazyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
+  '/club-podiums': typeof ClubPodiumsRoute
   '/convert': typeof ConvertRoute
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
+  '/club-podiums': typeof ClubPodiumsRoute
   '/convert': typeof ConvertRoute
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
@@ -53,20 +61,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexLazyRoute
+  '/club-podiums': typeof ClubPodiumsRoute
   '/convert': typeof ConvertRoute
   '/simulate': typeof SimulateRoute
   '/simulate-tournament': typeof SimulateTournamentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/convert' | '/simulate' | '/simulate-tournament'
+  fullPaths:
+    | '/'
+    | '/club-podiums'
+    | '/convert'
+    | '/simulate'
+    | '/simulate-tournament'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/convert' | '/simulate' | '/simulate-tournament'
-  id: '__root__' | '/' | '/convert' | '/simulate' | '/simulate-tournament'
+  to: '/' | '/club-podiums' | '/convert' | '/simulate' | '/simulate-tournament'
+  id:
+    | '__root__'
+    | '/'
+    | '/club-podiums'
+    | '/convert'
+    | '/simulate'
+    | '/simulate-tournament'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
+  ClubPodiumsRoute: typeof ClubPodiumsRoute
   ConvertRoute: typeof ConvertRoute
   SimulateRoute: typeof SimulateRoute
   SimulateTournamentRoute: typeof SimulateTournamentRoute
@@ -95,6 +116,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConvertRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/club-podiums': {
+      id: '/club-podiums'
+      path: '/club-podiums'
+      fullPath: '/club-podiums'
+      preLoaderRoute: typeof ClubPodiumsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -107,6 +135,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
+  ClubPodiumsRoute: ClubPodiumsRoute,
   ConvertRoute: ConvertRoute,
   SimulateRoute: SimulateRoute,
   SimulateTournamentRoute: SimulateTournamentRoute,

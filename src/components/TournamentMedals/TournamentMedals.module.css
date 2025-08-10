@@ -1,0 +1,35 @@
+.series {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    gap: 0.3rem;
+}
+
+.players {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.player {
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.seriesTitle {
+    font-weight: bold;
+}
+
+.seriesName {
+    flex: 0 0 auto;
+    font-weight: bold;
+    /*font-size: 0.9rem;*/
+}
+
+.clubName {
+    font-size: 0.7rem;
+}

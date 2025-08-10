@@ -36,7 +36,7 @@ type SearchPlayerResponse = {
 	players: BFFPlayer[]
 };
 
-type BFFPlayer = {
+export type BFFPlayer = {
 	name: string;
 	licence: string;
 	club: string;

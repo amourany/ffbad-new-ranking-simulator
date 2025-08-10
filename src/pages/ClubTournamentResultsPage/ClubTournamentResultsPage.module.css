@@ -1,0 +1,37 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.subTitle {
+    font-size: 0.8rem;
+    text-decoration: underline;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.card {
+    width: 100%;
+    @media (min-width: $mantine-breakpoint-md) {
+        flex: 1 1 45%
+    }
+}
+
+.clearButton {
+    height: 22px;
+}

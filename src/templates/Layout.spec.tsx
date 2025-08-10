@@ -21,6 +21,9 @@ jest.mock('@routes/simulate-tournament', () => ({
 jest.mock('@routes/convert', () => ({
 	Route: { to: '/convert' },
 }));
+jest.mock('@routes/club-podiums', () => ({
+	Route: { to: '/club-podiums' },
+}));
 
 jest.mock('@mantine/hooks', () => ({
 	useMediaQuery: jest.fn(),
@@ -31,7 +34,7 @@ describe('Layout', () => {
 		(useRouterState as jest.Mock).mockReturnValue({ pathname: '/simulate' });
 		(useMediaQuery as jest.Mock).mockReturnValue(true);
 
-		const { container } = render(<Layout/>);
+		const { container } = render(<Layout />);
 
 		expect(container).toMatchInlineSnapshot(`
       <div
@@ -89,16 +92,17 @@ describe('Layout', () => {
                   SIMULATE_TOURNAMENT
                 </a>
               </div>
-            </div>
-            <div
-              data-testid="Tabs.Panel"
-            >
               <div
-                class="content"
+                data-testid="Tabs.Tab"
               >
-                <div>
-                  RankingExplanation
-                </div>
+                <a
+                  href="/club-podiums"
+                >
+                  <div
+                    data-testid="mocked-icon-IconTrophy"
+                  />
+                  CLUB_PODIUMS
+                </a>
               </div>
             </div>
             <div
@@ -122,6 +126,24 @@ describe('Layout', () => {
                   RankingExplanation
                 </div>
               </div>
+            </div>
+            <div
+              data-testid="Tabs.Panel"
+            >
+              <div
+                class="content"
+              >
+                <div>
+                  RankingExplanation
+                </div>
+              </div>
+            </div>
+            <div
+              data-testid="Tabs.Panel"
+            >
+              <div
+                class="content"
+              />
             </div>
           </div>
         </div>
@@ -132,7 +154,7 @@ describe('Layout', () => {
 	it('should render in mobile view', () => {
 		(useRouterState as jest.Mock).mockReturnValue({ pathname: '/simulate' });
 		(useMediaQuery as jest.Mock).mockReturnValue(false);
-		const { container } = render(<Layout/>);
+		const { container } = render(<Layout />);
 
 		expect(container).toMatchInlineSnapshot(`
       <div
@@ -193,6 +215,18 @@ describe('Layout', () => {
                 data-testid="mocked-icon-IconTournament"
               />
               MOBILE_SIMULATE_TOURNAMENT
+            </div>
+          </a>
+          <a
+            href="/club-podiums"
+          >
+            <div
+              class="footerEntry"
+            >
+              <div
+                data-testid="mocked-icon-IconTrophy"
+              />
+              MOBILE_CLUB_PODIUMS
             </div>
           </a>
         </div>
