@@ -1,8 +1,8 @@
-import {Combobox, TextInput, useCombobox} from '@mantine/core';
-import {useTranslation} from '@hooks/useTranslation';
-import {useDebouncedCallback, useDidUpdate, useInViewport} from '@mantine/hooks';
-import {useState} from 'react';
-import {useSearchPlayer} from '@api/search-player/useSearchPlayer';
+import { Combobox, TextInput, useCombobox } from '@mantine/core';
+import { useTranslation } from '@hooks/useTranslation';
+import { useDebouncedCallback, useDidUpdate, useInViewport } from '@mantine/hooks';
+import { useState } from 'react';
+import { useSearchPlayer } from '@api/search-player/useSearchPlayer';
 import styles from './SearchPlayerInput.module.css';
 
 export type SearchPlayerInputProps = {
