@@ -1,4 +1,7 @@
 import type { Config } from 'jest';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const config: Config = {
 	collectCoverage: false,
