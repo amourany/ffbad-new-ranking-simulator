@@ -18,9 +18,6 @@ jest.mock('@routes/simulate', () => ({
 jest.mock('@routes/simulate-tournament', () => ({
 	Route: { to: '/simulate-tournament' },
 }));
-jest.mock('@routes/convert', () => ({
-	Route: { to: '/convert' },
-}));
 jest.mock('@routes/club-podiums', () => ({
 	Route: { to: '/club-podiums' },
 }));
@@ -60,18 +57,6 @@ describe('Layout', () => {
                 data-testid="Tabs.Tab"
               >
                 <a
-                  href="/convert"
-                >
-                  <div
-                    data-testid="mocked-icon-IconTransform"
-                  />
-                  CONVERT
-                </a>
-              </div>
-              <div
-                data-testid="Tabs.Tab"
-              >
-                <a
                   href="/simulate"
                 >
                   <div
@@ -103,17 +88,6 @@ describe('Layout', () => {
                   />
                   CLUB_PODIUMS
                 </a>
-              </div>
-            </div>
-            <div
-              data-testid="Tabs.Panel"
-            >
-              <div
-                class="content"
-              >
-                <div>
-                  RankingExplanation
-                </div>
               </div>
             </div>
             <div
@@ -191,18 +165,6 @@ describe('Layout', () => {
                 data-testid="mocked-icon-IconVs"
               />
               MOBILE_SIMULATE
-            </div>
-          </a>
-          <a
-            href="/convert"
-          >
-            <div
-              class="footerEntry"
-            >
-              <div
-                data-testid="mocked-icon-IconTransform"
-              />
-              MOBILE_CONVERT
             </div>
           </a>
           <a

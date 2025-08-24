@@ -1,7 +1,7 @@
-import {render} from '@jestConfig/render';
-import {malePlayerInfo} from '@jestConfig/__mocks__/playerInfoMock';
-import {screen} from '@testing-library/react';
-import {DisplayPlayerRankings} from '@components/DisplayPlayerRankings/DisplayPlayerRankings';
+import { render } from '@jestConfig/render';
+import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
+import { screen } from '@testing-library/react';
+import { DisplayPlayerRankings } from '@components/DisplayPlayerRankings/DisplayPlayerRankings';
 
 jest.mock('@components/RankingSet/RankingSet', () => ({
 	RankingSet: () => <div>RankingSet</div>,

@@ -1,21 +1,18 @@
-import {skipToken, useQuery} from '@tanstack/react-query';
-import {API_URL, TTL_24_HOURS} from '@api/api-constants';
+import { skipToken, useQuery } from '@tanstack/react-query';
+import { API_URL, TTL_24_HOURS } from '@api/api-constants';
 import axios from 'axios';
 import dayjs from 'dayjs';
 
 const FETCH_PLAYER_INFO_KEY = 'player-info';
 
-export const useFetchPlayerRankings = (licence: number|undefined) => {
-
-	return useQuery({
-		queryFn: licence ? () => fetchPlayerRankings(licence) : skipToken,
-		queryKey: [
-			FETCH_PLAYER_INFO_KEY,
-			licence,
-		],
-		staleTime: TTL_24_HOURS,
-	});
-};
+export const useFetchPlayerRankings = (licence: number|undefined) => useQuery({
+	queryFn: licence ? () => fetchPlayerRankings(licence) : skipToken,
+	queryKey: [
+		FETCH_PLAYER_INFO_KEY,
+		licence,
+	],
+	staleTime: TTL_24_HOURS,
+});
 
 const fetchPlayerRankings = async (licence: number): Promise<PlayerInfo> => {
 

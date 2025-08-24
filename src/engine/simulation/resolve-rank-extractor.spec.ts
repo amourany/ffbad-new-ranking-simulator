@@ -1,5 +1,5 @@
-import {resolveExtractor} from '@engine/simulation/resolve-rank-extractor';
-import {malePlayerInfo} from '@jestConfig/__mocks__/playerInfoMock';
+import { resolveExtractor } from '@engine/simulation/resolve-rank-extractor';
+import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 
 describe('resolveExtractor', () => {
 	it('should resolve for singles matches', () => {

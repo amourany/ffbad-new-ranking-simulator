@@ -1,6 +1,6 @@
-import {render} from '@jestConfig/render';
-import {femalePlayerInfo, malePlayerInfo,} from '@jestConfig/__mocks__/playerInfoMock';
-import {DoublesMatchSimulation} from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
+import { render } from '@jestConfig/render';
+import { femalePlayerInfo, malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
+import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 
 jest.mock('@components/MatchOutcome/MatchOutcome', () => ({
 	MatchOutcome: () => <div>MatchOutcome</div>,
