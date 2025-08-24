@@ -1,8 +1,8 @@
-import {PlayerInfo} from '@api/player-ranking/useFetchPlayerRankings';
-import {RankingSet} from '@components/RankingSet/RankingSet';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
+import { RankingSet } from '@components/RankingSet/RankingSet';
 import styles from './DisplayPlayerRankings.module.css';
-import {ActionIcon} from '@mantine/core';
-import {IconX} from '@tabler/icons-react';
+import { ActionIcon } from '@mantine/core';
+import { IconX } from '@tabler/icons-react';
 
 export type DisplayPlayerRankingsProps = {
 	playerInfo: PlayerInfo;

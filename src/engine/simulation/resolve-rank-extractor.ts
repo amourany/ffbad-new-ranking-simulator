@@ -1,4 +1,4 @@
-import {PlayerInfo} from '@api/player-ranking/useFetchPlayerRankings';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
 
 export const singlesExtractor = (player: PlayerInfo) => player.rankings.singleRate;
 export const doublesExtractor = (player: PlayerInfo) => player.rankings.doubleRate;

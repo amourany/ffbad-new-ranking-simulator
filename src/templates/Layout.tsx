@@ -1,4 +1,4 @@
-import {AppShell, Tabs, useMantineTheme} from '@mantine/core';
+import { AppShell, Tabs, useMantineTheme } from '@mantine/core';
 import styles from './Layout.module.css';
 import { PropsWithChildren } from 'react';
 import { Header } from '@components/Header/Header';

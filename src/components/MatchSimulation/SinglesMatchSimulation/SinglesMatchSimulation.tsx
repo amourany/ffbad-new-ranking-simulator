@@ -1,10 +1,10 @@
-import {PlayerInfo} from '@api/player-ranking/useFetchPlayerRankings';
-import {MatchOutcome} from '@components/MatchOutcome/MatchOutcome';
-import {useTranslation} from '@hooks/useTranslation';
-import {LOSES, Outcome, simulateSinglesMatch, WINS} from '@engine/simulation/simulate-match';
-import {PlayerOutcomeProps} from '@components/PlayerOutcome/PlayerOutcome';
+import { PlayerInfo } from '@api/player-ranking/useFetchPlayerRankings';
+import { MatchOutcome } from '@components/MatchOutcome/MatchOutcome';
+import { useTranslation } from '@hooks/useTranslation';
+import { LOSES, Outcome, WINS, simulateSinglesMatch } from '@engine/simulation/simulate-match';
+import { PlayerOutcomeProps } from '@components/PlayerOutcome/PlayerOutcome';
 import styles from './SinglesMatchSimulation.module.css';
-import {useEffect, useMemo} from 'react';
+import { useEffect, useMemo } from 'react';
 
 export type SinglesMatchSimulationProps = {
 	playerA: PlayerInfo;

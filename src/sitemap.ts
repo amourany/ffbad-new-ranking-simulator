@@ -1,5 +1,5 @@
-import {Sitemap} from 'tanstack-router-sitemap';
-import {FileRouteTypes} from 'routeTree.gen';
+import { Sitemap } from 'tanstack-router-sitemap';
+import { FileRouteTypes } from 'routeTree.gen';
 
 export type TRoutes = FileRouteTypes['fullPaths'];
 
