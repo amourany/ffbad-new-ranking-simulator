@@ -10,10 +10,6 @@ export const sitemap: Sitemap<TRoutes> = {
 			changeFrequency: 'daily',
 			priority: 1,
 		},
-		'/convert': {
-			changeFrequency: 'daily',
-			priority: 1,
-		},
 		'/simulate': {
 			changeFrequency: 'daily',
 			priority: 1,
