@@ -14,11 +14,11 @@ export const DisplayPlayerRankings = ({ playerInfo, onClear }: DisplayPlayerRank
 		<div className={styles.playerName}>{playerInfo.name}</div>
 		<div className={styles.rankAndClear}>
 			<RankingSet
-				doubleRate={playerInfo.convertedRankings.doubleRate}
+				doubleRate={playerInfo.rankings.doubleRate}
 				doubleSubLevel={playerInfo.rankings.doubleSubLevel}
-				mixedRate={playerInfo.convertedRankings.mixedRate}
+				mixedRate={playerInfo.rankings.mixedRate}
 				mixedSubLevel={playerInfo.rankings.mixedSubLevel}
-				singleRate={playerInfo.convertedRankings.singleRate}
+				singleRate={playerInfo.rankings.singleRate}
 				singleSubLevel={playerInfo.rankings.singleSubLevel}
 				variant='small'
 			/>

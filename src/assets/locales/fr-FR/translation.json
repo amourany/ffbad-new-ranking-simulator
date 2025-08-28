@@ -1,18 +1,5 @@
 {
   "TITLE": "Simulateur de classement FFBaD 2025",
-  "BACK_SOON": {
-    "TITLE": "Le simulateur revient bientôt"
-  },
-  "CONVERT_PAGE": {
-    "TITLE": "Convertir son classement dans le nouveau format",
-    "LOADING": "Chargement...",
-    "INPUT_LABEL": "Chercher un joueur ou joueuse"
-  },
-  "DISPLAY_NEW_RANKINGS": {
-    "RANKING_DATE": "Date d'actualisation des classements : ",
-    "CURRENT_RANKINGS": "Classements actuels",
-    "NEW_RANKINGS": "Classements après transition"
-  },
   "DISPLAY_WIN_PROBABILITIES": {
     "LABEL": "(probabilités de victoire : {{value}}%)",
     "SHORT_LABEL": "(probabilités : {{value}}%)"
@@ -24,11 +11,9 @@
     "LABEL": "Si {{value}} gagne le match"
   },
   "LAYOUT": {
-    "CONVERT": "Convertir son classement",
     "SIMULATE": "Simuler un match",
     "SIMULATE_TOURNAMENT": "Simuler un tournoi",
     "CLUB_PODIUMS": "Voir les podiums du club",
-    "MOBILE_CONVERT": "Classement",
     "MOBILE_SIMULATE": "Match",
     "MOBILE_SIMULATE_TOURNAMENT": "Tournoi",
     "MOBILE_CLUB_PODIUMS": "Podiums"
@@ -81,7 +66,7 @@
   },
   "RANKING_EXPLANATION" : {
     "TITLE_PART_1": "Le nouveau classement FFBaD",
-    "TITLE_PART_2": "(à partir du 4 septembre 2025)",
+    "TITLE_PART_2": "(depuis le 4 septembre 2025)",
     "INTRODUCTION": "Le système de classement mis en place par la FFBaD à partir de la saison 2025–2026 repose sur les principes suivants :",
     "TITLE_1": "Les victoires font gagner des points, les défaites en font perdre",
     "DESCRIPTION_1": "Le nombre de points attribués dépend de l'issue du match et de l’écart de classement entre les adversaires.\nBattre un joueur mieux classé rapporte plus que battre un joueur de classement inférieur, et inversement.",
