@@ -4,7 +4,9 @@ import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 describe('resolveExtractor', () => {
 	it('should resolve for singles matches', () => {
 		const playerInfo = { ...malePlayerInfo,
-			convertedRankings: { doubleRate: 3,
+			rankings: {
+				...malePlayerInfo.rankings,
+				doubleRate: 3,
 				mixedRate: 2,
 				singleRate: 1 } };
 
@@ -15,7 +17,9 @@ describe('resolveExtractor', () => {
 
 	it('should resolve for doubles matches', () => {
 		const playerInfo = { ...malePlayerInfo,
-			convertedRankings: { doubleRate: 3,
+			rankings: {
+				...malePlayerInfo.rankings,
+				doubleRate: 3,
 				mixedRate: 2,
 				singleRate: 1 } };
 
@@ -26,7 +30,9 @@ describe('resolveExtractor', () => {
 
 	it('should resolve for mixed matches', () => {
 		const playerInfo = { ...malePlayerInfo,
-			convertedRankings: { doubleRate: 3,
+			rankings: {
+				...malePlayerInfo.rankings,
+				doubleRate: 3,
 				mixedRate: 2,
 				singleRate: 1 } };
 
@@ -37,7 +43,9 @@ describe('resolveExtractor', () => {
 
 	it('should resolve for cross-gender matches', () => {
 		const playerInfo = { ...malePlayerInfo,
-			convertedRankings: { doubleRate: 3,
+			rankings: {
+				...malePlayerInfo.rankings,
+				doubleRate: 3,
 				mixedRate: 2,
 				singleRate: 1 } };
 

@@ -1,5 +1,4 @@
 import { render } from '@jestConfig/render';
-import { DisplayNewRankings } from '@components/DisplayNewRankings/DisplayNewRankings';
 import { malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 import { screen } from '@testing-library/react';
 import { DisplayPlayerRankings } from '@components/DisplayPlayerRankings/DisplayPlayerRankings';
@@ -53,7 +52,7 @@ describe('DisplayPlayerRankings', () => {
 	it('should call on clear when clicking', () => {
 		const onClear = jest.fn();
 		render(
-			<DisplayNewRankings
+			<DisplayPlayerRankings
 				onClear={onClear}
 				playerInfo={malePlayerInfo}
 			/>,

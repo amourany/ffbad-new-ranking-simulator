@@ -19,8 +19,8 @@ export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor, isTeamAW
 
 	const { t } = useTranslation({ keyPrefix: 'SINGLES_MATCH_SIMULATION' });
 
-	const singleRankingMe = playerA.convertedRankings.singleRate;
-	const singleRankingOpponent = playerB.convertedRankings.singleRate;
+	const singleRankingMe = playerA.rankings.singleRate;
+	const singleRankingOpponent = playerB.rankings.singleRate;
 	const matchResult = useMemo(() => simulateSinglesMatch(singleRankingMe, singleRankingOpponent, matchFactor), [
 		singleRankingMe,
 		singleRankingOpponent,
@@ -42,7 +42,7 @@ export const SinglesMatchSimulation = ({ playerA, playerB, matchFactor, isTeamAW
 		name: player.name,
 		outcome,
 		points,
-		ranking: player.convertedRankings.singleRate,
+		ranking: player.rankings.singleRate,
 	});
 
 	const renderWinningTeam = () => (

@@ -1,8 +1,5 @@
 import { render } from '@jestConfig/render';
-import {
-	femalePlayerInfo,
-	malePlayerInfo,
-} from '@jestConfig/__mocks__/playerInfoMock';
+import { femalePlayerInfo, malePlayerInfo } from '@jestConfig/__mocks__/playerInfoMock';
 import { DoublesMatchSimulation } from '@components/MatchSimulation/DoublesMatchSimulation/DoublesMatchSimulation';
 
 jest.mock('@components/MatchOutcome/MatchOutcome', () => ({
@@ -31,7 +28,7 @@ describe('DoublesMatchSimulation', () => {
 				playerB={malePlayerInfo}
 				playerC={femalePlayerInfo}
 				playerD={femalePlayerInfo}
-				rankingExtractor={(player) => player.convertedRankings.mixedRate}
+				rankingExtractor={(player) => player.rankings.mixedRate}
 			/>,
 		);
 
@@ -57,7 +54,7 @@ describe('DoublesMatchSimulation', () => {
 				playerB={malePlayerInfo}
 				playerC={femalePlayerInfo}
 				playerD={femalePlayerInfo}
-				rankingExtractor={(player) => player.convertedRankings.mixedRate}
+				rankingExtractor={(player) => player.rankings.mixedRate}
 				variant={'small'}
 			/>,
 		);
@@ -83,7 +80,7 @@ describe('DoublesMatchSimulation', () => {
 				playerB={malePlayerInfo}
 				playerC={femalePlayerInfo}
 				playerD={femalePlayerInfo}
-				rankingExtractor={(player) => player.convertedRankings.mixedRate}
+				rankingExtractor={(player) => player.rankings.mixedRate}
 				updateMatchResult={registerPoints}
 				variant={'small'}
 			/>,
