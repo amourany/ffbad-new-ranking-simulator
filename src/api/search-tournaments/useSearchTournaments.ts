@@ -4,7 +4,7 @@ import axios from 'axios';
 import { getRangeThursdayToThursday } from '@utils/dateRange';
 import dayjs from 'dayjs';
 
-export const useFetchLastWeekTournaments = (licence: string|undefined, club: string|undefined) => useInfiniteQuery({
+export const useFetchLastWeekTournaments = (club: string|undefined, clubId: number | undefined) => useInfiniteQuery({
 	getNextPageParam: (lastPage: BFFTournamentPageResponse, _allPages, lastPageParam) => {
 		if (lastPage.currentPage >= lastPage.totalPage) {
 			return undefined;
@@ -12,8 +12,8 @@ export const useFetchLastWeekTournaments = (licence: string|undefined, club: str
 		return lastPageParam + 1;
 	},
 	initialPageParam: 0,
-	queryFn: (licence && club) ?
-		({ pageParam }) => fetchLastWeekTournaments(pageParam, licence, club)
+	queryFn: (club && clubId) ?
+		({ pageParam }) => fetchLastWeekTournaments(pageParam, club, clubId)
 		: skipToken,
 	queryKey: [
 		'FETCH_LAST_WEEK_TOURNAMENTS',
@@ -23,15 +23,15 @@ export const useFetchLastWeekTournaments = (licence: string|undefined, club: str
 	staleTime: TTL_1_HOUR,
 });
 
-const fetchLastWeekTournaments = async (pageNumber: number, licence: string, club: string): Promise<BFFTournamentPageResponse> => {
+const fetchLastWeekTournaments = async (pageNumber: number, club: string, clubId: number): Promise<BFFTournamentPageResponse> => {
 	const { from, to } = getRangeThursdayToThursday(dayjs().toDate());
 
 	const response = await axios.get<BFFTournamentPageResponse>(`${API_URL}/tournaments/search`, {
 		params: {
 			club,
+			clubId,
 			dateFrom: dayjs(from).format('YYYY-MM-DD'),
 			dateTo: dayjs(to).format('YYYY-MM-DD'),
-			licence,
 			pageNumber: pageNumber,
 		},
 	});

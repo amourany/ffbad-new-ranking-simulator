@@ -40,4 +40,5 @@ export type BFFPlayer = {
 	name: string;
 	licence: string;
 	club: string;
+	clubId: number;
 };

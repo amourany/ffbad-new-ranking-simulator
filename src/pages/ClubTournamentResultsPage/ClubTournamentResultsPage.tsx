@@ -22,7 +22,7 @@ export const ClubTournamentResultsPage = () => {
 		player,
 		setPlayer,
 	] = useState<BFFPlayer | undefined>(undefined);
-	const { data, isFetching, hasNextPage, fetchNextPage, isFetchingNextPage } = useFetchLastWeekTournaments(player?.licence, player?.club);
+	const { data, isFetching, hasNextPage, fetchNextPage, isFetchingNextPage } = useFetchLastWeekTournaments(player?.club, player?.clubId);
 	const { ref: isBottomPageInViewportRef, inViewport: isBottomPageInViewport } = useInViewport();
 
 	useDidUpdate(() => {
