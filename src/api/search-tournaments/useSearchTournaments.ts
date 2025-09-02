@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 
 export const useFetchLastWeekTournaments = (licence: string|undefined, club: string|undefined) => useInfiniteQuery({
 	getNextPageParam: (lastPage: BFFTournamentPageResponse, _allPages, lastPageParam) => {
-		if (lastPage.currentPage === lastPage.totalPage) {
+		if (lastPage.currentPage >= lastPage.totalPage) {
 			return undefined;
 		}
 		return lastPageParam + 1;
