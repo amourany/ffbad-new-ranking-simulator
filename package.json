@@ -44,7 +44,7 @@
     "@types/eslint": "9.6.1",
     "@types/i18n": "0.13.12",
     "@types/jest": "30.0.0",
-    "@types/node": "22.18.0",
+    "@types/node": "22.18.1",
     "@types/react": "19.1.12",
     "@types/react-dom": "19.1.9",
     "@typescript-eslint/parser": "8.42.0",
