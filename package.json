@@ -22,7 +22,7 @@
     "dayjs": "1.11.18",
     "i18next": "25.5.2",
     "i18next-browser-languagedetector": "8.2.0",
-    "mathjs": "14.8.0",
+    "mathjs": "14.8.1",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "react-i18next": "15.7.4",
