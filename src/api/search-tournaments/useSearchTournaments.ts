@@ -59,7 +59,7 @@ type BFFTournament = {
 	lastDay: number;
 };
 
-type BFFPlayer = {
+export type BFFPlayer = {
 	name: string;
 	licence: string;
 	club: string;

@@ -1,5 +1,4 @@
-import { BFFMedal } from '@api/search-tournaments/useSearchTournaments';
-import { BFFPlayer } from '@api/search-player/useSearchPlayer';
+import { BFFMedal, BFFPlayer } from '@api/search-tournaments/useSearchTournaments';
 import styles from './TournamentMedals.module.css';
 
 export type TournamentMedalsProps = {
