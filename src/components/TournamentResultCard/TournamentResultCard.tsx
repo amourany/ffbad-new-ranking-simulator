@@ -3,7 +3,6 @@ import {
 	IconPentagonNumber1,
 	IconPentagonNumber2,
 	IconPentagonNumber3,
-	IconUsers,
 } from '@tabler/icons-react';
 import { BFFMedals } from '@api/search-tournaments/useSearchTournaments';
 import styles from './TournamentResultCard.module.css';
@@ -13,6 +12,7 @@ import { useTranslation } from '@hooks/useTranslation';
 import { Divider, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { useDateFormat } from '@hooks/useFormatDate';
+import { PlayersInTournament } from '@components/PlayersInTournament/PlayersInTournament';
 
 export type TournamentCardProps = {
 	tournamentName: string;
@@ -20,12 +20,13 @@ export type TournamentCardProps = {
 	firstDay: number;
 	lastDay: number;
 	playerCount: number;
+	playerNames: string[];
 	medals: BFFMedals;
 	club: string;
 };
 
 
-export const TournamentResultCard = ({ tournamentName, city, firstDay, lastDay, playerCount, medals, club }: TournamentCardProps) => {
+export const TournamentResultCard = ({ tournamentName, city, firstDay, lastDay, playerCount, playerNames, medals, club }: TournamentCardProps) => {
 
 	const { t } = useTranslation({ keyPrefix: 'TOURNAMENT_RESULT_CARD' });
 	const { formatDateSmall } = useDateFormat();
@@ -48,10 +49,10 @@ export const TournamentResultCard = ({ tournamentName, city, firstDay, lastDay, 
 		<div className={styles.row}>
 			<div className={styles.title}>
 				<span className={styles.tournamentName}>{tournamentName}</span>
-				<div className={styles.icon}>
-					<IconUsers size={18}/>
-					{playerCount}
-				</div>
+				<PlayersInTournament
+					playerCount={playerCount}
+					playerNames={playerNames}
+				/>
 			</div>
 		</div>
 		<div className={styles.row}>
@@ -85,10 +86,10 @@ export const TournamentResultCard = ({ tournamentName, city, firstDay, lastDay, 
 			<div className={styles.title}>
 				<span className={styles.tournamentName}>{tournamentName}</span>
 				<div className={styles.icons}>
-					<div className={styles.icon}>
-						<IconUsers size={18}/>
-						{playerCount}
-					</div>
+					<PlayersInTournament
+						playerCount={playerCount}
+						playerNames={playerNames}
+					/>
 					{areMedalsWon ? <>
 						<div className={styles.icon}>
 							<IconPentagonNumber1

@@ -81,6 +81,7 @@ export const ClubTournamentResultsPage = () => {
 							lastDay={tournament.tournament.lastDay}
 							medals={tournament.medals}
 							playerCount={tournament.players.length}
+							playerNames={tournament.players.map(player => player.name)}
 							tournamentName={tournament.tournament.name}
 						/>
 					</div>
