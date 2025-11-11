@@ -20,7 +20,7 @@
     "@tanstack/react-router": "1.135.2",
     "axios": "1.13.2",
     "dayjs": "1.11.19",
-    "i18next": "25.6.1",
+    "i18next": "25.6.2",
     "i18next-browser-languagedetector": "8.2.0",
     "mathjs": "15.1.0",
     "react": "19.2.0",
