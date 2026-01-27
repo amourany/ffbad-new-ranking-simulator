@@ -18,7 +18,7 @@
     "@tabler/icons-react": "3.36.1",
     "@tanstack/react-query": "5.90.20",
     "@tanstack/react-router": "1.157.16",
-    "axios": "1.13.3",
+    "axios": "1.13.4",
     "dayjs": "1.11.19",
     "i18next": "25.8.0",
     "i18next-browser-languagedetector": "8.2.0",
